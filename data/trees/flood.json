@@ -1,0 +1,447 @@
+{
+  "hazard_id": "flood",
+  "hazard_name": {
+    "en": "Flood",
+    "ml": "വെള്ളപ്പൊക്കം",
+    "hi": "बाढ़"
+  },
+  "welcome_message": {
+    "en": "Welcome to FloodSafe! I am your flood emergency safety assistant. I will guide you through the appropriate safety actions based on your current situation. Please answer the following questions carefully.",
+    "ml": "ഫ്ലഡ് സേഫിലേക്ക് സ്വാഗതം! ഞാൻ നിങ്ങളുടെ പ്രളയ അടിയന്തര സുരക്ഷാ സഹായിയാണ്. നിങ്ങളുടെ നിലവിലെ സാഹചര്യം അനുസരിച്ച് അനുയോജ്യമായ സുരക്ഷാ നിർദ്ദേശങ്ങൾ നൽകാം. ദയവായി താഴെ പറയുന്ന ചോദ്യങ്ങൾക്ക് ശ്രദ്ധാപൂർവ്വം ഉത്തരം നൽകുക.",
+    "hi": "फ्लडसेफ में आपका स्वागत है! मैं आपका बाढ़ आपातकालीन सुरक्षा सहायक हूँ। मैं आपकी वर्तमान स्थिति के आधार पर उचित सुरक्षा कदम उठाने में आपका मार्गदर्शन करूँगा। कृपया निम्नलिखित प्रश्नों का उत्तर ध्यानपूर्वक दें।"
+  },
+  "initial_node_id": "fl_q1_location",
+  "nodes": {
+    "fl_q1_location": {
+      "id": "fl_q1_location",
+      "type": "question",
+      "severity": "info",
+      "source_id": "ndma_flood",
+      "tags": ["location_assessment"],
+      "text": {
+        "en": "Where are you currently located?",
+        "ml": "നിങ്ങൾ ഇപ്പോൾ എവിടെയാണ് സ്ഥിതി ചെയ്യുന്നത്?",
+        "hi": "आप इस समय कहाँ स्थित हैं?"
+      },
+      "options": [
+        {
+          "id": "opt_indoors",
+          "text": {
+            "en": "Indoors (at home/building)",
+            "ml": "വീട്ടിലോ കെട്ടിടത്തിലോ (ഇൻഡോർസ്)",
+            "hi": "घर या इमारत के अंदर (Indoors)"
+          },
+          "next_node": "fl_in_q2_lowlying"
+        },
+        {
+          "id": "opt_outdoors",
+          "text": {
+            "en": "Outdoors",
+            "ml": "തുറസ്സായ സ്ഥലത്ത് (ഔട്ട്‌ഡോർസ്)",
+            "hi": "खुले में / बाहर (Outdoors)"
+          },
+          "next_node": "fl_out_q2_blocked"
+        },
+        {
+          "id": "opt_vehicle",
+          "text": {
+            "en": "Inside a vehicle",
+            "ml": "വാഹനത്തിനുള്ളിൽ",
+            "hi": "वाहन के अंदर"
+          },
+          "next_node": "fl_veh_q2_surrounded"
+        }
+      ]
+    },
+
+    "fl_in_q2_lowlying": {
+      "id": "fl_in_q2_lowlying",
+      "type": "question",
+      "severity": "warning",
+      "source_id": "ndma_flood",
+      "tags": ["topography_check"],
+      "text": {
+        "en": "Is your building located in a flood-prone or low-lying area?",
+        "ml": "നിങ്ങളുടെ കെട്ടിടം താഴ്ന്ന പ്രദേശത്തോ വെള്ളപ്പൊക്ക സാധ്യതാ മേഖലയിലോ ആണോ?",
+        "hi": "क्या आपकी इमारत निचले या बाढ़-संभावित क्षेत्र में स्थित है?"
+      },
+      "options": [
+        {
+          "id": "opt_in_lowlying_yes",
+          "text": {"en": "Yes", "ml": "അതെ", "hi": "हाँ"},
+          "next_node": "fl_in_adv_lowlying_yes"
+        },
+        {
+          "id": "opt_in_lowlying_no",
+          "text": {"en": "No", "ml": "അല്ല", "hi": "नहीं"},
+          "next_node": "fl_in_adv_lowlying_no"
+        },
+        {
+          "id": "opt_in_lowlying_unsure",
+          "text": {"en": "Not sure", "ml": "ഉറപ്പില്ല", "hi": "निश्चित नहीं"},
+          "next_node": "fl_in_adv_lowlying_unsure"
+        }
+      ]
+    },
+
+    "fl_in_adv_lowlying_yes": {
+      "id": "fl_in_adv_lowlying_yes",
+      "type": "advice",
+      "severity": "warning",
+      "source_id": "ndma_flood",
+      "tags": ["elevation", "utility_safety", "evacuation_prep"],
+      "text": {
+        "en": "Move to higher floors or a safe elevated location. Avoid basements and ground floors. Switch off electricity and gas ONLY if it is safe to do so (never touch electrical systems while standing in water). Keep an emergency kit ready. Follow official evacuation instructions immediately.",
+        "ml": "മുകൾ നിലകളിലേക്കോ സുരക്ഷിതമായ ഉയർന്ന സ്ഥലത്തേക്കോ മാറുക. ബേസ്‌മെന്റുകളും താഴത്തെ നിലകളും ഒഴിവാക്കുക. വെള്ളത്തിൽ നിൽക്കുകയാണെങ്കിൽ ഒരിക്കലും സ്വിച്ച് ബോർഡുകളിൽ തൊടരുത്; തികച്ചും സുരക്ഷിതമെങ്കിൽ മാത്രം വൈദ്യുതിയും ഗ്യാസും ഓഫ് ചെയ്യുക. എമർജൻസി കിറ്റ് തയ്യാറാക്കുക. ഔദ്യോഗിക ഒഴിപ്പിക്കൽ നിർദ്ദേശങ്ങൾ പാലിക്കുക.",
+        "hi": "ऊपरी मंजिलों या सुरक्षित ऊँचे स्थान पर चले जाएँ। बेसमेंट और भूतल से बचें। बिजली और गैस तभी बंद करें जब ऐसा करना पूरी तरह सुरक्षित हो (पानी में खड़े होकर कभी भी बिजली के स्विच न छुएं)। आपातकालीन किट तैयार रखें। आधिकारिक निकासी निर्देशों का पालन करें।"
+      },
+      "next_node": "fl_in_q3_water_entering"
+    },
+
+    "fl_in_adv_lowlying_no": {
+      "id": "fl_in_adv_lowlying_no",
+      "type": "advice",
+      "severity": "info",
+      "source_id": "ndma_flood",
+      "tags": ["monitoring", "shelter_in_place"],
+      "text": {
+        "en": "Stay alert and monitor official weather and flood warnings. Keep emergency supplies ready. Avoid going outside unnecessarily.",
+        "ml": "ജാഗ്രത പാലിക്കുകയും ഔദ്യോഗിക കാലാവസ്ഥാ മുന്നറിയിപ്പുകൾ നിരീക്ഷിക്കുകയും ചെയ്യുക. അത്യാവശ്യ സാധനങ്ങൾ കരുതുക. അനാവശ്യമായി പുറത്തിറങ്ങുന്നത് ഒഴിവാക്കുക.",
+        "hi": "सतर्क रहें और आधिकारिक मौसम एवं बाढ़ चेतावनियों पर नज़र रखें। आपातकालीन आपूर्ति तैयार रखें। अनावश्यक रूप से बाहर निकलने से बचें।"
+      },
+      "next_node": "fl_in_q3_water_entering"
+    },
+
+    "fl_in_adv_lowlying_unsure": {
+      "id": "fl_in_adv_lowlying_unsure",
+      "type": "advice",
+      "severity": "warning",
+      "source_id": "ksdma_monsoon",
+      "tags": ["local_inquiry", "elevation_prep"],
+      "text": {
+        "en": "Check local flood warnings on All India Radio or official district portals. Contact local authorities (1077 / DEOC) if necessary. Prepare to move to a safer elevated location.",
+        "ml": "തദ്ദേശീയ പ്രളയ മുന്നറിയിപ്പുകൾ പരിശോധിക്കുക. ആവശ്യമെങ്കിൽ തദ്ദേശ ഭരണകൂടവുമായോ ജില്ലാ കൺട്രോൾ റൂമുമായോ (1077) ബന്ധപ്പെടുക. ഉയർന്ന സ്ഥലത്തേക്ക് മാറാൻ തയ്യാറെടുക്കുക.",
+        "hi": "स्थानीय बाढ़ चेतावनियों की जाँच करें। यदि आवश्यक हो तो स्थानीय प्रशासन या जिला नियंत्रण कक्ष (1077) से संपर्क करें। सुरक्षित ऊँचे स्थान पर जाने के लिए तैयार रहें।"
+      },
+      "next_node": "fl_in_q3_water_entering"
+    },
+
+    "fl_in_q3_water_entering": {
+      "id": "fl_in_q3_water_entering",
+      "type": "question",
+      "severity": "critical",
+      "source_id": "ndma_flood",
+      "tags": ["water_ingress_check"],
+      "text": {
+        "en": "Is floodwater entering your house?",
+        "ml": "നിങ്ങളുടെ വീടിനുള്ളിലേക്ക് വെള്ളം കയറുന്നുണ്ടോ?",
+        "hi": "क्या आपके घर के अंदर बाढ़ का पानी घुस रहा है?"
+      },
+      "options": [
+        {
+          "id": "opt_water_in_yes",
+          "text": {"en": "Yes", "ml": "അതെ", "hi": "हाँ"},
+          "next_node": "fl_in_adv_water_yes"
+        },
+        {
+          "id": "opt_water_in_no",
+          "text": {"en": "No", "ml": "അല്ല", "hi": "नहीं"},
+          "next_node": "fl_in_adv_water_no"
+        }
+      ]
+    },
+
+    "fl_in_adv_water_yes": {
+      "id": "fl_in_adv_water_yes",
+      "type": "advice",
+      "severity": "critical",
+      "source_id": "ndma_flood",
+      "tags": ["immediate_evacuation", "electrical_danger", "life_safety"],
+      "text": {
+        "en": "Move IMMEDIATELY to a higher floor or safe elevated area. Do NOT touch electrical appliances, switches, or wires if water is present. Do NOT enter floodwater. Call emergency services (112 / 1077) if trapped.",
+        "ml": "ഉടൻ തന്നെ മുകളിലത്തെ നിലയിലേക്കോ സുരക്ഷിതമായ ഉയർന്ന സ്ഥലത്തേക്കോ മാറുക. വെള്ളമുണ്ടെങ്കിൽ ഒരു കാരണവശാലും ഇലക്ട്രിക്കൽ ഉപകരണങ്ങളിലോ സ്വിച്ചുകളിലോ തൊടരുത്. വെള്ളക്കെട്ടിലേക്ക് ഇറങ്ങരുത്. കുടുങ്ങിക്കിടക്കുകയാണെങ്കിൽ ഉടൻ 112 അല്ലെങ്കിൽ 1077 എന്ന നമ്പറിൽ വിളിക്കുക.",
+        "hi": "तुरंत ऊपरी मंजिल या सुरक्षित ऊँचे स्थान पर जाएँ। पानी होने पर बिजली के उपकरणों, स्विच या तारों को बिल्कुल न छुएं। बाढ़ के पानी में न उतरें। यदि फंस गए हैं तो आपातकालीन सेवाओं (112 / 1077) को कॉल करें।"
+      },
+      "next_node": "fl_q_vulnerable"
+    },
+
+    "fl_in_adv_water_no": {
+      "id": "fl_in_adv_water_no",
+      "type": "advice",
+      "severity": "info",
+      "source_id": "ndma_flood",
+      "tags": ["structural_check", "monitoring"],
+      "text": {
+        "en": "Stay indoors if the building is safe. Keep away from electrical equipment in potentially flooded areas. Continue monitoring official alerts.",
+        "ml": "കെട്ടിടം സുരക്ഷിതമാണെങ്കിൽ വീടിനുള്ളിൽ തന്നെ തുടരുക. വെള്ളം കയറാൻ സാധ്യതയുള്ള സ്ഥലങ്ങളിലെ ഇലക്ട്രിക്കൽ ഉപകരണങ്ങളിൽ നിന്ന് അകന്നു നിൽക്കുക. ഔദ്യോഗിക ജാഗ്രതാ നിർദ്ദേശങ്ങൾ ശ്രദ്ധിക്കുക.",
+        "hi": "यदि इमारत सुरक्षित है तो घर के अंदर ही रहें। संभावित जलमग्न क्षेत्रों में बिजली के उपकरणों से दूर रहें। आधिकारिक अलर्ट पर लगातार नज़र रखें।"
+      },
+      "next_node": "fl_q_vulnerable"
+    },
+
+    "fl_out_q2_blocked": {
+      "id": "fl_out_q2_blocked",
+      "type": "question",
+      "severity": "critical",
+      "source_id": "ndma_flood",
+      "tags": ["outdoor_navigation_check"],
+      "text": {
+        "en": "Is there floodwater blocking your path?",
+        "ml": "നിങ്ങൾ പോകുന്ന വഴിയിൽ വെള്ളക്കെട്ട് തടസ്സമായി നിൽക്കുന്നുണ്ടോ?",
+        "hi": "क्या आपके रास्ते में बाढ़ का पानी रुकावट बना हुआ है?"
+      },
+      "options": [
+        {
+          "id": "opt_path_blocked_yes",
+          "text": {"en": "Yes", "ml": "അതെ", "hi": "हाँ"},
+          "next_node": "fl_out_adv_blocked_yes"
+        },
+        {
+          "id": "opt_path_blocked_no",
+          "text": {"en": "No", "ml": "അല്ല", "hi": "नहीं"},
+          "next_node": "fl_out_adv_blocked_no"
+        }
+      ]
+    },
+
+    "fl_out_adv_blocked_yes": {
+      "id": "fl_out_adv_blocked_yes",
+      "type": "advice",
+      "severity": "critical",
+      "source_id": "ndma_flood",
+      "tags": ["turn_around_dont_drown", "high_ground", "waterway_hazard"],
+      "text": {
+        "en": "Never walk, swim, or drive through floodwater ('Turn Around, Don't Drown'). Move towards higher ground immediately. Stay away from drains, canals, rivers, and overflowing streams. Seek shelter in a safe elevated location.",
+        "ml": "ഒരു കാരണവശാലും വെള്ളക്കെട്ടിലൂടെ നടക്കാനോ നീന്താനോ വാഹനം ഓടിക്കാനോ ശ്രമിക്കരുത്. ഉടൻ ഉയർന്ന സ്ഥലത്തേക്ക് മാറുക. കാനകൾ, അഴുക്കുചാലുകൾ, തോടുകൾ, പുഴകൾ എന്നിവയിൽ നിന്ന് അകന്നുനിൽക്കുക. സുരക്ഷിതമായ ഉയർന്ന കെട്ടിടത്തിൽ അഭയം കണ്ടെത്തുക.",
+        "hi": "बाढ़ के पानी में कभी न चलें, न तैरें, न ही वाहन चलाएँ ('Turn Around, Don't Drown')। तुरंत ऊँची ज़मीन की ओर बढ़ें। नालों, नहरों, नदियों और उफनते नालों से दूर रहें। सुरक्षित ऊँचे स्थान पर शरण लें।"
+      },
+      "next_node": "fl_out_q3_river"
+    },
+
+    "fl_out_adv_blocked_no": {
+      "id": "fl_out_adv_blocked_no",
+      "type": "advice",
+      "severity": "warning",
+      "source_id": "ndma_flood",
+      "tags": ["evacuate_lowlying", "safe_shelter"],
+      "text": {
+        "en": "Move away from rivers and low-lying areas. Reach a safe building or higher ground. Avoid unnecessary travel during flooding.",
+        "ml": "നദികളിൽ നിന്നും താഴ്ന്ന പ്രദേശങ്ങളിൽ നിന്നും ഉടൻ അകന്നു മാറുക. സുരക്ഷിതമായ ഒരു കോൺക്രീറ്റ് കെട്ടിടത്തിലേക്കോ ഉയർന്ന പ്രദേശത്തേക്കോ നീങ്ങുക. പ്രളയസമയത്ത് അനാവശ്യ യാത്രകൾ ഒഴിവാക്കുക.",
+        "hi": "नदियों और निचले इलाकों से दूर हटें। किसी सुरक्षित इमारत या ऊँचे स्थान पर पहुँचें। बाढ़ के दौरान अनावश्यक यात्रा से बचें।"
+      },
+      "next_node": "fl_out_q3_river"
+    },
+
+    "fl_out_q3_river": {
+      "id": "fl_out_q3_river",
+      "type": "question",
+      "severity": "critical",
+      "source_id": "ksdma_monsoon",
+      "tags": ["river_proximity_check"],
+      "text": {
+        "en": "Are you near a river, canal, or overflowing stream?",
+        "ml": "നിങ്ങൾ പുഴ, കനാൽ, അല്ലെങ്കിൽ കരകവിഞ്ഞൊഴുകുന്ന തോടിന് സമീപമാണോ?",
+        "hi": "क्या आप किसी नदी, नहर या उफनते नाले के पास हैं?"
+      },
+      "options": [
+        {
+          "id": "opt_river_yes",
+          "text": {"en": "Yes", "ml": "അതെ", "hi": "हाँ"},
+          "next_node": "fl_out_adv_river_yes"
+        },
+        {
+          "id": "opt_river_no",
+          "text": {"en": "No", "ml": "അല്ല", "hi": "नहीं"},
+          "next_node": "fl_out_adv_river_no"
+        }
+      ]
+    },
+
+    "fl_out_adv_river_yes": {
+      "id": "fl_out_adv_river_yes",
+      "type": "advice",
+      "severity": "critical",
+      "source_id": "ksdma_monsoon",
+      "tags": ["riverbank_danger", "immediate_retreat"],
+      "text": {
+        "en": "Move away immediately. Riverbanks can collapse without warning. Do NOT attempt to cross the water. Warn others if safe to do so.",
+        "ml": "ഉടൻ തന്നെ നദീതീരത്തു നിന്ന് അകന്നുമാറുക! നദീതീരങ്ങൾ പെട്ടെന്ന് ഇടിഞ്ഞുവീഴാൻ സാധ്യതയുണ്ട്. ഒരു കാരണവശാലും വെള്ളം മുറിച്ചുകടക്കാൻ ശ്രമിക്കരുത്. സുരക്ഷിതമെങ്കിൽ മറ്റുള്ളവർക്കും മുന്നറിയിപ്പ് നൽകുക.",
+        "hi": "तुरंत दूर हटें! नदी के किनारे बिना चेतावनी के ढह सकते हैं। पानी पार करने की बिल्कुल कोशिश न करें। सुरक्षित होने पर दूसरों को भी सचेत करें।"
+      },
+      "next_node": "fl_q_vulnerable"
+    },
+
+    "fl_out_adv_river_no": {
+      "id": "fl_out_adv_river_no",
+      "type": "advice",
+      "severity": "info",
+      "source_id": "ndma_flood",
+      "tags": ["orderly_transit"],
+      "text": {
+        "en": "Continue towards a safe elevated location. Follow official evacuation instructions.",
+        "ml": "സുരക്ഷിതമായ ഉയർന്ന പ്രദേശത്തേക്ക് നീങ്ങുന്നത് തുടരുക. ദുരന്തനിവാരണ വിഭാഗത്തിന്റെ നിർദ്ദേശങ്ങൾ പാലിക്കുക.",
+        "hi": "सुरक्षित ऊँचे स्थान की ओर बढ़ते रहें। आधिकारिक निकासी निर्देशों का पालन करें।"
+      },
+      "next_node": "fl_q_vulnerable"
+    },
+
+    "fl_veh_q2_surrounded": {
+      "id": "fl_veh_q2_surrounded",
+      "type": "question",
+      "severity": "critical",
+      "source_id": "ndma_flood",
+      "tags": ["vehicle_hazard_check"],
+      "text": {
+        "en": "Is your vehicle surrounded by or entering floodwater?",
+        "ml": "നിങ്ങളുടെ വാഹനം വെള്ളക്കെട്ടിൽ കുടുങ്ങുകയോ വാഹനത്തിലേക്ക് വെള്ളം കയറുകയോ ചെയ്യുന്നുണ്ടോ?",
+        "hi": "क्या आपका वाहन बाढ़ के पानी से घिरा हुआ है या पानी में प्रवेश कर रहा है?"
+      },
+      "options": [
+        {
+          "id": "opt_veh_surrounded_yes",
+          "text": {"en": "Yes", "ml": "അതെ", "hi": "हाँ"},
+          "next_node": "fl_veh_adv_surrounded_yes"
+        },
+        {
+          "id": "opt_veh_surrounded_no",
+          "text": {"en": "No", "ml": "അല്ല", "hi": "नहीं"},
+          "next_node": "fl_veh_adv_surrounded_no"
+        }
+      ]
+    },
+
+    "fl_veh_adv_surrounded_yes": {
+      "id": "fl_veh_adv_surrounded_yes",
+      "type": "advice",
+      "severity": "critical",
+      "source_id": "ndma_flood",
+      "tags": ["abandon_vehicle", "immediate_escape", "call_112"],
+      "text": {
+        "en": "Stop driving immediately. Never attempt to drive through floodwater. If safe to exit, leave the vehicle and move to higher ground. If trapped, seek emergency assistance immediately (112). Do NOT remain in a vehicle being swept away by water.",
+        "ml": "ഉടൻ തന്നെ വാഹനം നിർത്തുക! വെള്ളക്കെട്ടിലൂടെ വാഹനം ഓടിക്കാൻ ശ്രമിക്കരുത്. സുരക്ഷിതമായി പുറത്തിറങ്ങാൻ കഴിയുമെങ്കിൽ ഉടൻ വാഹനം വിട്ട് ഉയർന്ന സ്ഥലത്തേക്ക് മാറുക. വാതിലുകൾ തുറക്കാൻ കഴിയാതെ കുടുങ്ങിയാൽ ഉടൻ 112-ൽ സഹായം തേടുക. ഒഴുകിപ്പോകുന്ന വാഹനത്തിനുള്ളിൽ ഒരിക്കലും ഇരിക്കരുത്.",
+        "hi": "ड्राइविंग तुरंत रोकें। बाढ़ के पानी में गाड़ी चलाने का प्रयास कभी न करें। यदि बाहर निकलना सुरक्षित हो, तो वाहन छोड़कर ऊँचे स्थान पर चले जाएँ। यदि फंस गए हैं, तो तुरंत आपातकालीन सहायता (112) लें। पानी में बह रहे वाहन के अंदर न रहें।"
+      },
+      "next_node": "fl_q_vulnerable"
+    },
+
+    "fl_veh_adv_surrounded_no": {
+      "id": "fl_veh_adv_surrounded_no",
+      "type": "advice",
+      "severity": "warning",
+      "source_id": "ndma_flood",
+      "tags": ["traffic_diversion", "safe_route"],
+      "text": {
+        "en": "Avoid flooded roads, low bridges, and underpasses. Find an alternative safe route on higher elevation. Follow official traffic and evacuation instructions.",
+        "ml": "വെള്ളം കയറിയ റോഡുകൾ, പാലങ്ങൾ, അടിപ്പാതകൾ എന്നിവ പൂർണ്ണമായും ഒഴിവാക്കുക. ഉയർന്ന റോഡിലൂടെ സുരക്ഷിതമായ മറ്റൊരു വഴി കണ്ടെത്തുക. ട്രാഫിക് പോലീസിന്റെയും ദുരന്തനിവാരണ അതോറിറ്റിയുടെയും നിർദ്ദേശങ്ങൾ പാലിക്കുക.",
+        "hi": "जलमग्न सड़कों, निचले पुलों और अंडरपास से बचें। ऊँचाई पर एक वैकल्पिक सुरक्षित मार्ग खोजें। आधिकारिक यातायात और निकासी निर्देशों का पालन करें।"
+      },
+      "next_node": "fl_q_vulnerable"
+    },
+
+    "fl_q_vulnerable": {
+      "id": "fl_q_vulnerable",
+      "type": "question",
+      "severity": "warning",
+      "source_id": "ksdma_monsoon",
+      "tags": ["vulnerable_groups"],
+      "text": {
+        "en": "Are there children, elderly individuals, pregnant women, or persons with disabilities with you?",
+        "ml": "നിങ്ങളോടൊപ്പം കുട്ടികൾ, പ്രായമായവർ, ഗർഭിണികൾ അല്ലെങ്കിൽ ഭിന്നശേഷിയുള്ള വ്യക്തികൾ ഉണ്ടോ?",
+        "hi": "क्या आपके साथ बच्चे, बुजुर्ग, गर्भवती महिलाएं या दिव्यांग व्यक्ति हैं?"
+      },
+      "options": [
+        {
+          "id": "opt_vuln_yes",
+          "text": {"en": "Yes", "ml": "അതെ", "hi": "हाँ"},
+          "next_node": "fl_adv_vuln_yes"
+        },
+        {
+          "id": "opt_vuln_no",
+          "text": {"en": "No", "ml": "അല്ല", "hi": "नहीं"},
+          "next_node": "fl_q_emergency_status"
+        }
+      ]
+    },
+
+    "fl_adv_vuln_yes": {
+      "id": "fl_adv_vuln_yes",
+      "type": "advice",
+      "severity": "warning",
+      "source_id": "ksdma_monsoon",
+      "tags": ["priority_rescue", "special_care"],
+      "text": {
+        "en": "Prioritize early evacuation for vulnerable persons before water rises. Prepare warm clothing, essential daily medications, and infant supplies. Inform rescue teams (112 / 1077) specifically about bedridden or elderly occupants who require boat or stretcher assistance.",
+        "ml": "വെള്ളം ഉയരുന്നതിന് മുമ്പുതന്നെ വയോധികരെയും കുട്ടികളെയും സുരക്ഷിത സ്ഥാനങ്ങളിലേക്ക് മാറ്റുന്നതിന് മുൻഗണന നൽകുക. മരുന്നുകളും ചൂടുള്ള വസ്ത്രങ്ങളും കരുതുക. കിടപ്പിലായ രോഗികളോ ഭിന്നശേഷിക്കാരോ ഉണ്ടെങ്കിൽ രക്ഷാപ്രവർത്തകരെ (112/1077) വിവരമറിയിക്കുക.",
+        "hi": "पानी बढ़ने से पहले ही बुजुर्गों, बच्चों और गर्भवती महिलाओं को सुरक्षित निकालने को प्राथमिकता दें। दवाइयाँ और गर्म कपड़े साथ रखें। यदि कोई चलने में असमर्थ है तो बचाव दल (112/1077) को पहले ही सूचित करें।"
+      },
+      "next_node": "fl_q_emergency_status"
+    },
+
+    "fl_q_emergency_status": {
+      "id": "fl_q_emergency_status",
+      "type": "emergency_check",
+      "severity": "critical",
+      "source_id": "mha_erss_112",
+      "tags": ["emergency_triage_check"],
+      "text": {
+        "en": "Are you injured or trapped?",
+        "ml": "നിങ്ങൾക്ക് പരിക്കേറ്റിട്ടുണ്ടോ അല്ലെങ്കിൽ നിങ്ങൾ എവിടെയെങ്കിലും കുടുങ്ങിക്കിടക്കുകയാണോ?",
+        "hi": "क्या आप घायल हैं या कहीं फंसे हुए हैं?"
+      },
+      "options": [
+        {
+          "id": "opt_trapped_yes",
+          "text": {"en": "Yes", "ml": "അതെ", "hi": "हाँ"},
+          "next_node": "fl_adv_trapped_yes"
+        },
+        {
+          "id": "opt_trapped_no",
+          "text": {"en": "No", "ml": "അല്ല", "hi": "नहीं"},
+          "next_node": "fl_adv_trapped_no"
+        }
+      ]
+    },
+
+    "fl_adv_trapped_yes": {
+      "id": "fl_adv_trapped_yes",
+      "type": "advice",
+      "severity": "critical",
+      "source_id": "mha_erss_112",
+      "tags": ["call_emergency_112", "gps_share", "signaling"],
+      "text": {
+        "en": "Contact emergency services immediately. In India, call 112 for emergency assistance. Share your exact location, battery level, and visible landmarks with rescuers. Avoid entering floodwater to rescue someone yourself. Signal with a whistle, torch, or brightly colored cloth.",
+        "ml": "ഉടൻ തന്നെ അടിയന്തര സേവനങ്ങളുമായി ബന്ധപ്പെടുക! 112-ൽ വിളിച്ച് നിങ്ങളുടെ കൃത്യമായ ലൊക്കേഷനും അടയാളങ്ങളും വ്യക്തമാക്കുക. പ്രളയജലത്തിലേക്ക് സ്വയം ഇറങ്ങി രക്ഷാപ്രവർത്തനം നടത്താൻ ശ്രമിക്കരുത്. വിസിൽ, ടോർച്ച് അല്ലെങ്കിൽ തിളക്കമുള്ള തുണി ഉപയോഗിച്ച് രക്ഷാപ്രവർത്തകർക്ക് സൂചന നൽകുക.",
+        "hi": "तत्काल आपातकालीन सेवाओं से संपर्क करें। भारत में 112 पर कॉल करें। बचाव कर्मियों के साथ अपना सटीक स्थान और लैंडमार्क साझा करें। किसी को बचाने के लिए स्वयं बाढ़ के पानी में न उतरें। सीटी, टॉर्च या चमकीले कपड़े से संकेत दें।"
+      },
+      "next_node": "fl_summary_end"
+    },
+
+    "fl_adv_trapped_no": {
+      "id": "fl_adv_trapped_no",
+      "type": "advice",
+      "severity": "info",
+      "source_id": "ndma_flood",
+      "tags": ["power_conserve", "alert_monitoring"],
+      "text": {
+        "en": "Continue following the safety instructions. Keep your phone charged and switch to battery-saver mode. Stay updated through official NDMA and KSDMA alerts.",
+        "ml": "സുരക്ഷാ നിർദ്ദേശങ്ങൾ പാലിക്കുന്നത് തുടരുക. മൊബൈൽ ഫോൺ ബാറ്ററി-സേവർ മോഡിലാക്കി ചാർജ്ജ് സൂക്ഷിക്കുക. NDMA, KSDMA എന്നിവയുടെ ഔദ്യോഗിക വാർത്തകൾ ശ്രദ്ധിക്കുക.",
+        "hi": "सुरक्षा निर्देशों का पालन जारी रखें। अपने फोन को चार्ज रखें और बैटरी सेवर मोड चालू करें। आधिकारिक अलर्ट्स के माध्यम से अपडेट रहें।"
+      },
+      "next_node": "fl_summary_end"
+    },
+
+    "fl_summary_end": {
+      "id": "fl_summary_end",
+      "type": "summary",
+      "severity": "info",
+      "source_id": "ndma_flood",
+      "tags": ["summary_generation"],
+      "text": {
+        "en": "Flood safety assessment completed. Review your personalized emergency action checklist and verified contacts below.",
+        "ml": "വെള്ളപ്പൊക്ക സുരക്ഷാ വിലയിരുത്തൽ പൂർത്തിയായി. നിങ്ങളുടെ വ്യക്തിഗത കർമ്മ പദ്ധതിയും ഹെൽപ്പ്‌ലൈൻ നമ്പറുകളും താഴെ പരിശോധിക്കുക.",
+        "hi": "बाढ़ सुरक्षा मूल्यांकन पूरा हुआ। अपनी व्यक्तिगत आपातकालीन कार्ययोजना और सत्यापित संपर्कों की समीक्षा नीचे करें।"
+      },
+      "next_node": null
+    }
+  }
+}

@@ -1,0 +1,69 @@
+{
+  "sources": [
+    {
+      "id": "ndma_flood",
+      "authority": "National Disaster Management Authority (NDMA), Government of India",
+      "document": "NDMA Guidelines: Management of Floods & Standard Flood Safety Protocols",
+      "url": "https://ndma.gov.in/Natural-Hazards/Floods",
+      "access_date": "2026-11-06",
+      "notes": "Covers life-safety protocols, turn around don't drown rule, utility disconnection rules, high-ground evacuation, and relief kit recommendations."
+    },
+    {
+      "id": "ksdma_monsoon",
+      "authority": "Kerala State Disaster Management Authority (KSDMA)",
+      "document": "Handbook on Disaster Management & Monsoon Safety Protocols (Handbook-KSDMA-2024)",
+      "url": "https://sdma.kerala.gov.in/",
+      "access_date": "2026-11-06",
+      "notes": "Covers Kerala-specific river basin alerts, dam overflow protocols, relief camp relocation, and local DEOC helplines."
+    },
+    {
+      "id": "ndma_quake",
+      "authority": "National Disaster Management Authority (NDMA), Government of India",
+      "document": "NDMA Guidelines: Management of Earthquakes - 'Drop, Cover, and Hold On'",
+      "url": "https://ndma.gov.in/Natural-Hazards/Earthquakes",
+      "access_date": "2026-11-06",
+      "notes": "Specifies structural safety, drop-cover-hold on procedure, high-rise evacuation without elevators, aftershock precautions, gas leak checks."
+    },
+    {
+      "id": "ndma_landslide",
+      "authority": "National Disaster Management Authority (NDMA) & Geological Survey of India (GSI)",
+      "document": "NDMA Guidelines: Management of Landslides & Snow Avalanches",
+      "url": "https://ndma.gov.in/Natural-Hazards/Landslides",
+      "access_date": "2026-11-06",
+      "notes": "Covers hillside fissure detection, early warning indicators (muddy springs, tilting trees), perpendicular evacuation away from debris path."
+    },
+    {
+      "id": "ksdma_landslide",
+      "authority": "Kerala State Disaster Management Authority (KSDMA)",
+      "document": "Standard Operating Procedures for Landslide Prone Districts (Wayanad, Idukki, Pathanamthitta)",
+      "url": "https://sdma.kerala.gov.in/hazard-landslide/",
+      "access_date": "2026-11-06",
+      "notes": "Specific evacuation procedures for Western Ghats terrain during red and orange rainfall alerts."
+    },
+    {
+      "id": "mha_erss_112",
+      "authority": "Ministry of Home Affairs, Government of India",
+      "document": "Emergency Response Support System (ERSS - Dial 112)",
+      "url": "https://112.gov.in/",
+      "access_date": "2026-11-06",
+      "notes": "Unified nationwide emergency number operational in all Indian states and Union Territories."
+    },
+    {
+      "id": "cwc_flood",
+      "authority": "Central Water Commission (CWC)",
+      "document": "Flood Forecasting and Dam Storage Inundation Monitoring",
+      "url": "http://cwc.gov.in/",
+      "access_date": "2026-11-06",
+      "notes": "River flood thresholds, warning levels, and evacuation lead times."
+    },
+    {
+      "id": "imd_weather",
+      "authority": "India Meteorological Department (IMD)",
+      "document": "National Weather Forecasting Centre - Color Coded Warnings (Yellow, Orange, Red)",
+      "url": "https://mausam.imd.gov.in/",
+      "access_date": "2026-11-06",
+      "notes": "Rainfall threshold warnings for extreme precipitation and cyclone-induced flooding."
+    }
+  ]
+}
+

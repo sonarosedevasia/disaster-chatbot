@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+
+{% block title %}Disaster Emergency Kit Checklist – DisasterSafe{% endblock %}
+
+{% block content %}
+<div class="kit-page-container container">
+  <div class="kit-hero-header">
+    <div class="kit-hero-text">
+      <span class="section-eyebrow">72-Hour Survival Readiness</span>
+      <h1 class="kit-page-title">Disaster Emergency Survival Kit</h1>
+      <p class="kit-page-sub">
+        Based on official NDMA guidelines. Check off items as you assemble your 72-hour family grab-bag. Progress is saved locally in your browser.
+      </p>
+    </div>
+
+    <!-- Overall Progress Card -->
+    <div class="kit-progress-card">
+      <div class="kit-progress-meta">
+        <span class="kit-progress-label">Readiness Progress</span>
+        <span class="kit-progress-percent" id="kitPercent">0%</span>
+      </div>
+      <div class="kit-track">
+        <div class="kit-fill" id="kitFill" style="width: 0%;"></div>
+      </div>
+      <div class="kit-actions-row">
+        <button type="button" class="btn-tool-kit" id="btnPrintKit">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+          Print Checklist
+        </button>
+        <button type="button" class="btn-tool-kit" id="btnResetKit">Reset</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Hazard Specific Notes Banner -->
+  <div class="hazard-kit-notes-grid">
+    <div class="hazard-kit-note flood">
+      <strong>Flood Specific:</strong> Waterproof dry-bags, Chlorine/Halazone water purification tablets, and rubber gumboots to prevent Leptospirosis (rat fever).
+    </div>
+    <div class="hazard-kit-note quake">
+      <strong>Earthquake Specific:</strong> Hard hats/helmets, heavy-duty leather gloves, whistle for rubble signaling, and N95 dust masks.
+    </div>
+    <div class="hazard-kit-note slide">
+      <strong>Landslide Specific:</strong> Compact grab-and-go backpack, durable hiking boots with ankle support, and hands-free headlamp.
+    </div>
+  </div>
+
+  <!-- Checklist Categories Grid -->
+  <div class="kit-categories-grid">
+    {% for cat in kits.categories %}
+    <div class="kit-category-card">
+      <h2 class="kit-category-title">{{ cat.title }}</h2>
+      <ul class="kit-checklist-items">
+        {% for item in cat['items'] %}
+        <li class="kit-item-row">
+          <label class="kit-label">
+            <input type="checkbox" class="kit-checkbox" data-id="{{ item.id }}" />
+            <span class="kit-item-text">{{ item.label }}</span>
+            {% if item.essential %}
+            <span class="essential-pill">Essential</span>
+            {% endif %}
+          </label>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}
+
+{% block extra_scripts %}
+<script src="{{ url_for('static', filename='js/kit.js') }}"></script>
+{% endblock %}

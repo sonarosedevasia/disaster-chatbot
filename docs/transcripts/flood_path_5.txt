@@ -1,0 +1,69 @@
+================================================================================
+DISASTERSAFE / SAFEKERALA - OFFICIAL CONVERSATION TRANSCRIPT
+HAZARD    : FLOOD
+SCENARIO  : Flood Path 5: Vehicle -> Clear Elevated Route -> Not Injured
+GENERATED : 2026-11-06 13:47:10 (Automated Engine Run)
+AUTHORITY : National Disaster Management Authority (NDMA) & KSDMA Protocols
+================================================================================
+
+[BOT] Welcome to FloodSafe! I am your flood emergency safety assistant. I will guide you through the appropriate safety actions based on your current situation. Please answer the following questions carefully.
+
+[BOT Q1] Where are you currently located?
+    (1) Indoors (at home/building)
+    (2) Outdoors
+    (3) Inside a vehicle
+
+[USER] > Inside a vehicle
+------------------------------------------------------------
+[BOT Q2] Is your vehicle surrounded by or entering floodwater?
+    (1) Yes
+    (2) No
+
+[USER] > No
+------------------------------------------------------------
+[BOT ADVICE - WARNING] (Ref: ndma_flood)
+  Avoid flooded roads, low bridges, and underpasses. Find an alternative safe route on higher elevation. Follow official traffic and evacuation instructions.
+
+[BOT Q3] Are there children, elderly individuals, pregnant women, or persons with disabilities with you?
+    (1) Yes
+    (2) No
+
+[USER] > No
+------------------------------------------------------------
+[BOT Q4] Are you injured or trapped?
+    (1) Yes
+    (2) No
+
+[USER] > No
+------------------------------------------------------------
+[BOT ADVICE - INFO] (Ref: ndma_flood)
+  Continue following the safety instructions. Keep your phone charged and switch to battery-saver mode. Stay updated through official NDMA and KSDMA alerts.
+
+================================================================================
+                  PERSONALIZED DISASTER SAFETY PLAN
+================================================================================
+ASSESSMENT STATUS : MODERATE
+HAZARD            : FLOOD
+
+⚡ IMMEDIATE PRIORITY SAFETY ACTIONS:
+  • Follow official NDMA / KSDMA evacuation advisories immediately if issued.
+
+✓ NEXT STEPS & PERSONALIZED CHECKLIST:
+  • Stay sheltered indoors if the building structure is sound; avoid unnecessary road travel.
+  • Boil all drinking water and watch out for displaced snakes or reptiles seeking higher ground.
+
+🎒 PREPARATION & EVACUATION PACKING:
+  • Assemble essential flood kit: 3L drinking water per person, dry food, torch, and power bank.
+  • Store identity cards, land records, and deeds in a sealed waterproof pouch.
+
+📞 VERIFIED EMERGENCY HELPLINES (INDIA):
+  • 112   : National Integrated Emergency Helpline (Police, Fire, Medical, Rescue)
+  • 1070  : Kerala State Emergency Operations Centre (SEOC, 24x7)
+  • 1077  : District Emergency Operations Centre (DEOC - Collectorate Control Room)
+  • 108   : Ambulance & Emergency Medical Response
+  • 1078  : NDMA National Disaster Control Helpline
+
+DISCLAIMER:
+  Disclaimer: This guidance is based on official National Disaster Management Authority (NDMA) and Kerala State Disaster Management Authority (KSDMA) protocols. It provides educational and first-response safety guidance and does not replace emergency rescue services or official civil defense evacuation orders. In life-threatening situations, dial 112 immediately.
+================================================================================
+[ASSESSMENT COMPLETED SUCCESSFULLY]

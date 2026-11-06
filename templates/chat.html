@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+
+{% block title %}Emergency Guidance Chatbot – DisasterSafe{% endblock %}
+
+{% block content %}
+<div class="chat-page-layout container">
+  <!-- Top Hazard Switcher & Emergency Header Bar -->
+  <div class="chat-top-control-bar">
+    <div class="hazard-select-group">
+      <label for="chatHazardSelect" class="control-label">Hazard Assistant:</label>
+      <select id="chatHazardSelect" class="hazard-dropdown" data-current="{{ active_hazard }}">
+        <option value="flood" {% if active_hazard == 'flood' %}selected{% endif %}>Flood Emergency (വെള്ളപ്പൊക്കം / बाढ़)</option>
+        <option value="earthquake" {% if active_hazard == 'earthquake' %}selected{% endif %}>Earthquake Safety (ഭൂകമ്പം / भूकंप)</option>
+        <option value="landslide" {% if active_hazard == 'landslide' %}selected{% endif %}>Landslide Hazard (ഉരുൾപൊട്ടൽ / भूस्खलन)</option>
+      </select>
+    </div>
+
+    <!-- Step Progress Indicator -->
+    <div class="chat-progress-wrap" id="progressWrap">
+      <div class="progress-bar-track">
+        <div class="progress-bar-fill" id="progressBarFill" style="width: 20%;"></div>
+      </div>
+      <span class="progress-text" id="progressText">Step 1</span>
+    </div>
+
+    <!-- Quick Action Buttons -->
+    <div class="chat-header-actions">
+      <button type="button" class="btn-chat-action" id="btnBackStep" title="Undo last answer" disabled>
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5"/><polyline points="12 19 5 12 12 5"/></svg>
+        <span>Back</span>
+      </button>
+      <button type="button" class="btn-chat-action" id="btnRestartChat" title="Reset assessment">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 0 1 15-6.7L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-15 6.7L3 16"/><path d="M3 21v-5h5"/></svg>
+        <span>Restart</span>
+      </button>
+      <button type="button" class="btn-chat-action btn-print-plan" id="btnPrintPlan" title="Print Safety Plan" style="display:none;">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+        <span>Print Plan</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Chat Workspace Card -->
+  <div class="chat-workspace-card">
+    <!-- Messages Scroll Thread -->
+    <div class="chat-thread-container" id="chatThread" role="log" aria-live="polite">
+      <!-- Dynamically populated via static/js/chat.js -->
+    </div>
+
+    <!-- Animated Typing Indicator -->
+    <div class="typing-indicator-box" id="typingBox" style="display:none;" aria-hidden="true">
+      <div class="typing-avatar">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+      </div>
+      <div class="typing-bubble">
+        <span class="typing-dot"></span>
+        <span class="typing-dot"></span>
+        <span class="typing-dot"></span>
+        <span class="typing-label">DisasterSafe evaluating safety protocols...</span>
+      </div>
+    </div>
+
+    <!-- Clickable Quick-Reply Options Grid -->
+    <div class="options-dock-panel" id="optionsDock">
+      <div class="options-caption" id="optionsCaption">Choose an option below to proceed:</div>
+      <div class="options-pill-grid" id="optionsGrid">
+        <!-- Rendered dynamically -->
+      </div>
+    </div>
+
+    <!-- Alternative Text & Voice Input Bar -->
+    <div class="input-composer-bar">
+      <button type="button" class="btn-voice-input" id="btnVoiceInput" title="Speak your answer (Speech-to-Text)">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
+      </button>
+      <input type="text" id="chatTextInput" class="composer-input" placeholder="Type answer or click an option above..." aria-label="Type response" />
+      <button type="button" id="btnSendChat" class="btn-send-message" aria-label="Send message">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+      </button>
+    </div>
+
+    <!-- Chat Card Footer Disclaimer -->
+    <div class="chat-card-footer">
+      <p>
+        <strong>Official Disaster First-Response Tool:</strong> Follows NDMA and KSDMA safety protocols. In life-threatening peril, dial <strong>112</strong> immediately.
+      </p>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block extra_scripts %}
+<script src="{{ url_for('static', filename='js/chat.js') }}"></script>
+{% endblock %}
+

@@ -1,0 +1,94 @@
+{
+  "hazards": {
+    "flood": {
+      "title": "Flood Hazards: Signs, Myths & Realities",
+      "warning_signs": [
+        "Rapidly rising water levels in nearby drainage canals, rivulets, or street gutters.",
+        "Discoloration of tap water or sudden bubbling in ground drains.",
+        "Unusual roaring sounds from upstream dams or catchment riverbeds.",
+        "IMD issuing Red Alert (extremely heavy rainfall > 204.4 mm in 24 hours)."
+      ],
+      "myths_vs_facts": [
+        {
+          "myth": "It is safe to drive through shallow water if your vehicle is an SUV or heavy truck.",
+          "fact": "Fact: Just 30 cm (12 inches) of moving water floats most passenger cars, and 60 cm (24 inches) will sweep away heavy SUVs and trucks. Water hides washed-out roadbeds and open culverts.",
+          "source": "NDMA Flood Safety Protocol - 'Turn Around, Don't Drown'"
+        },
+        {
+          "myth": "You should quickly switch off your home's main electricity breaker even if water is entering the room.",
+          "fact": "Fact: NEVER touch electrical switches, meters, or cords while standing in water or if your hands are wet. Electric currents travel through floodwater with deadly speed. Evacuate to higher floors and call the electricity board.",
+          "source": "NDMA Electrical Safety During Floods"
+        },
+        {
+          "myth": "Floodwater is just dirty rainwater and safe to wade through with bare feet.",
+          "fact": "Fact: Floodwater carries sewage, hazardous chemicals, submerged sharp debris, downed electrical lines, and deadly bacteria causing Leptospirosis (rat fever). Never walk barefoot or swim in floodwater.",
+          "source": "KSDMA Health Advisory on Leptospirosis Prevention"
+        },
+        {
+          "myth": "Once the rain stops, the flood danger is completely over.",
+          "fact": "Fact: Water often continues to rise for hours or days after rains cease as upstream dams discharge and catchment tributaries crest downstream.",
+          "source": "Central Water Commission (CWC)"
+        }
+      ]
+    },
+    "earthquake": {
+      "title": "Earthquake Hazards: Signs, Myths & Realities",
+      "warning_signs": [
+        "Sudden rattling of windows, doors, and suspended ceiling fans.",
+        "Deep low-frequency rumbling sound emanating from beneath the ground.",
+        "Sudden erratic behavior or agitation among pets and birds seconds before tremors.",
+        "Flickering lights or intermittent power grid tripping."
+      ],
+      "myths_vs_facts": [
+        {
+          "myth": "You should immediately run outside into the street during strong earthquake shaking.",
+          "fact": "Fact: Running outside during active shaking exposes you to falling glass, facade plaster, roof tiles, and collapsing power lines. Drop, Cover, and Hold On beneath sturdy furniture until shaking stops.",
+          "source": "NDMA Earthquake Do's & Don'ts"
+        },
+        {
+          "myth": "Standing inside a doorway is the safest place during an earthquake.",
+          "fact": "Fact: In modern buildings, doorways are rarely reinforced and doors can swing violently during tremors, causing crushing injuries. Getting under a sturdy desk or table provides vastly superior protection.",
+          "source": "National Earthquake Hazards Reduction Program (NEHRP) & NDMA"
+        },
+        {
+          "myth": "You should use the elevator to escape a high-rise building quickly after an earthquake.",
+          "fact": "Fact: Elevators can become trapped between floors due to guide-rail deformation or power grid failure. Always use reinforced fire-exit stairwells after the shaking subsides.",
+          "source": "NDMA High-Rise Evacuation Guidelines"
+        },
+        {
+          "myth": "If you smell gas after an earthquake, turn on electric lights to inspect the room.",
+          "fact": "Fact: Electric light switches produce tiny internal sparks that can ignite leaking gas, causing catastrophic explosions. Use battery torches only and ventilate by opening windows.",
+          "source": "NDMA Post-Earthquake Utility Protocols"
+        }
+      ]
+    },
+    "landslide": {
+      "title": "Landslide Hazards: Signs, Myths & Realities",
+      "warning_signs": [
+        "New or widening tension cracks appearing on slopes, road asphalt, foundations, or patio floors.",
+        "Fences, utility poles, retaining walls, or coconut trees tilting progressively downhill.",
+        "Sudden muddying or silting of natural clear spring water streams.",
+        "Sudden drop or sudden rise in hillside stream water levels accompanied by distant rumbling sounds.",
+        "Doors and windows suddenly jamming or sticking in hillside homes."
+      ],
+      "myths_vs_facts": [
+        {
+          "myth": "When a landslide begins, you should run directly downhill away from the slope.",
+          "fact": "Fact: Debris flows travel at speeds exceeding 40-60 km/h downhill along natural drainage channels. You cannot outrun a slide downslope. Run perpendicular (sideways) to the slide path toward stable, elevated ground.",
+          "source": "Geological Survey of India (GSI) & NDMA"
+        },
+        {
+          "myth": "It is safe to return home immediately after a mudslide stops moving.",
+          "fact": "Fact: The initial slide destabilizes adjacent hill slopes. Secondary landslides and mudflows frequently trigger hours or days later, especially under continued rainfall.",
+          "source": "KSDMA Wayanad & Idukki Slope Safety Protocols"
+        },
+        {
+          "myth": "Planting grass alone will prevent a steep cut-slope from collapsing during monsoon rains.",
+          "fact": "Fact: Superficial grass cannot stabilize deep slip-planes. Steep cut-slopes require engineered retaining structures, weep holes, and proper storm-water diversion channels to prevent saturation.",
+          "source": "GSI Landslide Hazard Zonation Guidelines"
+        }
+      ]
+    }
+  }
+}
+

@@ -1,0 +1,281 @@
+{
+  "hazard_id": "earthquake",
+  "hazard_name": {
+    "en": "Earthquake",
+    "ml": "ഭൂകമ്പം",
+    "hi": "भूकंप"
+  },
+  "welcome_message": {
+    "en": "Welcome to QuakeSafe! I am your earthquake emergency safety assistant. I will guide you through the appropriate safety actions based on your current situation. Please answer the following questions carefully.",
+    "ml": "ക്വേക്‌സേഫിലേക്ക് സ്വാഗതം! ഞാൻ നിങ്ങളുടെ ഭൂകമ്പ അടിയന്തര സുരക്ഷാ സഹായിയാണ്. നിങ്ങളുടെ നിലവിലെ സാഹചര്യം അനുസരിച്ച് ഉചിതമായ സുരക്ഷാ നടപടികളിലേക്ക് ഞാൻ നിങ്ങളെ നയിക്കും. ദയവായി താഴെ പറയുന്ന ചോദ്യങ്ങൾക്ക് ശ്രദ്ധാപൂർവ്വം ഉത്തരം നൽകുക.",
+    "hi": "क्वेकसेफ में आपका स्वागत है! मैं आपका भूकंप आपातकालीन सुरक्षा सहायक हूँ। मैं आपकी वर्तमान स्थिति के आधार पर उचित सुरक्षा कदम उठाने में आपका मार्गदर्शन करूँगा। कृपया निम्नलिखित प्रश्नों का उत्तर ध्यानपूर्वक दें।"
+  },
+  "initial_node_id": "eq_q1_location",
+  "nodes": {
+    "eq_q1_location": {
+      "id": "eq_q1_location",
+      "type": "question",
+      "severity": "info",
+      "source_id": "ndma_quake",
+      "tags": ["location_assessment"],
+      "text": {
+        "en": "Where are you currently located during or immediately after the earthquake?",
+        "ml": "ഭൂകമ്പ സമയത്തോ അതിനു തൊട്ടുപിന്നാലെയോ നിങ്ങൾ ഇപ്പോൾ എവിടെയാണ് സ്ഥിതി ചെയ്യുന്നത്?",
+        "hi": "भूकंप के दौरान या तुरंत बाद आप कहाँ स्थित हैं?"
+      },
+      "options": [
+        {
+          "id": "opt_eq_indoors",
+          "text": {
+            "en": "Indoors (low-rise house/building)",
+            "ml": "കെട്ടിടത്തിനുള്ളിൽ (താഴ്ന്ന നിലയിലുള്ള വീട്/കെട്ടിടം)",
+            "hi": "घर या सामान्य इमारत के अंदर (Indoors)"
+          },
+          "next_node": "fl_eq_in_adv"
+        },
+        {
+          "id": "opt_eq_highrise",
+          "text": {
+            "en": "Inside a high-rise / multi-storey apartment",
+            "ml": "ഉയർന്ന ഫ്ലാറ്റിലോ അപ്പാർട്ട്മെന്റിലോ (ഹൈ-റൈസ്)",
+            "hi": "बहुमंजिला इमारत या अपार्टमेंट के अंदर"
+          },
+          "next_node": "eq_adv_highrise"
+        },
+        {
+          "id": "opt_eq_outdoors",
+          "text": {
+            "en": "Outdoors",
+            "ml": "തുറസ്സായ പുറംസ്ഥലത്ത് (ഔട്ട്‌ഡോർസ്)",
+            "hi": "खुले मैदान में / बाहर"
+          },
+          "next_node": "eq_adv_outdoors"
+        },
+        {
+          "id": "opt_eq_vehicle",
+          "text": {
+            "en": "Inside a moving or stopped vehicle",
+            "ml": "വാഹനത്തിനുള്ളിൽ",
+            "hi": "वाहन के अंदर"
+          },
+          "next_node": "eq_adv_vehicle"
+        }
+      ]
+    },
+
+    "fl_eq_in_adv": {
+      "id": "fl_eq_in_adv",
+      "type": "advice",
+      "severity": "critical",
+      "source_id": "ndma_quake",
+      "tags": ["drop_cover_hold", "indoor_safety"],
+      "text": {
+        "en": "DROP, COVER, and HOLD ON! Drop to your hands and knees. Cover your head and neck under a sturdy table or desk. Hold on firmly until the shaking completely stops. Do NOT run outside while shaking is active. Stay away from glass windows, hanging objects, mirrors, and tall unsecured furniture.",
+        "ml": "ഡ്രോപ്പ്, കവർ, ഹോൾഡ് ഓൺ (Drop, Cover, Hold On) രീതി പാലിക്കുക! ഉടൻ കൈമുട്ടിലും കാൽമുട്ടിലും നിലത്തിരിക്കുക. ബലമുള്ള മേശയ്ക്കോ കട്ടിലിനോ അടിയിൽ തലയും കഴുത്തും സംരക്ഷിച്ച് ഇരിക്കുക. കുലുക്കം നിൽക്കുന്നതുവരെ മുറുകെ പിടിക്കുക. കുലുക്കമുള്ളപ്പോൾ പരിഭ്രാന്തരായി പുറത്തേക്ക് ഓടരുത്. ജനൽച്ചില്ലുകൾ, കണ്ണാടികൾ, ഫാനുകൾ എന്നിവയിൽ നിന്ന് അകന്നുനിൽക്കുക.",
+        "hi": "ड्रॉप, कवर और होल्ड ऑन (Drop, Cover, Hold On) करें! तुरंत घुटनों के बल बैठें। किसी मजबूत मेज या डेस्क के नीचे सिर और गर्दन को सुरक्षित रखें और मेज को कसकर पकड़ें। झटके रुकने तक बाहर न भागें। खिड़कियों, शीशों, पंखों और भारी अलमारियों से दूर रहें।"
+      },
+      "next_node": "eq_q_gas_damage"
+    },
+
+    "eq_adv_highrise": {
+      "id": "eq_adv_highrise",
+      "type": "advice",
+      "severity": "critical",
+      "source_id": "ndma_quake",
+      "tags": ["drop_cover_hold", "highrise_evacuation", "no_elevators"],
+      "text": {
+        "en": "In a high-rise, DROP, COVER, and HOLD ON beneath sturdy furniture. Expect fire alarms and sprinkler systems to activate. NEVER USE ELEVATORS or lifts under any circumstance. After shaking ceases, evacuate calmly using designated emergency stairwells only. Watch for cracked concrete stair treads.",
+        "ml": "ഹൈ-റൈസ് കെട്ടിടങ്ങളിൽ മേശയ്ക്കടിയിൽ അഭയം പ്രാപിക്കുക. ഒരു കാരണവശാലും ലിഫ്റ്റ് / എലിവേറ്റർ ഉപയോഗിക്കരുത്. കുലുക്കം നിന്ന ശേഷം ഫയർ എക്സിറ്റ് കോണിപ്പടികൾ വഴി മാത്രം ശാന്തമായി താഴേക്ക് ഇറങ്ങുക.",
+        "hi": "बहुमंजिला इमारत में किसी मजबूत फर्नीचर के नीचे छिपें। किसी भी परिस्थिति में लिफ्ट या एलिवेटर का उपयोग न करें। झटके पूरी तरह थमने के बाद केवल आपातकालीन सीढ़ियों से नीचे उतरें।"
+      },
+      "next_node": "eq_q_gas_damage"
+    },
+
+    "eq_adv_outdoors": {
+      "id": "eq_adv_outdoors",
+      "type": "advice",
+      "severity": "warning",
+      "source_id": "ndma_quake",
+      "tags": ["outdoor_clearance", "falling_hazards"],
+      "text": {
+        "en": "Stay in an open area away from buildings, streetlights, overhead electric transmission cables, flyovers, and brick boundary walls. Drop low to avoid being knocked down. Watch out for falling facade plaster, billboard hoardings, and glass shards.",
+        "ml": "കെട്ടിടങ്ങൾ, വൈദ്യുത തൂണുകൾ, ഫ്ളൈഓവറുകൾ, മതിലുകൾ എന്നിവയിൽ നിന്ന് അകന്ന് തുറസ്സായ മൈതാനത്തോ റോഡിന്റെ നടുവിലോ നിൽക്കുക. താഴേക്ക് വീഴുന്ന ചില്ലുകൾ, കമ്പികൾ എന്നിവ ശ്രദ്ധിക്കുക.",
+        "hi": "इमारतों, बिजली के खंभों, तारों, होर्डिंग्स और दीवारों से दूर खुले स्थान पर रहें। जमीन पर झुकें ताकि संतुलन न बिगड़े। ऊपर से गिरने वाले मलबे और कांच से सावधान रहें।"
+      },
+      "next_node": "eq_q_coastal"
+    },
+
+    "eq_adv_vehicle": {
+      "id": "eq_adv_vehicle",
+      "type": "advice",
+      "severity": "warning",
+      "source_id": "ndma_quake",
+      "tags": ["vehicle_quake_safety"],
+      "text": {
+        "en": "Pull over safely to the side of the road as quickly as possible. Avoid stopping under overpasses, bridges, elevated flyovers, power lines, or steep hill slopes. Keep your seatbelt fastened, engage handbrake, and remain inside the vehicle until tremors stop completely.",
+        "ml": "വാഹനം സുരക്ഷിതമായി റോഡരികിലേക്ക് ഒതുക്കി നിർത്തുക. പാലങ്ങൾ, ഫ്ളൈഓവറുകൾ, വൻമരങ്ങൾ, വൈദ്യുത ലൈനുകൾ എന്നിവയ്ക്ക് താഴെ വാഹനം നിർത്തരുത്. കുലുക്കം നിൽക്കുന്നതുവരെ വാഹനത്തിനുള്ളിൽ തന്നെ സീറ്റ് ബെൽറ്റ് ധരിച്ച് ഇരിക്കുക.",
+        "hi": "वाहन को तुरंत सड़क किनारे सुरक्षित रूप से रोकें। फ्लाईओवर, पुलों, बिजली के तारों या ढलानों के नीचे वाहन न रोकें। झटके रुकने तक सीटबेल्ट बांधकर वाहन के अंदर ही रहें।"
+      },
+      "next_node": "eq_q_coastal"
+    },
+
+    "eq_q_gas_damage": {
+      "id": "eq_q_gas_damage",
+      "type": "question",
+      "severity": "warning",
+      "source_id": "ndma_quake",
+      "tags": ["hazard_inspection_check"],
+      "text": {
+        "en": "Do you smell cooking gas (LPG) or observe structural cracks and hanging debris?",
+        "ml": "വീട്ടിൽ ഗ്യാസ് മണം (LPG) അനുഭവപ്പെടുന്നുണ്ടോ അല്ലെങ്കിൽ ചുമരുകളിൽ വലിയ വിള്ളലുകൾ കാണുന്നുണ്ടോ?",
+        "hi": "क्या आपको गैस (LPG) की गंध आ रही है या दीवारों में दरारें और लटकता मलबा दिखाई दे रहा है?"
+      },
+      "options": [
+        {
+          "id": "opt_gas_yes",
+          "text": {"en": "Yes", "ml": "അതെ", "hi": "हाँ"},
+          "next_node": "eq_adv_gas_yes"
+        },
+        {
+          "id": "opt_gas_no",
+          "text": {"en": "No", "ml": "അല്ല", "hi": "नहीं"},
+          "next_node": "eq_q_coastal"
+        }
+      ]
+    },
+
+    "eq_adv_gas_yes": {
+      "id": "eq_adv_gas_yes",
+      "type": "advice",
+      "severity": "critical",
+      "source_id": "ndma_quake",
+      "tags": ["gas_leak_protocol", "flame_prohibition"],
+      "text": {
+        "en": "CRITICAL FIRE DANGER: Do NOT touch electrical switches. Do NOT strike matches or use lighters (sparks ignite gas). Turn off cylinder regulator valve if accessible without risking life. Open doors and windows for rapid ventilation. Evacuate outdoors immediately and alert neighbors. Dial 112 or Fire (101).",
+        "ml": "ഗുരുതരമായ അഗ്നിബാധാ സാധ്യത: തീപ്പെട്ടി കത്തിക്കുകയോ ഇലക്ട്രിക് സ്വിച്ചുകളിൽ തൊടുകയോ ഓൺ/ഓഫ് ചെയ്യുകയോ അരുത് (സ്പാർക്ക് ഉണ്ടാകാം). ഗ്യാസ് സിലിണ്ടർ റെഗുലേറ്റർ സുരക്ഷിതമെങ്കിൽ ഓഫ് ചെയ്യുക. ജനലുകൾ തുറന്നിടുക. ഉടൻ പുറത്തിറങ്ങി അയൽക്കാരെ അറിയിക്കുക. 112 അല്ലെങ്കിൽ 101-ൽ വിളിക്കുക.",
+        "hi": "गंभीर आग का खतरा: बिजली के स्विचों को न छुएं, माचिस न जलाएँ और लाइटर का उपयोग न करें (चिंगारी से गैस में आग लग सकती है)। सिलेंडर का रेगुलेटर बंद करें, खिड़कियाँ खोलें और तुरंत बाहर निकलें। तुरंत 112 या 101 पर कॉल करें।"
+      },
+      "next_node": "eq_q_coastal"
+    },
+
+    "eq_q_coastal": {
+      "id": "eq_q_coastal",
+      "type": "question",
+      "severity": "critical",
+      "source_id": "ndma_quake",
+      "tags": ["coastal_check"],
+      "text": {
+        "en": "Are you located near a sea coast, beach, or estuarine tidal inlet?",
+        "ml": "നിങ്ങൾ കടൽത്തീരത്തോ കായൽ മുഖത്തോ തീരദേശ മേഖലയിലോ ആണോ?",
+        "hi": "क्या आप समुद्र तट, तटीय क्षेत्र या ज्वारनदमुख के पास हैं?"
+      },
+      "options": [
+        {
+          "id": "opt_coastal_yes",
+          "text": {"en": "Yes", "ml": "അതെ", "hi": "हाँ"},
+          "next_node": "eq_adv_coastal_yes"
+        },
+        {
+          "id": "opt_coastal_no",
+          "text": {"en": "No", "ml": "അല്ല", "hi": "नहीं"},
+          "next_node": "eq_adv_coastal_no"
+        }
+      ]
+    },
+
+    "eq_adv_coastal_yes": {
+      "id": "eq_adv_coastal_yes",
+      "type": "advice",
+      "severity": "critical",
+      "source_id": "ndma_quake",
+      "tags": ["tsunami_evacuation", "inland_movement"],
+      "text": {
+        "en": "URGENT TSUNAMI RISK: Undersea earthquakes can generate devastating tsunami surges within minutes. Do NOT wait for official siren alerts if shaking was strong or water recedes rapidly from shore. Move inland immediately at least 2 km away from beach or to elevated terrain above 30 meters elevation.",
+        "ml": "സുനാമി സാധ്യത: ശക്തമായ ഭൂകമ്പം കടലിൽ സുനാമി തിരമാലകൾ ഉണ്ടാക്കാം. കടൽ പെട്ടെന്ന് പിന്നോട്ട് വലിയുകയോ അസാധാരണ ശബ്ദമോ കേട്ടാൽ മുന്നറിയിപ്പിനായി കാത്തുനിൽക്കാതെ തീരത്തുനിന്ന് കുറഞ്ഞത് 2 കിലോമീറ്റർ ഉള്ളിലേക്കോ 30 മീറ്റർ ഉയർന്ന കുന്നിൻമുകളിലേക്കോ ഓടി മാറുക.",
+        "hi": "त्सुनामी का खतरा: समुद्र तट से तुरंत कम से कम 2 किमी दूर या 30 मीटर ऊँचे स्थान की ओर भागें। यदि समुद्र का पानी असामान्य रूप से पीछे हटे तो सायरन की प्रतीक्षा न करें, तुरंत ऊँचाई पर चले जाएँ।"
+      },
+      "next_node": "eq_q_emergency_status"
+    },
+
+    "eq_adv_coastal_no": {
+      "id": "eq_adv_coastal_no",
+      "type": "advice",
+      "severity": "info",
+      "source_id": "ndma_quake",
+      "tags": ["aftershock_readiness"],
+      "text": {
+        "en": "Be prepared for subsequent aftershocks, which can be nearly as strong as the primary shock. Use SMS instead of phone voice calls to keep cellular lines clear for rescue teams.",
+        "ml": "തുടർചലനങ്ങൾ (Aftershocks) പ്രതീക്ഷിക്കുക. ഫോൺ ലൈനുകൾ രക്ഷാപ്രവർത്തകർക്കായി ഒഴിച്ചിടാൻ ഫോൺ വിളികൾക്ക് പകരം SMS സന്ദേശങ്ങൾ അയക്കുക.",
+        "hi": "आफ्टरशॉक्स (झटकों के बाद के झटके) के लिए तैयार रहें। वॉयस कॉल के बजाय एसएमएस का उपयोग करें ताकि आपातकालीन नेटवर्क बाधित न हो।"
+      },
+      "next_node": "eq_q_emergency_status"
+    },
+
+    "eq_q_emergency_status": {
+      "id": "eq_q_emergency_status",
+      "type": "emergency_check",
+      "severity": "critical",
+      "source_id": "mha_erss_112",
+      "tags": ["emergency_triage_check"],
+      "text": {
+        "en": "Are you injured or trapped under fallen debris?",
+        "ml": "നിങ്ങൾക്ക് പരിക്കേറ്റിട്ടുണ്ടോ അല്ലെങ്കിൽ വീണ അവശിഷ്ടങ്ങൾക്കിടയിൽ കുടുങ്ങിക്കിടക്കുകയാണോ?",
+        "hi": "क्या आप घायल हैं या मलबे के नीचे फंसे हुए हैं?"
+      },
+      "options": [
+        {
+          "id": "opt_eq_trapped_yes",
+          "text": {"en": "Yes", "ml": "അതെ", "hi": "हाँ"},
+          "next_node": "eq_adv_trapped_yes"
+        },
+        {
+          "id": "opt_eq_trapped_no",
+          "text": {"en": "No", "ml": "അല്ല", "hi": "नहीं"},
+          "next_node": "eq_adv_trapped_no"
+        }
+      ]
+    },
+
+    "eq_adv_trapped_yes": {
+      "id": "eq_adv_trapped_yes",
+      "type": "advice",
+      "severity": "critical",
+      "source_id": "mha_erss_112",
+      "tags": ["trapped_rubble", "conserve_air", "sound_signaling"],
+      "text": {
+        "en": "IF TRAPPED UNDER RUBBLE: Cover your mouth and nose with a cloth or handkerchief to avoid inhaling concrete dust. Do NOT ignite lighters. Tap rhythmically on metal pipes, beams, or walls using a stone or metal object so rescuers can triangulate your sound. Shout ONLY when you hear rescuers nearby to conserve oxygen.",
+        "ml": "അവശിഷ്ടങ്ങൾക്കടിയിൽ കുടുങ്ങിപ്പോയെങ്കിൽ: പൊടി ശ്വസിക്കാതിരിക്കാൻ മൂക്കും വായും തുണികൊണ്ട് മൂടുക. ലൈറ്റർ കത്തിക്കരുത്. രക്ഷാപ്രവർത്തകർക്ക് ശബ്ദം കേൾക്കാൻ പൈപ്പുകളിലോ ഭിത്തിയിലോ കല്ല് കൊണ്ടോ ലോഹം കൊണ്ടോ താളത്തിൽ തട്ടുക. അടുത്ത് ആളെത്തുമ്പോൾ മാത്രം ശബ്ദമുണ്ടാക്കി വിളിക്കുക.",
+        "hi": "यदि मलबे में फंसे हैं: धूल से बचने के लिए मुंह और नाक को कपड़े से ढकें। माचिस न जलाएँ। लोहे के पाइप या दीवार पर किसी वस्तु से थपथपाएं ताकि बचाव दल आपकी आवाज सुन सके। ऑक्सीजन बचाने के लिए तभी चिल्लाएं जब बचाव दल पास हो।"
+      },
+      "next_node": "eq_summary_end"
+    },
+
+    "eq_adv_trapped_no": {
+      "id": "eq_adv_trapped_no",
+      "type": "advice",
+      "severity": "info",
+      "source_id": "ndma_quake",
+      "tags": ["post_quake_recovery", "wear_shoes"],
+      "text": {
+        "en": "Wear sturdy thick-soled shoes immediately to prevent lacerations from shattered glass and nails. Check yourself and neighbors for injuries. Do NOT re-enter damaged buildings until certified structurally safe by authorities.",
+        "ml": "പൊട്ടിയ ചില്ലുകളിൽ നിന്ന് രക്ഷനേടാൻ കട്ടിയുള്ള ഷൂസുകൾ ഉടൻ ധരിക്കുക. തകർന്ന കെട്ടിടങ്ങൾ സുരക്ഷിതമാണെന്ന് അധികൃതർ വ്യക്തമാക്കുന്നത് വരെ അതിനുള്ളിലേക്ക് തിരികെ കയറരുത്.",
+        "hi": "टूटे कांच और कीलों से बचने के लिए तुरंत मजबूत जूते पहनें। घायल लोगों की प्राथमिक सहायता करें। जब तक प्रशासन सुरक्षित न बताए, क्षतिग्रस्त इमारतों में वापस न जाएं।"
+      },
+      "next_node": "eq_summary_end"
+    },
+
+    "eq_summary_end": {
+      "id": "eq_summary_end",
+      "type": "summary",
+      "severity": "info",
+      "source_id": "ndma_quake",
+      "tags": ["summary_generation"],
+      "text": {
+        "en": "Earthquake safety assessment completed. Review your personalized checklist and verified emergency rescue helplines below.",
+        "ml": "ഭൂകമ്പ സുരക്ഷാ വിലയിരുത്തൽ പൂർത്തിയായി. നിങ്ങളുടെ വ്യക്തിഗത ചെക്ക്ലിസ്റ്റും ഹെൽപ്പ്‌ലൈൻ നമ്പറുകളും താഴെ പരിശോധിക്കുക.",
+        "hi": "भूकंप सुरक्षा मूल्यांकन पूरा हुआ। अपनी व्यक्तिगत चेकलिस्ट और सत्यापित आपातकालीन हेल्पलाइन नंबर नीचे देखें।"
+      },
+      "next_node": null
+    }
+  }
+}

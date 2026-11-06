@@ -1,0 +1,71 @@
+{
+  "categories": [
+    {
+      "id": "water_food",
+      "title": "Water & Nutrition",
+      "items": [
+        {"id": "water_3l", "label": "Drinking water: 3-4 litres per person per day (minimum 3-day supply)", "essential": true},
+        {"id": "dry_food", "label": "Non-perishable ready-to-eat dry rations (biscuits, dates, nuts, flattened rice/aval)", "essential": true},
+        {"id": "water_purifier", "label": "Water purification tablets (Chlorine/Halazone) or portable filter", "essential": true},
+        {"id": "baby_food", "label": "Infant formula / baby food if children present", "essential": false}
+      ]
+    },
+    {
+      "id": "first_aid_meds",
+      "title": "First Aid & Medical",
+      "items": [
+        {"id": "first_aid_box", "label": "First aid box (sterile gauze, bandage, antiseptic Dettol/Betadine, burn cream)", "essential": true},
+        {"id": "prescription_meds", "label": "Critical 7-14 day supply of personal prescription medications (BP, diabetes, asthma, thyroid)", "essential": true},
+        {"id": "ors_electrolytes", "label": "Oral Rehydration Salts (ORS) packets", "essential": true},
+        {"id": "painkillers_antihistamine", "label": "Paracetamol, antihistamines, and anti-diarrheal tablets", "essential": true},
+        {"id": "sanitary_supplies", "label": "Sanitary pads, hand sanitizer, and soap", "essential": true}
+      ]
+    },
+    {
+      "id": "tools_safety",
+      "title": "Emergency Tools & Safety",
+      "items": [
+        {"id": "torch_batteries", "label": "High-intensity LED torch + 2 extra sets of dry batteries", "essential": true},
+        {"id": "whistle_signal", "label": "Loud safety whistle to signal rescue teams through darkness/water", "essential": true},
+        {"id": "swiss_knife", "label": "Multi-tool or sturdy pocket knife + pair of scissors", "essential": false},
+        {"id": "rope_nylon", "label": "15-20 meters of 10mm nylon climbing/safety rope", "essential": false},
+        {"id": "work_gloves", "label": "Thick leather or rubber work gloves (for debris and electrical insulation)", "essential": false},
+        {"id": "matches_lighter", "label": "Waterproof matches or lighter sealed in a plastic pouch", "essential": false}
+      ]
+    },
+    {
+      "id": "documents_money",
+      "title": "Important Documents & Cash",
+      "items": [
+        {"id": "doc_waterproof_pouch", "label": "Waterproof zipper pouch containing Aadhaar, Voter ID, Land deeds, Bank passbooks, Ration card", "essential": true},
+        {"id": "cash_currency", "label": "Emergency cash in small denominations (ATMs and UPI fail during power outages)", "essential": true},
+        {"id": "emergency_contacts_written", "label": "Laminated card with handwritten phone numbers of family, DEOC (1077), and local ward councillor", "essential": true}
+      ]
+    },
+    {
+      "id": "communication_power",
+      "title": "Communication & Power",
+      "items": [
+        {"id": "power_bank", "label": "Fully charged 20,000 mAh power bank with compatible charging cables", "essential": true},
+        {"id": "am_fm_radio", "label": "Battery-operated portable AM/FM radio (for All India Radio disaster bulletins)", "essential": true},
+        {"id": "spare_keypad_phone", "label": "Basic spare feature/keypad phone (longer battery life than smartphones)", "essential": false}
+      ]
+    },
+    {
+      "id": "clothing_shelter",
+      "title": "Protective Clothing & Shelter",
+      "items": [
+        {"id": "raincoat_tarpaulin", "label": "Raincoat, waterproof ponchos, or heavy plastic tarpaulin sheet", "essential": true},
+        {"id": "warm_blanket", "label": "Fleece blankets or space/thermal emergency foil blanket", "essential": true},
+        {"id": "sturdy_boots", "label": "Sturdy closed shoes / gumboots to protect against debris, glass, and snakes", "essential": true},
+        {"id": "dry_clothes_pouch", "label": "2 pairs of dry clothes sealed in waterproof bags", "essential": true}
+      ]
+    }
+  ],
+  "hazard_specific_notes": {
+    "flood": "Prioritize high-elevation storage, floating dry-bags, chlorine tablets, and rubber gumboots to prevent leptospirosis (rat fever).",
+    "earthquake": "Prioritize sturdy hard hats or helmets, thick leather gloves, whistle for signaling beneath rubble, and dust masks (N95).",
+    "landslide": "Prioritize compact lightweight backpack with quick grab-handles, headlights/hands-free torches, and durable hiking footwear."
+  }
+}
+

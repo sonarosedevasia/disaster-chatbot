@@ -1,0 +1,53 @@
+flowchart TD
+    %% DisasterSafe Decision Tree Flowchart: Earthquake
+    %% Generated automatically from data/trees JSON specification
+
+    %% Styling Classes
+    classDef startEnd fill:#E0F2FE,stroke:#0284C7,stroke-width:2px,color:#0369A1,font-weight:bold;
+    classDef critical fill:#FEE2E2,stroke:#DC2626,stroke-width:2px,color:#991B1B;
+    classDef warning fill:#FEF3C7,stroke:#D97706,stroke-width:2px,color:#92400E;
+    classDef safe fill:#F0FDF4,stroke:#16A34A,stroke-width:2px,color:#166534;
+    classDef question fill:#FFFFFF,stroke:#0F284E,stroke-width:2px,color:#0F172A,font-weight:600;
+
+    START(["Start: Earthquake Safety Assistant"]) --> eq_q1_location
+
+    eq_q1_location{"Where are you currently located during<br/>or immediately after the earthquake?"}
+    eq_q1_location -->|"Indoors (low-rise house/building)"| fl_eq_in_adv
+    eq_q1_location -->|"Inside a high-rise / multi-storey apartment"| eq_adv_highrise
+    eq_q1_location -->|"Outdoors"| eq_adv_outdoors
+    eq_q1_location -->|"Inside a moving or stopped vehicle"| eq_adv_vehicle
+    fl_eq_in_adv["DROP, COVER, and HOLD ON! Drop to your<br/>hands and knees. Cover your head and neck<br/>under a sturdy table or desk. Hold on<br/>firmly until the shaking completely<br/>stops. Do NOT run outside while shaking<br/>is active. Stay away from glass windows,"]
+    fl_eq_in_adv --> eq_q_gas_damage
+    eq_adv_highrise["In a high-rise, DROP, COVER, and HOLD ON<br/>beneath sturdy furniture. Expect fire<br/>alarms and sprinkler systems to activate.<br/>NEVER USE ELEVATORS or lifts under any<br/>circumstance. After shaking ceases,<br/>evacuate calmly using designated"]
+    eq_adv_highrise --> eq_q_gas_damage
+    eq_adv_outdoors["Stay in an open area away from<br/>buildings, streetlights, overhead<br/>electric transmission cables, flyovers,<br/>and brick boundary walls. Drop low to<br/>avoid being knocked down. Watch out for<br/>falling facade plaster, billboard"]
+    eq_adv_outdoors --> eq_q_coastal
+    eq_adv_vehicle["Pull over safely to the side of the road<br/>as quickly as possible. Avoid stopping<br/>under overpasses, bridges, elevated<br/>flyovers, power lines, or steep hill<br/>slopes. Keep your seatbelt fastened,<br/>engage handbrake, and remain inside the"]
+    eq_adv_vehicle --> eq_q_coastal
+    eq_q_gas_damage{"Do you smell cooking gas (LPG) or<br/>observe structural cracks and hanging<br/>debris?"}
+    eq_q_gas_damage -->|"Yes"| eq_adv_gas_yes
+    eq_q_gas_damage -->|"No"| eq_q_coastal
+    eq_adv_gas_yes["CRITICAL FIRE DANGER: Do NOT touch<br/>electrical switches. Do NOT strike<br/>matches or use lighters (sparks ignite<br/>gas). Turn off cylinder regulator valve<br/>if accessible without risking life. Open<br/>doors and windows for rapid ventilation."]
+    eq_adv_gas_yes --> eq_q_coastal
+    eq_q_coastal{"Are you located near a sea coast, beach,<br/>or estuarine tidal inlet?"}
+    eq_q_coastal -->|"Yes"| eq_adv_coastal_yes
+    eq_q_coastal -->|"No"| eq_adv_coastal_no
+    eq_adv_coastal_yes["URGENT TSUNAMI RISK: Undersea<br/>earthquakes can generate devastating<br/>tsunami surges within minutes. Do NOT<br/>wait for official siren alerts if shaking<br/>was strong or water recedes rapidly from<br/>shore. Move inland immediately at least 2"]
+    eq_adv_coastal_yes --> eq_q_emergency_status
+    eq_adv_coastal_no["Be prepared for subsequent aftershocks,<br/>which can be nearly as strong as the<br/>primary shock. Use SMS instead of phone<br/>voice calls to keep cellular lines clear<br/>for rescue teams."]
+    eq_adv_coastal_no --> eq_q_emergency_status
+    eq_q_emergency_status{"Are you injured or trapped under fallen<br/>debris?"}
+    eq_q_emergency_status -->|"Yes"| eq_adv_trapped_yes
+    eq_q_emergency_status -->|"No"| eq_adv_trapped_no
+    eq_adv_trapped_yes["IF TRAPPED UNDER RUBBLE: Cover your<br/>mouth and nose with a cloth or<br/>handkerchief to avoid inhaling concrete<br/>dust. Do NOT ignite lighters. Tap<br/>rhythmically on metal pipes, beams, or<br/>walls using a stone or metal object so"]
+    eq_adv_trapped_yes --> eq_summary_end
+    eq_adv_trapped_no["Wear sturdy thick-soled shoes<br/>immediately to prevent lacerations from<br/>shattered glass and nails. Check yourself<br/>and neighbors for injuries. Do NOT<br/>re-enter damaged buildings until<br/>certified structurally safe by"]
+    eq_adv_trapped_no --> eq_summary_end
+    eq_summary_end["Earthquake safety assessment completed.<br/>Review your personalized checklist and<br/>verified emergency rescue helplines<br/>below."]
+    eq_summary_end --> END(["End: Personalized Safety Plan & Emergency Contacts"])
+
+    %% Class Assignments
+    class START,END startEnd;
+    class fl_eq_in_adv,eq_adv_highrise,eq_adv_gas_yes,eq_q_coastal,eq_adv_coastal_yes,eq_q_emergency_status,eq_adv_trapped_yes critical;
+    class eq_adv_outdoors,eq_adv_vehicle,eq_q_gas_damage warning;
+    class eq_q1_location,eq_q_gas_damage,eq_q_coastal,eq_q_emergency_status question;

@@ -1,0 +1,5 @@
+/* ==========================================================================
+   SafeKerala / DisasterSafe - Stylesheet Compatibility Entrypoint
+   Delegates to the modern, modular static/css/main.css stylesheet.
+   ========================================================================== */
+@import url("css/main.css");

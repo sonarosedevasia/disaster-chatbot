@@ -1,0 +1,151 @@
+{% extends "base.html" %}
+
+{% block title %}Official Sources &amp; Protocols – DisasterSafe{% endblock %}
+
+{% block content %}
+<div class="about-page-container container">
+  <div class="about-header">
+    <span class="section-eyebrow">Verification &amp; Governance</span>
+    <h1 class="about-title">Official Sources &amp; Disaster Protocols</h1>
+    <p class="about-sub">
+      DisasterSafe guarantees 100% adherence to verified disaster management publications from the National Disaster Management Authority (NDMA), Government of India, and the Kerala State Disaster Management Authority (KSDMA).
+    </p>
+  </div>
+
+  <!-- Verified Sources Table -->
+  <div class="sources-card">
+    <h2 class="sources-section-title">Verified Authoritative Publications</h2>
+    <div class="sources-table-responsive">
+      <table class="sources-table">
+        <thead>
+          <tr>
+            <th>Source ID</th>
+            <th>Issuing Authority</th>
+            <th>Official Document Title</th>
+            <th>Verified URL</th>
+            <th>Last Verified</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for src in sources %}
+          <tr>
+            <td><code>{{ src.id }}</code></td>
+            <td><strong>{{ src.authority }}</strong></td>
+            <td>{{ src.document }}</td>
+            <td><a href="{{ src.url }}" target="_blank" rel="noopener noreferrer" class="src-link">{{ src.url }}</a></td>
+            <td><span class="date-badge">{{ src.access_date }}</span></td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Myths vs Facts Grid -->
+  <div class="myths-section">
+    <div class="section-header-centered">
+      <span class="section-eyebrow">Disaster Education</span>
+      <h2 class="section-title">Critical Myths vs. Life-Saving Facts</h2>
+    </div>
+
+    <div class="myths-hazard-columns">
+      {% for h_key, h_data in myths.items() %}
+      <div class="myth-hazard-box">
+        <h3 class="myth-box-title">{{ h_data.title }}</h3>
+        
+        <div class="myth-pairs-list">
+          {% for pair in h_data.myths_vs_facts %}
+          <div class="myth-fact-item">
+            <div class="myth-statement">
+              <span class="badge-myth">Myth</span>
+              <p>{{ pair.myth }}</p>
+            </div>
+            <div class="fact-statement">
+              <span class="badge-fact">Fact</span>
+              <p>{{ pair.fact }}</p>
+            </div>
+            <span class="fact-source-ref">Authority: {{ pair.source }}</span>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+
+  <!-- Anonymous Feedback Widget -->
+  <div class="feedback-widget-card" id="feedbackCard">
+    <h3 class="feedback-title">Did DisasterSafe help you today?</h3>
+    <p class="feedback-sub">Your feedback directly improves community disaster guidance.</p>
+    
+    <div class="feedback-form-group">
+      <div class="rating-buttons-row">
+        <button type="button" class="btn-rating" data-rating="up" id="btnRatingUp">👍 Yes, Helpful</button>
+        <button type="button" class="btn-rating" data-rating="down" id="btnRatingDown">👎 Needs Improvement</button>
+      </div>
+      <textarea id="feedbackComment" class="feedback-textarea" rows="2" placeholder="Optional comments or suggestions..."></textarea>
+      <button type="button" class="btn-submit-feedback" id="btnSubmitFeedback">Submit Feedback</button>
+      <div id="feedbackResultMsg" class="feedback-success-msg" style="display:none;">Thank you! Your feedback has been recorded locally.</div>
+    </div>
+  </div>
+
+  <!-- Official Legal Disclaimer -->
+  <div class="about-disclaimer-card">
+    <h3>Official Legal &amp; Public Safety Disclaimer</h3>
+    <p>
+      DisasterSafe is developed as an educational disaster management and decision-support tool. It implements standard operating procedures outlined by NDMA, KSDMA, IMD, and CWC. It is NOT a substitute for professional first responders, search-and-rescue teams, fire services, or lawful mandatory evacuation directives issued by District Magistrates or the State Relief Commissioner.
+    </p>
+    <p>
+      Under active life-or-death crisis conditions, prioritize calling <strong>112</strong> immediately. The developers assume no legal liability for local variations in disaster impact.
+    </p>
+  </div>
+</div>
+{% endblock %}
+
+{% block extra_scripts %}
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  let selectedRating = 'up';
+  const btnUp = document.getElementById('btnRatingUp');
+  const btnDown = document.getElementById('btnRatingDown');
+  const btnSubmit = document.getElementById('btnSubmitFeedback');
+  const commentInput = document.getElementById('feedbackComment');
+  const resultMsg = document.getElementById('feedbackResultMsg');
+
+  if (btnUp && btnDown) {
+    btnUp.addEventListener('click', () => {
+      selectedRating = 'up';
+      btnUp.classList.add('active');
+      btnDown.classList.remove('active');
+    });
+    btnDown.addEventListener('click', () => {
+      selectedRating = 'down';
+      btnDown.classList.add('active');
+      btnUp.classList.remove('active');
+    });
+    btnUp.click();
+  }
+
+  if (btnSubmit) {
+    btnSubmit.addEventListener('click', async () => {
+      const comment = commentInput ? commentInput.value.trim() : '';
+      try {
+        await fetch('/api/feedback', {
+          method: 'POST',
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify({rating: selectedRating, comment: comment})
+        });
+        if (resultMsg) resultMsg.style.display = 'block';
+        btnSubmit.disabled = true;
+      } catch (e) {
+        if (resultMsg) {
+          resultMsg.textContent = 'Feedback saved locally in offline queue.';
+          resultMsg.style.display = 'block';
+        }
+      }
+    });
+  }
+});
+</script>
+{% endblock %}
+

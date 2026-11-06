@@ -1,0 +1,180 @@
+{% extends "base.html" %}
+
+{% block title %}Disaster Safety Quizzes – DisasterSafe{% endblock %}
+
+{% block content %}
+<div class="quiz-page-container container">
+  <div class="quiz-header">
+    <span class="section-eyebrow">Interactive Assessment</span>
+    <h1 class="quiz-title">Disaster Preparedness Knowledge Check</h1>
+    <p class="quiz-sub">
+      Test your disaster survival knowledge across official NDMA protocols. Choose a hazard to begin.
+    </p>
+
+    <!-- Quiz Hazard Tabs -->
+    <div class="quiz-hazard-tabs">
+      <button type="button" class="quiz-tab active" data-hazard="flood">Flood Quiz (5 Questions)</button>
+      <button type="button" class="quiz-tab" data-hazard="earthquake">Earthquake Quiz (5 Questions)</button>
+      <button type="button" class="quiz-tab" data-hazard="landslide">Landslide Quiz (5 Questions)</button>
+    </div>
+  </div>
+
+  <!-- Quiz Stage -->
+  <div class="quiz-stage-card" id="quizStage">
+    <div class="quiz-scoreboard">
+      <span class="quiz-question-counter" id="quizCounter">Question 1 of 5</span>
+      <span class="quiz-current-score" id="quizScoreText">Score: 0 / 5</span>
+    </div>
+
+    <div class="quiz-question-box">
+      <h2 class="quiz-question-title" id="quizQuestionTitle">Loading question...</h2>
+      <div class="quiz-options-list" id="quizOptionsList">
+        <!-- Injected dynamically -->
+      </div>
+    </div>
+
+    <!-- Explanatory Feedback Box -->
+    <div class="quiz-feedback-box" id="quizFeedbackBox" style="display:none;">
+      <div class="feedback-badge" id="feedbackBadge">Correct</div>
+      <p class="feedback-text" id="feedbackExplanation"></p>
+      <button type="button" class="btn-next-question" id="btnNextQuestion">Next Question &rarr;</button>
+    </div>
+
+    <!-- Quiz Finished Card -->
+    <div class="quiz-result-card" id="quizResultCard" style="display:none;">
+      <h3 class="result-title">Quiz Completed!</h3>
+      <div class="result-score-circle" id="resultScoreCircle">5/5</div>
+      <p class="result-message" id="resultMessage"></p>
+      <button type="button" class="btn-retake-quiz" id="btnRetakeQuiz">Retake Quiz</button>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block extra_scripts %}
+<script>
+// Embedded JSON Quiz Data from Flask
+const quizzesData = {{ quizzes | tojson }};
+
+document.addEventListener('DOMContentLoaded', () => {
+  let activeHazard = 'flood';
+  let currentQIdx = 0;
+  let score = 0;
+  let hasAnsweredCurrent = false;
+
+  const quizTabs = document.querySelectorAll('.quiz-tab');
+  const quizCounter = document.getElementById('quizCounter');
+  const quizScoreText = document.getElementById('quizScoreText');
+  const quizQuestionTitle = document.getElementById('quizQuestionTitle');
+  const quizOptionsList = document.getElementById('quizOptionsList');
+  const quizFeedbackBox = document.getElementById('quizFeedbackBox');
+  const feedbackBadge = document.getElementById('feedbackBadge');
+  const feedbackExplanation = document.getElementById('feedbackExplanation');
+  const btnNextQuestion = document.getElementById('btnNextQuestion');
+  const quizResultCard = document.getElementById('quizResultCard');
+  const resultScoreCircle = document.getElementById('resultScoreCircle');
+  const resultMessage = document.getElementById('resultMessage');
+  const btnRetakeQuiz = document.getElementById('btnRetakeQuiz');
+  const quizQuestionBox = document.querySelector('.quiz-question-box');
+
+  quizTabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      quizTabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      activeHazard = tab.getAttribute('data-hazard');
+      resetQuiz();
+    });
+  });
+
+  function resetQuiz() {
+    currentQIdx = 0;
+    score = 0;
+    hasAnsweredCurrent = false;
+    quizResultCard.style.display = 'none';
+    quizQuestionBox.style.display = 'block';
+    quizFeedbackBox.style.display = 'none';
+    renderQuestion();
+  }
+
+  function renderQuestion() {
+    const hazardQuiz = quizzesData[activeHazard] || { questions: [] };
+    const questions = hazardQuiz.questions || [];
+
+    if (currentQIdx >= questions.length) {
+      showResults(questions.length);
+      return;
+    }
+
+    hasAnsweredCurrent = false;
+    quizFeedbackBox.style.display = 'none';
+    const q = questions[currentQIdx];
+
+    quizCounter.textContent = `Question ${currentQIdx + 1} of ${questions.length}`;
+    quizScoreText.textContent = `Score: ${score} / ${questions.length}`;
+    quizQuestionTitle.textContent = q.question;
+    quizOptionsList.innerHTML = '';
+
+    q.options.forEach((optText, idx) => {
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'quiz-option-btn';
+      btn.textContent = optText;
+      btn.addEventListener('click', () => handleOptionClick(idx, q.answer_index, q.explanation));
+      quizOptionsList.appendChild(btn);
+    });
+  }
+
+  function handleOptionClick(selectedIdx, correctIdx, explanation) {
+    if (hasAnsweredCurrent) return;
+    hasAnsweredCurrent = true;
+
+    const btns = quizOptionsList.querySelectorAll('.quiz-option-btn');
+    btns.forEach((b, i) => {
+      b.disabled = true;
+      if (i === correctIdx) b.classList.add('correct');
+      if (i === selectedIdx && selectedIdx !== correctIdx) b.classList.add('wrong');
+    });
+
+    if (selectedIdx === correctIdx) {
+      score++;
+      feedbackBadge.textContent = '✓ Correct';
+      feedbackBadge.className = 'feedback-badge correct';
+    } else {
+      feedbackBadge.textContent = '✗ Incorrect';
+      feedbackBadge.className = 'feedback-badge wrong';
+    }
+
+    feedbackExplanation.textContent = explanation;
+    quizFeedbackBox.style.display = 'block';
+    const questions = quizzesData[activeHazard].questions;
+    quizScoreText.textContent = `Score: ${score} / ${questions.length}`;
+  }
+
+  btnNextQuestion.addEventListener('click', () => {
+    currentQIdx++;
+    renderQuestion();
+  });
+
+  btnRetakeQuiz.addEventListener('click', resetQuiz);
+
+  function showResults(total) {
+    quizQuestionBox.style.display = 'none';
+    quizFeedbackBox.style.display = 'none';
+    quizResultCard.style.display = 'block';
+    resultScoreCircle.textContent = `${score} / ${total}`;
+
+    let msg = 'Keep reviewing the official disaster guidelines to strengthen your emergency preparedness.';
+    if (score === total) {
+      msg = 'Outstanding! You have mastered the essential NDMA disaster survival protocols.';
+    } else if (score >= 3) {
+      msg = 'Good job! You understand the key disaster actions, with a few areas to review.';
+    }
+    resultMessage.textContent = msg;
+  }
+
+  // Initial load
+  resetQuiz();
+});
+</script>
+{% endblock %}
+

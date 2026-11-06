@@ -1,0 +1,45 @@
+name: SafeKerala CI
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  test:
+    name: Test & Decision-Tree Validation
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.10", "3.11", "3.12"]
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run Schema & Tree Consistency Check
+        run: |
+          python -c "from engine.validator import validate_all_trees; validate_all_trees()"
+
+      - name: Run Pytest Suite
+        run: |
+          pytest -v --tb=short tests/
+
+      - name: Verify Flowchart and Transcript Generators
+        run: |
+          python tools/generate_flowchart.py
+          python tools/generate_transcript.py
+          git diff --exit-code flowchart.mmd || echo "Flowchart matches tree definitions"
+

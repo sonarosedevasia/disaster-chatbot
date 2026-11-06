@@ -1,0 +1,84 @@
+================================================================================
+DISASTERSAFE / SAFEKERALA - OFFICIAL CONVERSATION TRANSCRIPT
+HAZARD    : FLOOD
+SCENARIO  : Flood Path 1: Indoors -> Low-Lying Area -> Water Ingress -> Trapped / Injured
+GENERATED : 2026-11-06 13:47:10 (Automated Engine Run)
+AUTHORITY : National Disaster Management Authority (NDMA) & KSDMA Protocols
+================================================================================
+
+[BOT] Welcome to FloodSafe! I am your flood emergency safety assistant. I will guide you through the appropriate safety actions based on your current situation. Please answer the following questions carefully.
+
+[BOT Q1] Where are you currently located?
+    (1) Indoors (at home/building)
+    (2) Outdoors
+    (3) Inside a vehicle
+
+[USER] > Indoors (at home/building)
+------------------------------------------------------------
+[BOT Q2] Is your building located in a flood-prone or low-lying area?
+    (1) Yes
+    (2) No
+    (3) Not sure
+
+[USER] > Yes
+------------------------------------------------------------
+[BOT ADVICE - WARNING] (Ref: ndma_flood)
+  Move to higher floors or a safe elevated location. Avoid basements and ground floors. Switch off electricity and gas ONLY if it is safe to do so (never touch electrical systems while standing in water). Keep an emergency kit ready. Follow official evacuation instructions immediately.
+
+[BOT Q3] Is floodwater entering your house?
+    (1) Yes
+    (2) No
+
+[USER] > Yes
+------------------------------------------------------------
+[BOT ADVICE - CRITICAL] (Ref: ndma_flood)
+  Move IMMEDIATELY to a higher floor or safe elevated area. Do NOT touch electrical appliances, switches, or wires if water is present. Do NOT enter floodwater. Call emergency services (112 / 1077) if trapped.
+
+[BOT Q4] Are there children, elderly individuals, pregnant women, or persons with disabilities with you?
+    (1) Yes
+    (2) No
+
+[USER] > Yes
+------------------------------------------------------------
+[BOT ADVICE - WARNING] (Ref: ksdma_monsoon)
+  Prioritize early evacuation for vulnerable persons before water rises. Prepare warm clothing, essential daily medications, and infant supplies. Inform rescue teams (112 / 1077) specifically about bedridden or elderly occupants who require boat or stretcher assistance.
+
+[BOT Q5] Are you injured or trapped?
+    (1) Yes
+    (2) No
+
+[USER] > Yes
+------------------------------------------------------------
+[BOT ADVICE - CRITICAL] (Ref: mha_erss_112)
+  Contact emergency services immediately. In India, call 112 for emergency assistance. Share your exact location, battery level, and visible landmarks with rescuers. Avoid entering floodwater to rescue someone yourself. Signal with a whistle, torch, or brightly colored cloth.
+
+================================================================================
+                  PERSONALIZED DISASTER SAFETY PLAN
+================================================================================
+ASSESSMENT STATUS : CRITICAL EMERGENCY
+HAZARD            : FLOOD
+
+⚡ IMMEDIATE PRIORITY SAFETY ACTIONS:
+  • DIAL 112 IMMEDIATELY: State your exact location, visible landmarks, and injury status to the dispatcher.
+  • Move to highest floor or safe elevated roof area immediately. Do not stay on ground level.
+  • Do NOT touch electrical switches or breakers; turn off electricity ONLY if completely dry and safe to do so.
+
+✓ NEXT STEPS & PERSONALIZED CHECKLIST:
+  • Never wade through indoor or outdoor floodwaters. Hidden hazards and live currents exist.
+  • Boil all drinking water and watch out for displaced snakes or reptiles seeking higher ground.
+
+🎒 PREPARATION & EVACUATION PACKING:
+  • Assemble essential flood kit: 3L drinking water per person, dry food, torch, and power bank.
+  • Store identity cards, land records, and deeds in a sealed waterproof pouch.
+
+📞 VERIFIED EMERGENCY HELPLINES (INDIA):
+  • 112   : National Integrated Emergency Helpline (Police, Fire, Medical, Rescue)
+  • 1070  : Kerala State Emergency Operations Centre (SEOC, 24x7)
+  • 1077  : District Emergency Operations Centre (DEOC - Collectorate Control Room)
+  • 108   : Ambulance & Emergency Medical Response
+  • 1078  : NDMA National Disaster Control Helpline
+
+DISCLAIMER:
+  Disclaimer: This guidance is based on official National Disaster Management Authority (NDMA) and Kerala State Disaster Management Authority (KSDMA) protocols. It provides educational and first-response safety guidance and does not replace emergency rescue services or official civil defense evacuation orders. In life-threatening situations, dial 112 immediately.
+================================================================================
+[ASSESSMENT COMPLETED SUCCESSFULLY]

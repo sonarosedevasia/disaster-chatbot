@@ -1,0 +1,200 @@
+{
+  "quizzes": {
+    "flood": {
+      "hazard_title": "Flood Preparedness Quiz",
+      "questions": [
+        {
+          "id": "fq1",
+          "question": "What is the minimum depth of fast-moving floodwater capable of floating most passenger vehicles?",
+          "options": [
+            "10 cm (4 inches)",
+            "30 cm (12 inches)",
+            "100 cm (3.3 feet)",
+            "150 cm (5 feet)"
+          ],
+          "answer_index": 1,
+          "explanation": "Just 30 cm (12 inches) of moving water exerts enough lateral buoyancy to float and destabilize most passenger cars, leading to loss of steering control."
+        },
+        {
+          "id": "fq2",
+          "question": "If floodwater begins entering your ground-floor living room, what is the safest electrical safety action?",
+          "options": [
+            "Wade to the main circuit breaker to switch it off immediately.",
+            "Do NOT touch any switches or breakers; evacuate immediately to an upper floor.",
+            "Unplug refrigerator and TV with wet hands.",
+            "Wait in the room until the water level reaches your knees."
+          ],
+          "answer_index": 1,
+          "explanation": "NDMA protocol strictly advises: Never touch electrical switches, meters, or appliances if water is present or if your feet/hands are wet. Move to upper floors immediately."
+        },
+        {
+          "id": "fq3",
+          "question": "Which deadly water-borne bacterial infection is common in Kerala following flood inundation, transmitted through contaminated animal urine?",
+          "options": [
+            "Malaria",
+            "Leptospirosis (Rat Fever / എലിപ്പനി)",
+            "Dengue",
+            "Chikungunya"
+          ],
+          "answer_index": 1,
+          "explanation": "Leptospirosis is caused by Leptospira bacteria entering through cuts or mucous membranes from floodwaters contaminated by rodent urine. Prophylactic Doxycycline is recommended by health authorities."
+        },
+        {
+          "id": "fq4",
+          "question": "Under the 'Turn Around, Don't Drown' national protocol, what should you do if encountering a flooded road while driving?",
+          "options": [
+            "Accelerate fast to cross before the engine floods.",
+            "Follow closely behind a heavy commercial truck.",
+            "Turn around and seek an alternate elevated route.",
+            "Get out and push the car across."
+          ],
+          "answer_index": 2,
+          "explanation": "Nearly half of all flood fatalities occur in trapped vehicles. Roads and bridges can collapse beneath water surfaces unseen. Turn around immediately."
+        },
+        {
+          "id": "fq5",
+          "question": "What is the single nationwide Emergency Response Support System (ERSS) number across India?",
+          "options": [
+            "911",
+            "100",
+            "112",
+            "999"
+          ],
+          "answer_index": 2,
+          "explanation": "112 is India's unified all-in-one emergency helpline operational for Police, Fire, Ambulance, and Disaster Search & Rescue."
+        }
+      ]
+    },
+    "earthquake": {
+      "hazard_title": "Earthquake Safety Quiz",
+      "questions": [
+        {
+          "id": "eq1",
+          "question": "What is the internationally recognized safety action during an earthquake tremor?",
+          "options": [
+            "Stand upright and scream for help",
+            "Run towards the nearest exit door immediately",
+            "Drop, Cover, and Hold On",
+            "Run onto the building balcony"
+          ],
+          "answer_index": 2,
+          "explanation": "NDMA strongly emphasizes 'Drop, Cover, and Hold On' beneath sturdy desks or tables to protect your head and vitals from falling masonry and shattered glass."
+        },
+        {
+          "id": "eq2",
+          "question": "Why should you NEVER use an elevator to evacuate after an earthquake?",
+          "options": [
+            "Elevators move too slowly during emergencies.",
+            "Shafts and electrical systems can warp or lose power, trapping occupants between floors.",
+            "Elevator buttons will give an electrical shock.",
+            "Building codes require elevator use for pets only."
+          ],
+          "answer_index": 1,
+          "explanation": "Tremors twist elevator guide rails and interrupt electrical grids, making elevators severe death traps. Always use designated fire-exit stairs."
+        },
+        {
+          "id": "eq3",
+          "question": "If you suspect a gas leak inside your house following an earthquake, what should you do?",
+          "options": [
+            "Switch on ceiling lights to inspect the gas pipe.",
+            "Light a matchstick to check if gas is burning.",
+            "Turn off the cylinder regulator if safe, open windows for ventilation, and do NOT touch electrical switches.",
+            "Pour water onto the stove burners."
+          ],
+          "answer_index": 2,
+          "explanation": "Electrical switches produce minute electrical arcs that instantly ignite leaking gas. Open windows, shut main valves, evacuate, and use battery torches."
+        },
+        {
+          "id": "eq4",
+          "question": "If you are trapped beneath debris after an earthquake collapse, what is the best signaling technique?",
+          "options": [
+            "Shout continuously without stopping.",
+            "Tap rhythmically on metal pipes, beams, or use a whistle.",
+            "Ignite a lighter to illuminate rescuers.",
+            "Try to break concrete slabs with your bare hands."
+          ],
+          "answer_index": 1,
+          "explanation": "Tapping on pipes or using a whistle travels through rubble over long distances and saves oxygen and vital stamina. Shouting should be reserved only when hearing rescuers nearby."
+        },
+        {
+          "id": "eq5",
+          "question": "If an intense earthquake occurs while you are on a coastal beach, what immediate hazard should you anticipate?",
+          "options": [
+            "Cyclone",
+            "Tsunami waves",
+            "Landslide",
+            "Hailstorm"
+          ],
+          "answer_index": 1,
+          "explanation": "Undersea or coastal earthquakes frequently trigger tsunami waves. Move immediately to high ground at least 2 km inland or 30 meters above sea level."
+        }
+      ]
+    },
+    "landslide": {
+      "hazard_title": "Landslide Hazard Quiz",
+      "questions": [
+        {
+          "id": "lq1",
+          "question": "Which of the following is an early physical indicator of slope instability preceding a landslide?",
+          "options": [
+            "Sudden cooling of outdoor ambient temperature",
+            "Widening ground tension cracks and tilting trees or utility poles",
+            "Formation of dense fog around treetops",
+            "Sudden increase in bird chirping"
+          ],
+          "answer_index": 1,
+          "explanation": "Ground shear stress reveals itself through progressive surface cracks, buckling retaining walls, and tilting vertical poles and trees before total slope failure."
+        },
+        {
+          "id": "lq2",
+          "question": "If caught in the path of a rapidly descending mudslide or debris flow, which direction should you flee?",
+          "options": [
+            "Downslope along the natural stream valley channel",
+            "Perpendicular (sideways) towards stable, elevated ground",
+            "Climb up into a tall tree in the flow path",
+            "Lie flat in the ditch"
+          ],
+          "answer_index": 1,
+          "explanation": "Debris flows travel with immense momentum down valley channels. Running sideways (perpendicular) escapes the chute into stable topography."
+        },
+        {
+          "id": "lq3",
+          "question": "Which districts in Kerala are classified by KSDMA and GSI as highly susceptible to catastrophic landslides during intense monsoon deluges?",
+          "options": [
+            "Alappuzha and Kollam coastal plains",
+            "Wayanad, Idukki, and hilly taluks of Pathanamthitta / Malappuram",
+            "Kochi urban corporation",
+            "Kozhikode beach promenade"
+          ],
+          "answer_index": 1,
+          "explanation": "Wayanad, Idukki, and the high-ranges of the Western Ghats have steep slopes and high rainfall susceptibility, as witnessed in Meppadi (Wayanad) and Pettimudi (Idukki)."
+        },
+        {
+          "id": "lq4",
+          "question": "What should you do if escape from an active landslide is physically impossible?",
+          "options": [
+            "Run into a small basement.",
+            "Curl tightly into a ball, pull knees to chest, and shield your head with your hands/helmet.",
+            "Jump into the nearest moving stream.",
+            "Stand against a glass window to signal out."
+          ],
+          "answer_index": 1,
+          "explanation": "NDMA advises: If escape is blocked, curl into a tight fetal ball and shield your head with cushions or sturdy objects to minimize blunt-force trauma to vital organs."
+        },
+        {
+          "id": "lq5",
+          "question": "After a landslide halts, why is it dangerous to immediately enter the debris zone to salvage property?",
+          "options": [
+            "Government fines are imposed immediately.",
+            "Secondary slides, hanging boulders, and flash floods from blocked streams frequently follow.",
+            "The ground turns into quicksand within seconds.",
+            "Helicopters will blow dust into the house."
+          ],
+          "answer_index": 1,
+          "explanation": "Debris dams can burst, and unstabilized head scarps often experience secondary collapses. Wait until geotechnical and disaster teams declare the site safe."
+        }
+      ]
+    }
+  }
+}
+

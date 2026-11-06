@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+
+{% block title %}Decision Trees & Flowcharts – DisasterSafe{% endblock %}
+
+{% block extra_head %}
+<!-- Mermaid.js for Dynamic Flowchart Rendering -->
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+{% endblock %}
+
+{% block content %}
+<div class="flowchart-page-container container">
+  <div class="flowchart-hero-header">
+    <div>
+      <span class="section-eyebrow">Visual Decision Logic</span>
+      <h1 class="flowchart-page-title">Disaster Decision Tree Flowcharts</h1>
+      <p class="flowchart-page-sub">
+        Visual representation of DisasterSafe's rule-based decision trees for Flood, Earthquake, and Landslide. Generated directly from the JSON engine data.
+      </p>
+    </div>
+
+    <!-- Hazard Tab Switcher -->
+    <div class="flowchart-hazard-tabs" role="tablist">
+      <button type="button" class="fc-tab {% if active_hazard == 'flood' %}active{% endif %}" data-hazard="flood" role="tab">
+        Flood Flowchart (Primary)
+      </button>
+      <button type="button" class="fc-tab {% if active_hazard == 'earthquake' %}active{% endif %}" data-hazard="earthquake" role="tab">
+        Earthquake Flowchart
+      </button>
+      <button type="button" class="fc-tab {% if active_hazard == 'landslide' %}active{% endif %}" data-hazard="landslide" role="tab">
+        Landslide Flowchart
+      </button>
+    </div>
+  </div>
+
+  <!-- Flowchart Control Bar & Legend -->
+  <div class="flowchart-toolbar">
+    <!-- Visual Legend -->
+    <div class="fc-legend">
+      <span class="legend-chip"><span class="legend-shape shape-oval"></span> <strong>Oval:</strong> Start / End</span>
+      <span class="legend-chip"><span class="legend-shape shape-diamond"></span> <strong>Diamond:</strong> Questions / Decision</span>
+      <span class="legend-chip"><span class="legend-shape shape-rect"></span> <strong>Rectangle:</strong> Safety Action</span>
+      <span class="legend-chip"><span class="legend-shape shape-critical"></span> <strong>Red:</strong> Critical Emergency</span>
+      <span class="legend-chip"><span class="legend-shape shape-warning"></span> <strong>Amber:</strong> Precaution</span>
+    </div>
+
+    <!-- Pan/Zoom & Action Controls -->
+    <div class="fc-controls-group">
+      <button type="button" class="btn-fc-tool" id="btnHighlightPath" title="Highlight the path you traversed in the chatbot">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        <span>Highlight My Path</span>
+      </button>
+      <button type="button" class="btn-fc-tool" id="btnZoomIn" title="Zoom In">+</button>
+      <button type="button" class="btn-fc-tool" id="btnZoomOut" title="Zoom Out">&minus;</button>
+      <button type="button" class="btn-fc-tool" id="btnResetZoom" title="Reset Zoom">Reset</button>
+      <button type="button" class="btn-fc-tool" id="btnDownloadMmd" title="Download .mmd file">Download .MMD</button>
+      <button type="button" class="btn-fc-tool" id="btnToggleSource" title="View Mermaid Code">View Source</button>
+    </div>
+  </div>
+
+  <!-- Diagram Render Stage -->
+  <div class="mermaid-viewport" id="mermaidViewport">
+    <div class="mermaid" id="mermaidContainer">
+      <!-- Loaded dynamically via static/js/flowchart.js -->
+    </div>
+  </div>
+
+  <!-- Source Code Modal / Toggle Panel -->
+  <div class="source-code-drawer" id="sourceDrawer" style="display:none;">
+    <div class="source-drawer-header">
+      <h3 id="sourceTitle">Mermaid Flowchart Source (.mmd)</h3>
+      <button type="button" class="btn-copy-source" id="btnCopySource">Copy Source</button>
+    </div>
+    <pre><code id="sourceCodeBlock"></code></pre>
+  </div>
+</div>
+{% endblock %}
+
+{% block extra_scripts %}
+<script src="{{ url_for('static', filename='js/flowchart.js') }}"></script>
+{% endblock %}
+

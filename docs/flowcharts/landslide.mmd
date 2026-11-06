@@ -1,0 +1,50 @@
+flowchart TD
+    %% DisasterSafe Decision Tree Flowchart: Landslide
+    %% Generated automatically from data/trees JSON specification
+
+    %% Styling Classes
+    classDef startEnd fill:#E0F2FE,stroke:#0284C7,stroke-width:2px,color:#0369A1,font-weight:bold;
+    classDef critical fill:#FEE2E2,stroke:#DC2626,stroke-width:2px,color:#991B1B;
+    classDef warning fill:#FEF3C7,stroke:#D97706,stroke-width:2px,color:#92400E;
+    classDef safe fill:#F0FDF4,stroke:#16A34A,stroke-width:2px,color:#166534;
+    classDef question fill:#FFFFFF,stroke:#0F284E,stroke-width:2px,color:#0F172A,font-weight:600;
+
+    START(["Start: Landslide Safety Assistant"]) --> ls_q1_location
+
+    ls_q1_location{"Where are you currently located in the<br/>hilly / slope terrain?"}
+    ls_q1_location -->|"Inside a house or building on a hill slope"| ls_in_adv_slope
+    ls_q1_location -->|"Outdoors on hillside / valley floor"| ls_out_adv_hills
+    ls_q1_location -->|"Travelling on a mountain / ghat road"| ls_road_adv_ghat
+    ls_in_adv_slope["Hillside homes face dual risks of<br/>toe-erosion and head-scarp collapse. Stay<br/>alert for unusual sounds like trees<br/>snapping or rocks knocking together. If<br/>evacuation is advised by KSDMA or<br/>district administration, leave"]
+    ls_in_adv_slope --> ls_q2_signs
+    ls_out_adv_hills["Never stay in low valley floors or<br/>stream channels during intense rain.<br/>Debris flows funneled through valleys<br/>travel at deadly velocity. Stay on broad,<br/>stable ridges or established concrete<br/>platforms."]
+    ls_out_adv_hills --> ls_q2_signs
+    ls_road_adv_ghat["Watch out for fallen rocks, mud<br/>accumulation on asphalt, and collapsed<br/>retaining walls. Avoid parking beneath<br/>steep cut-slopes or overhangs. If road is<br/>blocked by mud, TURN AROUND immediately;<br/>secondary slides are common."]
+    ls_road_adv_ghat --> ls_q2_signs
+    ls_q2_signs{"Are you witnessing warning signs: ground<br/>cracks, tilting trees/poles, muddy spring<br/>water, sudden drop in stream water, or<br/>deep rumbling sound?"}
+    ls_q2_signs -->|"Yes, active signs observed"| ls_adv_signs_yes
+    ls_q2_signs -->|"No visible signs yet"| ls_q3_rainfall
+    ls_adv_signs_yes["EVACUATE IMMEDIATELY! Run sideways<br/>(PERPENDICULAR to the slide path) towards<br/>stable, elevated ground. NEVER run<br/>downhill in the path of the flow! If<br/>escape is completely impossible, curl<br/>into a tight ball and protect your head"]
+    ls_adv_signs_yes --> ls_q_emergency_status
+    ls_q3_rainfall{"Has heavy rain persisted continuously<br/>for 24 hours or more (or Red / Orange<br/>alert issued)?"}
+    ls_q3_rainfall -->|"Yes, continuous heavy rain"| ls_adv_rain_prolonged
+    ls_q3_rainfall -->|"No, intermittent / light rain"| ls_adv_rain_light
+    ls_adv_rain_prolonged["Prolonged rainfall causes deep soil<br/>pore-water saturation, drastically<br/>increasing landslide probability in<br/>Western Ghats zones (Wayanad, Idukki,<br/>Pathanamthitta). Pre-emptively relocate<br/>to designated government relief camps"]
+    ls_adv_rain_prolonged --> ls_q_emergency_status
+    ls_adv_rain_light["Inspect and clear outdoor stormwater<br/>channels around your house so water<br/>drains away from slope cuts. Keep battery<br/>torches, essential medicines, and<br/>documents packed in a grab-bag."]
+    ls_adv_rain_light --> ls_q_emergency_status
+    ls_q_emergency_status{"Are you injured or trapped by fallen<br/>earth / debris?"}
+    ls_q_emergency_status -->|"Yes"| ls_adv_trapped_yes
+    ls_q_emergency_status -->|"No"| ls_adv_trapped_no
+    ls_adv_trapped_yes["CALL 112 IMMEDIATELY! Keep airway clear<br/>of mud. If trapped in mud, try to create<br/>an air pocket around your face. Signal<br/>rescue teams with loud whistles or<br/>metallic tapping. Avoid unnecessary<br/>movement that may cause loose debris to"]
+    ls_adv_trapped_yes --> ls_summary_end
+    ls_adv_trapped_no["Stay far away from the slide area.<br/>Secondary mudslides and dammed flash<br/>floods frequently occur without warning.<br/>Check for injured or trapped neighbors<br/>and direct official NDRF/Fire personnel<br/>instead of entering the slide zone"]
+    ls_adv_trapped_no --> ls_summary_end
+    ls_summary_end["Landslide safety assessment completed.<br/>Review your personalized emergency action<br/>checklist and verified contacts below."]
+    ls_summary_end --> END(["End: Personalized Safety Plan & Emergency Contacts"])
+
+    %% Class Assignments
+    class START,END startEnd;
+    class ls_out_adv_hills,ls_road_adv_ghat,ls_q2_signs,ls_adv_signs_yes,ls_q_emergency_status,ls_adv_trapped_yes critical;
+    class ls_in_adv_slope,ls_q3_rainfall,ls_adv_rain_prolonged warning;
+    class ls_q1_location,ls_q2_signs,ls_q3_rainfall,ls_q_emergency_status question;

@@ -1,0 +1,66 @@
+================================================================================
+DISASTERSAFE / SAFEKERALA - OFFICIAL CONVERSATION TRANSCRIPT
+HAZARD    : LANDSLIDE
+SCENARIO  : Landslide Path 1: Hill Slope Residence -> Ground Cracks Observed -> Trapped Debris
+GENERATED : 2026-11-06 13:47:10 (Automated Engine Run)
+AUTHORITY : National Disaster Management Authority (NDMA) & KSDMA Protocols
+================================================================================
+
+[BOT] Welcome to LandslideSafe! I am your landslide emergency safety assistant. I will guide you through the appropriate safety actions based on your current situation. Please answer the following questions carefully.
+
+[BOT Q1] Where are you currently located in the hilly / slope terrain?
+    (1) Inside a house or building on a hill slope
+    (2) Outdoors on hillside / valley floor
+    (3) Travelling on a mountain / ghat road
+
+[USER] > Inside a house or building on a hill slope
+------------------------------------------------------------
+[BOT ADVICE - WARNING] (Ref: ksdma_landslide)
+  Hillside homes face dual risks of toe-erosion and head-scarp collapse. Stay alert for unusual sounds like trees snapping or rocks knocking together. If evacuation is advised by KSDMA or district administration, leave immediately during daylight hours. Do not sleep in ground rooms closest to the uphill slope.
+
+[BOT Q2] Are you witnessing warning signs: ground cracks, tilting trees/poles, muddy spring water, sudden drop in stream water, or deep rumbling sound?
+    (1) Yes, active signs observed
+    (2) No visible signs yet
+
+[USER] > Yes, active signs observed
+------------------------------------------------------------
+[BOT ADVICE - CRITICAL] (Ref: ndma_landslide)
+  EVACUATE IMMEDIATELY! Run sideways (PERPENDICULAR to the slide path) towards stable, elevated ground. NEVER run downhill in the path of the flow! If escape is completely impossible, curl into a tight ball and protect your head with your arms and cushions. Inform neighbors and dial 112 / 1077.
+
+[BOT Q3] Are you injured or trapped by fallen earth / debris?
+    (1) Yes
+    (2) No
+
+[USER] > Yes
+------------------------------------------------------------
+[BOT ADVICE - CRITICAL] (Ref: mha_erss_112)
+  CALL 112 IMMEDIATELY! Keep airway clear of mud. If trapped in mud, try to create an air pocket around your face. Signal rescue teams with loud whistles or metallic tapping. Avoid unnecessary movement that may cause loose debris to settle further.
+
+================================================================================
+                  PERSONALIZED DISASTER SAFETY PLAN
+================================================================================
+ASSESSMENT STATUS : CRITICAL EMERGENCY
+HAZARD            : LANDSLIDE
+
+⚡ IMMEDIATE PRIORITY SAFETY ACTIONS:
+  • DIAL 112 IMMEDIATELY: State your exact location, visible landmarks, and injury status to the dispatcher.
+  • EVACUATE IMMEDIATELY: Run sideways (PERPENDICULAR to the slide path) toward stable elevated ground.
+  • NEVER run downslope along the valley channel in the path of the mudflow.
+
+✓ NEXT STEPS & PERSONALIZED CHECKLIST:
+  • Stay completely away from the slide zone; secondary landslides occur frequently without warning.
+
+🎒 PREPARATION & EVACUATION PACKING:
+  • Keep a lightweight grab-bag ready with essential medicines, torch, and dry rations.
+
+📞 VERIFIED EMERGENCY HELPLINES (INDIA):
+  • 112   : National Integrated Emergency Helpline (Police, Fire, Medical, Rescue)
+  • 1070  : Kerala State Emergency Operations Centre (SEOC, 24x7)
+  • 1077  : District Emergency Operations Centre (DEOC - Collectorate Control Room)
+  • 108   : Ambulance & Emergency Medical Response
+  • 1078  : NDMA National Disaster Control Helpline
+
+DISCLAIMER:
+  Disclaimer: This guidance is based on official National Disaster Management Authority (NDMA) and Kerala State Disaster Management Authority (KSDMA) protocols. It provides educational and first-response safety guidance and does not replace emergency rescue services or official civil defense evacuation orders. In life-threatening situations, dial 112 immediately.
+================================================================================
+[ASSESSMENT COMPLETED SUCCESSFULLY]

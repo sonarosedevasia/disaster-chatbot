@@ -1,0 +1,79 @@
+================================================================================
+DISASTERSAFE / SAFEKERALA - OFFICIAL CONVERSATION TRANSCRIPT
+HAZARD    : FLOOD
+SCENARIO  : Flood Path 3: Outdoors -> Path Blocked -> Near Overflowing River
+GENERATED : 2026-11-06 13:47:10 (Automated Engine Run)
+AUTHORITY : National Disaster Management Authority (NDMA) & KSDMA Protocols
+================================================================================
+
+[BOT] Welcome to FloodSafe! I am your flood emergency safety assistant. I will guide you through the appropriate safety actions based on your current situation. Please answer the following questions carefully.
+
+[BOT Q1] Where are you currently located?
+    (1) Indoors (at home/building)
+    (2) Outdoors
+    (3) Inside a vehicle
+
+[USER] > Outdoors
+------------------------------------------------------------
+[BOT Q2] Is there floodwater blocking your path?
+    (1) Yes
+    (2) No
+
+[USER] > Yes
+------------------------------------------------------------
+[BOT ADVICE - CRITICAL] (Ref: ndma_flood)
+  Never walk, swim, or drive through floodwater ('Turn Around, Don't Drown'). Move towards higher ground immediately. Stay away from drains, canals, rivers, and overflowing streams. Seek shelter in a safe elevated location.
+
+[BOT Q3] Are you near a river, canal, or overflowing stream?
+    (1) Yes
+    (2) No
+
+[USER] > Yes
+------------------------------------------------------------
+[BOT ADVICE - CRITICAL] (Ref: ksdma_monsoon)
+  Move away immediately. Riverbanks can collapse without warning. Do NOT attempt to cross the water. Warn others if safe to do so.
+
+[BOT Q4] Are there children, elderly individuals, pregnant women, or persons with disabilities with you?
+    (1) Yes
+    (2) No
+
+[USER] > No
+------------------------------------------------------------
+[BOT Q5] Are you injured or trapped?
+    (1) Yes
+    (2) No
+
+[USER] > No
+------------------------------------------------------------
+[BOT ADVICE - INFO] (Ref: ndma_flood)
+  Continue following the safety instructions. Keep your phone charged and switch to battery-saver mode. Stay updated through official NDMA and KSDMA alerts.
+
+================================================================================
+                  PERSONALIZED DISASTER SAFETY PLAN
+================================================================================
+ASSESSMENT STATUS : CRITICAL EMERGENCY
+HAZARD            : FLOOD
+
+⚡ IMMEDIATE PRIORITY SAFETY ACTIONS:
+  • Turn Around, Don't Drown! Just 30 cm of water can float and sweep away vehicles.
+
+✓ NEXT STEPS & PERSONALIZED CHECKLIST:
+  • Stay sheltered indoors if the building structure is sound; avoid unnecessary road travel.
+  • Stay clear of drainage canals, culverts, riverbanks, and overflowing streams.
+  • Boil all drinking water and watch out for displaced snakes or reptiles seeking higher ground.
+
+🎒 PREPARATION & EVACUATION PACKING:
+  • Assemble essential flood kit: 3L drinking water per person, dry food, torch, and power bank.
+  • Store identity cards, land records, and deeds in a sealed waterproof pouch.
+
+📞 VERIFIED EMERGENCY HELPLINES (INDIA):
+  • 112   : National Integrated Emergency Helpline (Police, Fire, Medical, Rescue)
+  • 1070  : Kerala State Emergency Operations Centre (SEOC, 24x7)
+  • 1077  : District Emergency Operations Centre (DEOC - Collectorate Control Room)
+  • 108   : Ambulance & Emergency Medical Response
+  • 1078  : NDMA National Disaster Control Helpline
+
+DISCLAIMER:
+  Disclaimer: This guidance is based on official National Disaster Management Authority (NDMA) and Kerala State Disaster Management Authority (KSDMA) protocols. It provides educational and first-response safety guidance and does not replace emergency rescue services or official civil defense evacuation orders. In life-threatening situations, dial 112 immediately.
+================================================================================
+[ASSESSMENT COMPLETED SUCCESSFULLY]

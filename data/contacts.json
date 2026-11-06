@@ -1,0 +1,95 @@
+{
+  "national": [
+    {
+      "number": "112",
+      "service": "National Emergency Response Support System (ERSS)",
+      "department": "Police, Fire & Rescue, Ambulance",
+      "toll_free": true,
+      "priority": 1,
+      "description": "Unified 24x7 emergency helpline across India."
+    },
+    {
+      "number": "1078",
+      "service": "NDMA Disaster Helpline",
+      "department": "National Disaster Management Authority",
+      "toll_free": true,
+      "priority": 2,
+      "description": "Apex national disaster helpline and operational guidance."
+    },
+    {
+      "number": "108",
+      "service": "Emergency Medical & Ambulance",
+      "department": "National Health Mission",
+      "toll_free": true,
+      "priority": 3,
+      "description": "24x7 Emergency medical response."
+    },
+    {
+      "number": "101",
+      "service": "Fire & Rescue Services",
+      "department": "State Fire Services",
+      "toll_free": true,
+      "priority": 4,
+      "description": "Direct fire and localized water rescue dispatch."
+    },
+    {
+      "number": "100",
+      "service": "Police Emergency",
+      "department": "State Police",
+      "toll_free": true,
+      "priority": 5,
+      "description": "Direct police assistance."
+    }
+  ],
+  "kerala_state": [
+    {
+      "number": "1070",
+      "service": "Kerala State Emergency Operations Centre (SEOC)",
+      "department": "KSDMA, Thiruvananthapuram",
+      "toll_free": true,
+      "priority": 1,
+      "description": "State disaster control room for state-wide emergency coordination."
+    },
+    {
+      "number": "1077",
+      "service": "District Emergency Operations Centre (DEOC)",
+      "department": "District Disaster Management Authority (DDMA)",
+      "toll_free": true,
+      "priority": 2,
+      "description": "Connects directly to the Collectorate Control Room of your district."
+    },
+    {
+      "number": "0471-2778855",
+      "service": "KSDMA Direct Control Room Line",
+      "department": "Disaster Management Cell, Kerala",
+      "toll_free": false,
+      "priority": 3,
+      "description": "Alternate landline for state disaster coordination."
+    },
+    {
+      "number": "9711077372",
+      "service": "NDRF 24x7 Control Room",
+      "department": "National Disaster Response Force",
+      "toll_free": false,
+      "priority": 4,
+      "description": "NDRF coordination for specialized water and collapse rescue."
+    }
+  ],
+  "kerala_districts_deoc_1077": [
+    {"district": "Thiruvananthapuram", "code": "TVM", "phone": "0471-2730045 / 1077"},
+    {"district": "Kollam", "code": "KLM", "phone": "0474-2794002 / 1077"},
+    {"district": "Pathanamthitta", "code": "PTA", "phone": "0468-2222515 / 1077"},
+    {"district": "Alappuzha", "code": "ALP", "phone": "0477-2238630 / 1077"},
+    {"district": "Kottayam", "code": "KTM", "phone": "0481-2562201 / 1077"},
+    {"district": "Idukki", "code": "IDK", "phone": "0486-2233111 / 1077"},
+    {"district": "Ernakulam", "code": "EKM", "phone": "0484-2423513 / 1077"},
+    {"district": "Thrissur", "code": "TSR", "phone": "0487-2362424 / 1077"},
+    {"district": "Palakkad", "code": "PKD", "phone": "0491-2505309 / 1077"},
+    {"district": "Malappuram", "code": "MLP", "phone": "0483-2736320 / 1077"},
+    {"district": "Kozhikode", "code": "KKD", "phone": "0495-2371000 / 1077"},
+    {"district": "Wayanad", "code": "WYD", "phone": "0493-6204151 / 1077"},
+    {"district": "Kannur", "code": "KNR", "phone": "0497-2700645 / 1077"},
+    {"district": "Kasaragod", "code": "KSD", "phone": "0499-4257700 / 1077"}
+  ]
+}
+

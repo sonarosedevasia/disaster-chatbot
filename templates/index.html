@@ -1,0 +1,342 @@
+{% extends "base.html" %}
+
+{% block title %}DisasterSafe – Intelligent Multi-Hazard Safety Guidance{% endblock %}
+
+{% block content %}
+<!-- Hero Section with CSS Animated Wave -->
+<section class="hero-section">
+  <div class="container hero-inner">
+    <div class="hero-content">
+      <div class="hero-tag-badge">
+        <span class="pulse-dot"></span>
+        <span>Verified NDMA (India) &amp; KSDMA Protocols</span>
+      </div>
+      <h1 class="hero-heading">
+        Take Immediate, Life-Saving Safety Actions During Disasters.
+      </h1>
+      <p class="hero-subheading">
+        An intelligent, deterministic rule-based guidance assistant. Evaluates your real-time surroundings during <strong>Floods</strong>, <strong>Earthquakes</strong>, and <strong>Landslides</strong> to deliver instant, personalized survival protocols.
+      </p>
+
+      <div class="hero-cta-group">
+        <a href="{{ url_for('chat_view', hazard='flood') }}" class="btn-primary-cta">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+          Start Flood Safety Guidance
+        </a>
+        <button type="button" class="btn-secondary-cta" id="btnOpenTriage">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          Not sure what is happening? (Quick Triage)
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Decorative Wave SVG Divider -->
+  <div class="hero-wave-divider" aria-hidden="true">
+    <svg viewBox="0 0 1440 120" fill="none" preserveAspectRatio="none">
+      <path d="M0,32L60,42.7C120,53,240,75,360,80C480,85,600,75,720,58.7C840,43,960,21,1080,16C1200,11,1320,21,1380,26.7L1440,32L1440,120L1380,120C1320,120,1200,120,1080,120C960,120,840,120,720,120C600,120,480,120,360,120C240,120,120,120,60,120L0,120Z" fill="var(--bg-page)"/>
+    </svg>
+  </div>
+</section>
+
+<!-- Hazard Selector Cards Grid -->
+<section class="hazards-selection-section container">
+  <div class="section-header-centered">
+    <span class="section-eyebrow">Choose Emergency Scenario</span>
+    <h2 class="section-title">Select Hazard for Context-Specific Guidance</h2>
+    <p class="section-desc">Each safety assistant executes a deterministic decision tree validated against official disaster management protocols.</p>
+  </div>
+
+  <div class="hazard-cards-grid">
+    <!-- Hazard 1: Flood (Primary) -->
+    <div class="hazard-card flood-card">
+      <div class="card-badge primary-badge">Primary Focus</div>
+      <div class="card-icon-header">
+        <div class="hazard-icon-bubble flood-blue">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>
+        </div>
+        <div class="hazard-meta-titles">
+          <h3 class="hazard-card-title">Flood Emergency</h3>
+          <span class="hazard-lang-alt">വെള്ളപ്പൊക്കം &bull; बाढ़</span>
+        </div>
+      </div>
+      <p class="hazard-card-text">
+        Inundation guidance for indoor residents, blocked outdoor paths, and vehicles trapped in rising currents. Enforces NDMA "Turn Around, Don't Drown" and electrical safety.
+      </p>
+      <ul class="card-feature-bullets">
+        <li>Low-lying &amp; water ingress evaluation</li>
+        <li>Vehicle submersion escape protocols</li>
+        <li>Vulnerable individuals (elderly/infants) triage</li>
+      </ul>
+      <div class="card-action-footer">
+        <a href="{{ url_for('chat_view', hazard='flood') }}" class="btn-hazard-start btn-flood">
+          Start Flood Assessment &rarr;
+        </a>
+      </div>
+    </div>
+
+    <!-- Hazard 2: Earthquake -->
+    <div class="hazard-card quake-card">
+      <div class="card-badge">Active Hazard</div>
+      <div class="card-icon-header">
+        <div class="hazard-icon-bubble quake-amber">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        </div>
+        <div class="hazard-meta-titles">
+          <h3 class="hazard-card-title">Earthquake Safety</h3>
+          <span class="hazard-lang-alt">ഭൂകമ്പം &bull; भूकंप</span>
+        </div>
+      </div>
+      <p class="hazard-card-text">
+        Immediate structural tremor response enforcing NDMA "Drop, Cover, and Hold On". High-rise evacuation without elevators, coastal tsunami checks, and gas leak mitigation.
+      </p>
+      <ul class="card-feature-bullets">
+        <li>Drop, Cover, Hold On step-by-step</li>
+        <li>Coastal tsunami surge alert protocols</li>
+        <li>Post-tremor gas leak &amp; aftershock safety</li>
+      </ul>
+      <div class="card-action-footer">
+        <a href="{{ url_for('chat_view', hazard='earthquake') }}" class="btn-hazard-start btn-quake">
+          Start Earthquake Assessment &rarr;
+        </a>
+      </div>
+    </div>
+
+    <!-- Hazard 3: Landslide -->
+    <div class="hazard-card slide-card">
+      <div class="card-badge">Western Ghats</div>
+      <div class="card-icon-header">
+        <div class="hazard-icon-bubble slide-green">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="21"/><line x1="8" y1="13" x2="16" y2="21"/></svg>
+        </div>
+        <div class="hazard-meta-titles">
+          <h3 class="hazard-card-title">Landslide Hazard</h3>
+          <span class="hazard-lang-alt">ഉരുൾപൊട്ടൽ &bull; भूस्खलन</span>
+        </div>
+      </div>
+      <p class="hazard-card-text">
+        Tailored for Kerala high-ranges (Wayanad, Idukki). Early warning detection (muddy springs, ground fissures), perpendicular escape direction, and ghat road protocols.
+      </p>
+      <ul class="card-feature-bullets">
+        <li>Early slope-shear fissure detection</li>
+        <li>Perpendicular escape (never downhill)</li>
+        <li>Pre-emptive relief camp relocation</li>
+      </ul>
+      <div class="card-action-footer">
+        <a href="{{ url_for('chat_view', hazard='landslide') }}" class="btn-hazard-start btn-slide">
+          Start Landslide Assessment &rarr;
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Quick Triage Modal Dialog -->
+<div class="triage-modal-backdrop" id="triageModal" style="display:none;" aria-hidden="true" role="dialog" aria-labelledby="triageTitle">
+  <div class="triage-modal-card">
+    <div class="modal-header">
+      <h3 id="triageTitle" class="modal-title">Disaster Hazard Quick Triage</h3>
+      <button type="button" class="btn-close-modal" id="btnCloseTriage" aria-label="Close modal">&times;</button>
+    </div>
+    <div class="modal-body">
+      <p class="triage-intro">Answer two fast observations to route immediately to the appropriate safety guidance assistant:</p>
+      
+      <div class="triage-question-block">
+        <label class="triage-label">1. What primary phenomenon are you observing right now?</label>
+        <div class="triage-option-pills">
+          <button type="button" class="triage-pill" data-phenom="water">Rising / rushing water, heavy continuous rain, overflowing canal</button>
+          <button type="button" class="triage-pill" data-phenom="shaking">Ground shaking, vibrating floors, rattling windows / fans</button>
+          <button type="button" class="triage-pill" data-phenom="slide">Mud flowing down slope, ground cracks, tilting trees, rumbling hills</button>
+        </div>
+      </div>
+
+      <div class="triage-question-block">
+        <label class="triage-label">2. What best describes your terrain?</label>
+        <div class="triage-option-pills">
+          <button type="button" class="triage-pill" data-terrain="plains">Urban / Coastal plain / Low-lying river basin</button>
+          <button type="button" class="triage-pill" data-terrain="hills">Steep hill slope / Mountain valley / Ghat road</button>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn-confirm-triage" id="btnSubmitTriage" disabled>
+        Route Me to Safety Assistant
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- How DisasterSafe Works: 3-Step Process -->
+<section class="how-it-works-section container">
+  <div class="section-header-centered">
+    <span class="section-eyebrow">Deterministic Architecture</span>
+    <h2 class="section-title">How DisasterSafe Guides You in Emergencies</h2>
+  </div>
+
+  <div class="steps-grid">
+    <div class="step-card">
+      <div class="step-num-badge">01</div>
+      <h3 class="step-title">Select Hazard &amp; Location</h3>
+      <p class="step-desc">Pick your situation or use fast triage. Select whether you are indoors, outdoors, or inside a vehicle.</p>
+    </div>
+    <div class="step-card">
+      <div class="step-num-badge">02</div>
+      <h3 class="step-title">Contextual Branching Logic</h3>
+      <p class="step-desc">The rule-based decision tree assesses hazard severity, structural risks, and presence of vulnerable occupants.</p>
+    </div>
+    <div class="step-card">
+      <div class="step-num-badge">03</div>
+      <h3 class="step-title">Personalized Safety Plan</h3>
+      <p class="step-desc">Receive an immediate life-safety action checklist, emergency contacts (112, 1070, 1077), and printable offline plan.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Weather & Early Warning Live Widget (Open-Meteo with Offline Graceful Fallback) -->
+<section class="weather-alert-section container">
+  <div class="weather-card">
+    <div class="weather-header">
+      <div class="weather-meta">
+        <span class="live-pulse"></span>
+        <h3 class="weather-title">Real-Time Rainfall &amp; Meteorological Radar</h3>
+        <span class="weather-sub">IMD &bull; CWC &bull; Open-Meteo API (Free, zero-key public telemetry)</span>
+      </div>
+      <button type="button" class="btn-refresh-weather" id="btnRefreshWeather">Check My Area</button>
+    </div>
+    <div class="weather-body" id="weatherContent">
+      <div class="weather-fallback-info">
+        <p><strong>Official Disaster Weather Portals (India &amp; Kerala):</strong></p>
+        <div class="portal-link-pills">
+          <a href="https://mausam.imd.gov.in" target="_blank" rel="noopener noreferrer">IMD National Warnings &rarr;</a>
+          <a href="https://sdma.kerala.gov.in" target="_blank" rel="noopener noreferrer">KSDMA Daily Alerts &rarr;</a>
+          <a href="http://cwc.gov.in" target="_blank" rel="noopener noreferrer">CWC River Basin Gauge &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}
+
+{% block extra_scripts %}
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  // Triage Modal Logic
+  const btnOpenTriage = document.getElementById('btnOpenTriage');
+  const btnCloseTriage = document.getElementById('btnCloseTriage');
+  const triageModal = document.getElementById('triageModal');
+  const btnSubmitTriage = document.getElementById('btnSubmitTriage');
+  let selectedPhenom = null;
+  let selectedTerrain = null;
+
+  if (btnOpenTriage && triageModal) {
+    btnOpenTriage.addEventListener('click', () => {
+      triageModal.style.display = 'flex';
+      triageModal.setAttribute('aria-hidden', 'false');
+    });
+
+    btnCloseTriage.addEventListener('click', () => {
+      triageModal.style.display = 'none';
+      triageModal.setAttribute('aria-hidden', 'true');
+    });
+
+    document.querySelectorAll('.triage-pill[data-phenom]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.triage-pill[data-phenom]').forEach(b => b.classList.remove('selected'));
+        btn.classList.add('selected');
+        selectedPhenom = btn.getAttribute('data-phenom');
+        checkTriageReady();
+      });
+    });
+
+    document.querySelectorAll('.triage-pill[data-terrain]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.triage-pill[data-terrain]').forEach(b => b.classList.remove('selected'));
+        btn.classList.add('selected');
+        selectedTerrain = btn.getAttribute('data-terrain');
+        checkTriageReady();
+      });
+    });
+
+    function checkTriageReady() {
+      if (selectedPhenom && selectedTerrain) {
+        btnSubmitTriage.disabled = false;
+      }
+    }
+
+    btnSubmitTriage.addEventListener('click', async () => {
+      try {
+        const res = await fetch('/api/triage', {
+          method: 'POST',
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify({phenomenon: selectedPhenom, terrain: selectedTerrain})
+        });
+        const data = await res.json();
+        window.location.href = `/chat?hazard=${data.hazard || 'flood'}`;
+      } catch (e) {
+        window.location.href = `/chat?hazard=flood`;
+      }
+    });
+  }
+
+  // Weather telemetry fetcher (Open-Meteo)
+  const weatherContent = document.getElementById('weatherContent');
+  const btnRefreshWeather = document.getElementById('btnRefreshWeather');
+
+  async function fetchLocalWeather() {
+    if (!navigator.geolocation) return;
+    if (weatherContent) weatherContent.innerHTML = '<p class="loading-text">Fetching localized rainfall radar data...</p>';
+
+    navigator.geolocation.getCurrentPosition(async (pos) => {
+      const lat = pos.coords.latitude;
+      const lon = pos.coords.longitude;
+      try {
+        const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=precipitation,rain,wind_speed_10m&hourly=precipitation_probability`;
+        const resp = await fetch(url);
+        const data = await resp.json();
+        const curr = data.current || {};
+        const rainMm = curr.rain || 0;
+        const wind = curr.wind_speed_10m || 0;
+
+        let riskBadge = 'Normal Rainfall';
+        let badgeClass = 'safe';
+        if (rainMm > 15) { riskBadge = 'Extremely Heavy Rain (Red Alert Risk)'; badgeClass = 'danger'; }
+        else if (rainMm > 5) { riskBadge = 'Moderate-Heavy Rain (Orange Alert Risk)'; badgeClass = 'warning'; }
+
+        weatherContent.innerHTML = `
+          <div class="weather-report-grid">
+            <div class="weather-stat">
+              <span class="stat-label">Current Precipitation</span>
+              <span class="stat-value">${rainMm} mm/hr</span>
+            </div>
+            <div class="weather-stat">
+              <span class="stat-label">Wind Speed</span>
+              <span class="stat-value">${wind} km/h</span>
+            </div>
+            <div class="weather-stat">
+              <span class="stat-label">Hazard Alert Classification</span>
+              <span class="risk-pill ${badgeClass}">${riskBadge}</span>
+            </div>
+          </div>
+        `;
+      } catch (err) {
+        // Graceful offline fallback
+        weatherContent.innerHTML = `
+          <p class="offline-weather-note">
+            Telemetry server unavailable or device offline. Refer directly to official IMD Doppler bulletins and KSDMA daily weather updates.
+          </p>
+        `;
+      }
+    }, () => {
+      // Permission denied or unavailable
+      weatherContent.innerHTML = `
+        <p class="offline-weather-note">Location access required for local weather telemetry. Access official IMD updates via links above.</p>
+      `;
+    });
+  }
+
+  if (btnRefreshWeather) {
+    btnRefreshWeather.addEventListener('click', fetchLocalWeather);
+  }
+});
+</script>
+{% endblock %}

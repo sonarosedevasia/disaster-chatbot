@@ -1,0 +1,80 @@
+================================================================================
+DISASTERSAFE / SAFEKERALA - OFFICIAL CONVERSATION TRANSCRIPT
+HAZARD    : EARTHQUAKE
+SCENARIO  : Earthquake Path 1: High-Rise -> Gas Smell Detected -> Coastal Tsunami Risk -> Trapped Rubble
+GENERATED : 2026-11-06 13:47:10 (Automated Engine Run)
+AUTHORITY : National Disaster Management Authority (NDMA) & KSDMA Protocols
+================================================================================
+
+[BOT] Welcome to QuakeSafe! I am your earthquake emergency safety assistant. I will guide you through the appropriate safety actions based on your current situation. Please answer the following questions carefully.
+
+[BOT Q1] Where are you currently located during or immediately after the earthquake?
+    (1) Indoors (low-rise house/building)
+    (2) Inside a high-rise / multi-storey apartment
+    (3) Outdoors
+    (4) Inside a moving or stopped vehicle
+
+[USER] > Inside a high-rise / multi-storey apartment
+------------------------------------------------------------
+[BOT ADVICE - CRITICAL] (Ref: ndma_quake)
+  In a high-rise, DROP, COVER, and HOLD ON beneath sturdy furniture. Expect fire alarms and sprinkler systems to activate. NEVER USE ELEVATORS or lifts under any circumstance. After shaking ceases, evacuate calmly using designated emergency stairwells only. Watch for cracked concrete stair treads.
+
+[BOT Q2] Do you smell cooking gas (LPG) or observe structural cracks and hanging debris?
+    (1) Yes
+    (2) No
+
+[USER] > Yes
+------------------------------------------------------------
+[BOT ADVICE - CRITICAL] (Ref: ndma_quake)
+  CRITICAL FIRE DANGER: Do NOT touch electrical switches. Do NOT strike matches or use lighters (sparks ignite gas). Turn off cylinder regulator valve if accessible without risking life. Open doors and windows for rapid ventilation. Evacuate outdoors immediately and alert neighbors. Dial 112 or Fire (101).
+
+[BOT Q3] Are you located near a sea coast, beach, or estuarine tidal inlet?
+    (1) Yes
+    (2) No
+
+[USER] > Yes
+------------------------------------------------------------
+[BOT ADVICE - CRITICAL] (Ref: ndma_quake)
+  URGENT TSUNAMI RISK: Undersea earthquakes can generate devastating tsunami surges within minutes. Do NOT wait for official siren alerts if shaking was strong or water recedes rapidly from shore. Move inland immediately at least 2 km away from beach or to elevated terrain above 30 meters elevation.
+
+[BOT Q4] Are you injured or trapped under fallen debris?
+    (1) Yes
+    (2) No
+
+[USER] > Yes
+------------------------------------------------------------
+[BOT ADVICE - CRITICAL] (Ref: mha_erss_112)
+  IF TRAPPED UNDER RUBBLE: Cover your mouth and nose with a cloth or handkerchief to avoid inhaling concrete dust. Do NOT ignite lighters. Tap rhythmically on metal pipes, beams, or walls using a stone or metal object so rescuers can triangulate your sound. Shout ONLY when you hear rescuers nearby to conserve oxygen.
+
+================================================================================
+                  PERSONALIZED DISASTER SAFETY PLAN
+================================================================================
+ASSESSMENT STATUS : CRITICAL EMERGENCY
+HAZARD            : EARTHQUAKE
+
+⚡ IMMEDIATE PRIORITY SAFETY ACTIONS:
+  • Practice Drop, Cover, and Hold On beneath sturdy furniture until shaking completely ceases.
+  • NEVER use elevators or lifts after an earthquake. Evacuate only via fire-exit stairs.
+  • CRITICAL: Do NOT strike matches, use lighters, or operate ANY electric switches (sparks ignite gas).
+  • Turn off LPG cylinder regulator if accessible, ventilate rooms, and evacuate outside.
+  • URGENT TSUNAMI RISK: Move inland at least 2 km or to elevated terrain above 30 meters elevation.
+  • Cover your nose/mouth with a cloth. Tap rhythmically on pipes/walls to signal rescue teams.
+
+✓ NEXT STEPS & PERSONALIZED CHECKLIST:
+  • Stay away from glass windows, unanchored bookcases, mirrors, and ceiling fixtures.
+  • Be prepared for strong aftershocks. Inspect walls for severe shear cracks before re-entering.
+
+🎒 PREPARATION & EVACUATION PACKING:
+  • Wear sturdy thick-soled shoes immediately to prevent severe lacerations from broken glass.
+
+📞 VERIFIED EMERGENCY HELPLINES (INDIA):
+  • 112   : National Integrated Emergency Helpline (Police, Fire, Medical, Rescue)
+  • 1070  : Kerala State Emergency Operations Centre (SEOC, 24x7)
+  • 1077  : District Emergency Operations Centre (DEOC - Collectorate Control Room)
+  • 108   : Ambulance & Emergency Medical Response
+  • 1078  : NDMA National Disaster Control Helpline
+
+DISCLAIMER:
+  Disclaimer: This guidance is based on official National Disaster Management Authority (NDMA) and Kerala State Disaster Management Authority (KSDMA) protocols. It provides educational and first-response safety guidance and does not replace emergency rescue services or official civil defense evacuation orders. In life-threatening situations, dial 112 immediately.
+================================================================================
+[ASSESSMENT COMPLETED SUCCESSFULLY]

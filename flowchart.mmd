@@ -1,0 +1,75 @@
+flowchart TD
+    %% DisasterSafe Decision Tree Flowchart: Flood
+    %% Generated automatically from data/trees JSON specification
+
+    %% Styling Classes
+    classDef startEnd fill:#E0F2FE,stroke:#0284C7,stroke-width:2px,color:#0369A1,font-weight:bold;
+    classDef critical fill:#FEE2E2,stroke:#DC2626,stroke-width:2px,color:#991B1B;
+    classDef warning fill:#FEF3C7,stroke:#D97706,stroke-width:2px,color:#92400E;
+    classDef safe fill:#F0FDF4,stroke:#16A34A,stroke-width:2px,color:#166534;
+    classDef question fill:#FFFFFF,stroke:#0F284E,stroke-width:2px,color:#0F172A,font-weight:600;
+
+    START(["Start: Flood Safety Assistant"]) --> fl_q1_location
+
+    fl_q1_location{"Where are you currently located?"}
+    fl_q1_location -->|"Indoors (at home/building)"| fl_in_q2_lowlying
+    fl_q1_location -->|"Outdoors"| fl_out_q2_blocked
+    fl_q1_location -->|"Inside a vehicle"| fl_veh_q2_surrounded
+    fl_in_q2_lowlying{"Is your building located in a<br/>flood-prone or low-lying area?"}
+    fl_in_q2_lowlying -->|"Yes"| fl_in_adv_lowlying_yes
+    fl_in_q2_lowlying -->|"No"| fl_in_adv_lowlying_no
+    fl_in_q2_lowlying -->|"Not sure"| fl_in_adv_lowlying_unsure
+    fl_in_adv_lowlying_yes["Move to higher floors or a safe elevated<br/>location. Avoid basements and ground<br/>floors. Switch off electricity and gas<br/>ONLY if it is safe to do so (never touch<br/>electrical systems while standing in<br/>water). Keep an emergency kit ready."]
+    fl_in_adv_lowlying_yes --> fl_in_q3_water_entering
+    fl_in_adv_lowlying_no["Stay alert and monitor official weather<br/>and flood warnings. Keep emergency<br/>supplies ready. Avoid going outside<br/>unnecessarily."]
+    fl_in_adv_lowlying_no --> fl_in_q3_water_entering
+    fl_in_adv_lowlying_unsure["Check local flood warnings on All India<br/>Radio or official district portals.<br/>Contact local authorities (1077 / DEOC)<br/>if necessary. Prepare to move to a safer<br/>elevated location."]
+    fl_in_adv_lowlying_unsure --> fl_in_q3_water_entering
+    fl_in_q3_water_entering{"Is floodwater entering your house?"}
+    fl_in_q3_water_entering -->|"Yes"| fl_in_adv_water_yes
+    fl_in_q3_water_entering -->|"No"| fl_in_adv_water_no
+    fl_in_adv_water_yes["Move IMMEDIATELY to a higher floor or<br/>safe elevated area. Do NOT touch<br/>electrical appliances, switches, or wires<br/>if water is present. Do NOT enter<br/>floodwater. Call emergency services (112<br/>/ 1077) if trapped."]
+    fl_in_adv_water_yes --> fl_q_vulnerable
+    fl_in_adv_water_no["Stay indoors if the building is safe.<br/>Keep away from electrical equipment in<br/>potentially flooded areas. Continue<br/>monitoring official alerts."]
+    fl_in_adv_water_no --> fl_q_vulnerable
+    fl_out_q2_blocked{"Is there floodwater blocking your path?"}
+    fl_out_q2_blocked -->|"Yes"| fl_out_adv_blocked_yes
+    fl_out_q2_blocked -->|"No"| fl_out_adv_blocked_no
+    fl_out_adv_blocked_yes["Never walk, swim, or drive through<br/>floodwater ('Turn Around, Don't Drown').<br/>Move towards higher ground immediately.<br/>Stay away from drains, canals, rivers,<br/>and overflowing streams. Seek shelter in<br/>a safe elevated location."]
+    fl_out_adv_blocked_yes --> fl_out_q3_river
+    fl_out_adv_blocked_no["Move away from rivers and low-lying<br/>areas. Reach a safe building or higher<br/>ground. Avoid unnecessary travel during<br/>flooding."]
+    fl_out_adv_blocked_no --> fl_out_q3_river
+    fl_out_q3_river{"Are you near a river, canal, or<br/>overflowing stream?"}
+    fl_out_q3_river -->|"Yes"| fl_out_adv_river_yes
+    fl_out_q3_river -->|"No"| fl_out_adv_river_no
+    fl_out_adv_river_yes["Move away immediately. Riverbanks can<br/>collapse without warning. Do NOT attempt<br/>to cross the water. Warn others if safe<br/>to do so."]
+    fl_out_adv_river_yes --> fl_q_vulnerable
+    fl_out_adv_river_no["Continue towards a safe elevated<br/>location. Follow official evacuation<br/>instructions."]
+    fl_out_adv_river_no --> fl_q_vulnerable
+    fl_veh_q2_surrounded{"Is your vehicle surrounded by or<br/>entering floodwater?"}
+    fl_veh_q2_surrounded -->|"Yes"| fl_veh_adv_surrounded_yes
+    fl_veh_q2_surrounded -->|"No"| fl_veh_adv_surrounded_no
+    fl_veh_adv_surrounded_yes["Stop driving immediately. Never attempt<br/>to drive through floodwater. If safe to<br/>exit, leave the vehicle and move to<br/>higher ground. If trapped, seek emergency<br/>assistance immediately (112). Do NOT<br/>remain in a vehicle being swept away by"]
+    fl_veh_adv_surrounded_yes --> fl_q_vulnerable
+    fl_veh_adv_surrounded_no["Avoid flooded roads, low bridges, and<br/>underpasses. Find an alternative safe<br/>route on higher elevation. Follow<br/>official traffic and evacuation<br/>instructions."]
+    fl_veh_adv_surrounded_no --> fl_q_vulnerable
+    fl_q_vulnerable{"Are there children, elderly individuals,<br/>pregnant women, or persons with<br/>disabilities with you?"}
+    fl_q_vulnerable -->|"Yes"| fl_adv_vuln_yes
+    fl_q_vulnerable -->|"No"| fl_q_emergency_status
+    fl_adv_vuln_yes["Prioritize early evacuation for<br/>vulnerable persons before water rises.<br/>Prepare warm clothing, essential daily<br/>medications, and infant supplies. Inform<br/>rescue teams (112 / 1077) specifically<br/>about bedridden or elderly occupants who"]
+    fl_adv_vuln_yes --> fl_q_emergency_status
+    fl_q_emergency_status{"Are you injured or trapped?"}
+    fl_q_emergency_status -->|"Yes"| fl_adv_trapped_yes
+    fl_q_emergency_status -->|"No"| fl_adv_trapped_no
+    fl_adv_trapped_yes["Contact emergency services immediately.<br/>In India, call 112 for emergency<br/>assistance. Share your exact location,<br/>battery level, and visible landmarks with<br/>rescuers. Avoid entering floodwater to<br/>rescue someone yourself. Signal with a"]
+    fl_adv_trapped_yes --> fl_summary_end
+    fl_adv_trapped_no["Continue following the safety<br/>instructions. Keep your phone charged and<br/>switch to battery-saver mode. Stay<br/>updated through official NDMA and KSDMA<br/>alerts."]
+    fl_adv_trapped_no --> fl_summary_end
+    fl_summary_end["Flood safety assessment completed.<br/>Review your personalized emergency action<br/>checklist and verified contacts below."]
+    fl_summary_end --> END(["End: Personalized Safety Plan & Emergency Contacts"])
+
+    %% Class Assignments
+    class START,END startEnd;
+    class fl_in_q3_water_entering,fl_in_adv_water_yes,fl_out_q2_blocked,fl_out_adv_blocked_yes,fl_out_q3_river,fl_out_adv_river_yes,fl_veh_q2_surrounded,fl_veh_adv_surrounded_yes,fl_q_emergency_status,fl_adv_trapped_yes critical;
+    class fl_in_q2_lowlying,fl_in_adv_lowlying_yes,fl_in_adv_lowlying_unsure,fl_out_adv_blocked_no,fl_veh_adv_surrounded_no,fl_q_vulnerable,fl_adv_vuln_yes warning;
+    class fl_q1_location,fl_in_q2_lowlying,fl_in_q3_water_entering,fl_out_q2_blocked,fl_out_q3_river,fl_veh_q2_surrounded,fl_q_vulnerable,fl_q_emergency_status question;

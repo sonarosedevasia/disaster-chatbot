@@ -1,0 +1,258 @@
+{
+  "hazard_id": "landslide",
+  "hazard_name": {
+    "en": "Landslide",
+    "ml": "ഉരുൾപൊട്ടൽ / മണ്ണിടിച്ചിൽ",
+    "hi": "भूस्खलन"
+  },
+  "welcome_message": {
+    "en": "Welcome to LandslideSafe! I am your landslide emergency safety assistant. I will guide you through the appropriate safety actions based on your current situation. Please answer the following questions carefully.",
+    "ml": "ലാൻഡ്‌സ്ലൈഡ് സേഫിലേക്ക് സ്വാഗതം! ഞാൻ നിങ്ങളുടെ ഉരുൾപൊട്ടൽ/മണ്ണിടിച്ചിൽ അടിയന്തര സുരക്ഷാ സഹായിയാണ്. നിങ്ങളുടെ സാഹചര്യം അനുസരിച്ച് അനുയോജ്യമായ സുരക്ഷാ നിർദ്ദേശങ്ങൾ നൽകാം. ദയവായി ചോദ്യങ്ങൾക്ക് ശ്രദ്ധാപൂർവ്വം ഉത്തരം നൽകുക.",
+    "hi": "लैंडस्लाइडसेफ में आपका स्वागत है! मैं आपका भूस्खलन आपातकालीन सुरक्षा सहायक हूँ। मैं आपकी वर्तमान स्थिति के आधार पर उचित सुरक्षा कदम उठाने में आपका मार्गदर्शन करूँगा। कृपया प्रश्नों का उत्तर ध्यानपूर्वक दें।"
+  },
+  "initial_node_id": "ls_q1_location",
+  "nodes": {
+    "ls_q1_location": {
+      "id": "ls_q1_location",
+      "type": "question",
+      "severity": "info",
+      "source_id": "ndma_landslide",
+      "tags": ["location_assessment"],
+      "text": {
+        "en": "Where are you currently located in the hilly / slope terrain?",
+        "ml": "മലയോര മേഖലയിലോ ചരിവുള്ള ഭൂപ്രദേശത്തോ നിങ്ങൾ ഇപ്പോൾ എവിടെയാണ് സ്ഥിതി ചെയ്യുന്നത്?",
+        "hi": "पहाड़ी या ढलान वाले इलाके में आप वर्तमान में कहाँ स्थित हैं?"
+      },
+      "options": [
+        {
+          "id": "opt_ls_house_slope",
+          "text": {
+            "en": "Inside a house or building on a hill slope",
+            "ml": "മലഞ്ചെരുവിലുള്ള വീടിലോ കെട്ടിടത്തിലോ",
+            "hi": "पहाड़ी ढलान पर बने घर या इमारत के अंदर"
+          },
+          "next_node": "ls_in_adv_slope"
+        },
+        {
+          "id": "opt_ls_outdoors_hills",
+          "text": {
+            "en": "Outdoors on hillside / valley floor",
+            "ml": "പുറത്ത് മലയോരത്തോ താഴ്‌വരയിലോ",
+            "hi": "पहाड़ी या घाटी में खुले मैदान में"
+          },
+          "next_node": "ls_out_adv_hills"
+        },
+        {
+          "id": "opt_ls_hill_road",
+          "text": {
+            "en": "Travelling on a mountain / ghat road",
+            "ml": "ചുരം റോഡിലൂടെയോ മലയോര പാതയിലൂടെയോ യാത്ര ചെയ്യുന്നു",
+            "hi": "घाट या पहाड़ी सड़क पर यात्रा करते हुए"
+          },
+          "next_node": "ls_road_adv_ghat"
+        }
+      ]
+    },
+
+    "ls_in_adv_slope": {
+      "id": "ls_in_adv_slope",
+      "type": "advice",
+      "severity": "warning",
+      "source_id": "ksdma_landslide",
+      "tags": ["slope_awareness", "evacuation_readiness"],
+      "text": {
+        "en": "Hillside homes face dual risks of toe-erosion and head-scarp collapse. Stay alert for unusual sounds like trees snapping or rocks knocking together. If evacuation is advised by KSDMA or district administration, leave immediately during daylight hours. Do not sleep in ground rooms closest to the uphill slope.",
+        "ml": "മലഞ്ചെരുവിൽ താമസിക്കുന്നവർ അതീവ ജാഗ്രത പാലിക്കുക. മരങ്ങൾ ഒടിയുന്നതോ കല്ലുകൾ ഉരുളുന്നതോ ആയ ശബ്ദങ്ങൾ ശ്രദ്ധിക്കുക. റവന്യൂ അധികൃതരോ ദുരന്തനിവാരണ സേനയോ ആവശ്യപ്പെട്ടാൽ പകൽവെളിച്ചത്തിൽ തന്നെ സുരക്ഷിത ദുരിതാശ്വാസ ക്യാമ്പുകളിലേക്ക് മാറുക. മലയോട് ചേർന്നുള്ള മുറികളിൽ ഉറങ്ങരുത്.",
+        "hi": "पहाड़ी ढलान वाले घरों पर सतर्क रहें। पेड़ों के टूटने या पत्थरों के टकराने की आवाज़ पर ध्यान दें। यदि प्रशासन द्वारा निकासी की सलाह दी जाए तो तुरंत दिन के उजाले में ही सुरक्षित राहत शिविर में चले जाएँ।"
+      },
+      "next_node": "ls_q2_signs"
+    },
+
+    "ls_out_adv_hills": {
+      "id": "ls_out_adv_hills",
+      "type": "advice",
+      "severity": "critical",
+      "source_id": "ndma_landslide",
+      "tags": ["perpendicular_escape", "valley_danger"],
+      "text": {
+        "en": "Never stay in low valley floors or stream channels during intense rain. Debris flows funneled through valleys travel at deadly velocity. Stay on broad, stable ridges or established concrete platforms.",
+        "ml": "കനത്ത മഴയുള്ളപ്പോൾ അരുവികൾ ഒഴുകുന്ന താഴ്‌വരകളിൽ നിൽക്കരുത്. മലയിടിച്ചിൽ അവശിഷ്ടങ്ങൾ അതിവേഗത്തിൽ താഴ്‌വരകളിലേക്ക് കുതിച്ചെത്തും. ഉറപ്പുള്ള ഉയർന്ന പ്രദേശങ്ങളിൽ മാത്രം നിൽക്കുക.",
+        "hi": "भारी बारिश के दौरान तंग घाटियों या नालों के तल पर बिल्कुल न ठहरें। मलबे का बहाव घाटियों से अत्यधिक गति से नीचे आता है। स्थिर ऊँची पहाड़ियों पर ही रुकें।"
+      },
+      "next_node": "ls_q2_signs"
+    },
+
+    "ls_road_adv_ghat": {
+      "id": "ls_road_adv_ghat",
+      "type": "advice",
+      "severity": "critical",
+      "source_id": "ndma_landslide",
+      "tags": ["ghat_road_safety", "rockfall_warning"],
+      "text": {
+        "en": "Watch out for fallen rocks, mud accumulation on asphalt, and collapsed retaining walls. Avoid parking beneath steep cut-slopes or overhangs. If road is blocked by mud, TURN AROUND immediately; secondary slides are common.",
+        "ml": "ചുരം റോഡുകളിൽ വീഴുന്ന പാറകളും ചെളിയും ശ്രദ്ധിക്കുക. കുത്തനെയുള്ള മൺതിട്ടകൾക്ക് താഴെ വാഹനം നിർത്തരുത്. വഴിയിൽ മണ്ണിടിഞ്ഞു വീണിട്ടുണ്ടെങ്കിൽ വാഹനം തിരിച്ച് സുരക്ഷിത സ്ഥലത്തേക്ക് മാറുക.",
+        "hi": "सड़क पर गिरे पत्थरों, मलबे और क्षतिग्रस्त दीवारों पर नज़र रखें। तीखे कट-स्लोप के नीचे वाहन पार्क न करें। यदि रास्ता बंद है तो तुरंत पीछे मुड़ें; दूसरी बार मलबा गिरने का खतरा रहता है।"
+      },
+      "next_node": "ls_q2_signs"
+    },
+
+    "ls_q2_signs": {
+      "id": "ls_q2_signs",
+      "type": "question",
+      "severity": "critical",
+      "source_id": "ksdma_landslide",
+      "tags": ["early_warning_check"],
+      "text": {
+        "en": "Are you witnessing warning signs: ground cracks, tilting trees/poles, muddy spring water, sudden drop in stream water, or deep rumbling sound?",
+        "ml": "മണ്ണിൽ വിള്ളലുകൾ, ചെരിഞ്ഞ മരങ്ങൾ/വൈദ്യുത പോസ്റ്റുകൾ, ഉറവകളിൽ പെട്ടെന്ന് കലങ്ങിയ വെള്ളം വരുന്നത്, അല്ലെങ്കിൽ വിദൂരത്തുനിന്ന് ഉരുൾപൊട്ടലിന്റെ അലർച്ച കേൾക്കുന്നുണ്ടോ?",
+        "hi": "क्या आप चेतावनी के संकेत देख रहे हैं: जमीन में दरारें, झुकते पेड़/खंभे, झरनों में अचानक गंदा पानी, या ज़मीन के अंदर से गड़गड़ाहट की आवाज़?"
+      },
+      "options": [
+        {
+          "id": "opt_signs_yes",
+          "text": {"en": "Yes, active signs observed", "ml": "അതെ, മുന്നറിയിപ്പ് ലക്ഷണങ്ങൾ കാണുന്നു", "hi": "हाँ, स्पष्ट संकेत दिखाई दे रहे हैं"},
+          "next_node": "ls_adv_signs_yes"
+        },
+        {
+          "id": "opt_signs_no",
+          "text": {"en": "No visible signs yet", "ml": "ഇതുവരെ ലക്ഷണങ്ങളൊന്നുമില്ല", "hi": "अभी कोई स्पष्ट संकेत नहीं हैं"},
+          "next_node": "ls_q3_rainfall"
+        }
+      ]
+    },
+
+    "ls_adv_signs_yes": {
+      "id": "ls_adv_signs_yes",
+      "type": "advice",
+      "severity": "critical",
+      "source_id": "ndma_landslide",
+      "tags": ["perpendicular_evacuation", "immediate_run"],
+      "text": {
+        "en": "EVACUATE IMMEDIATELY! Run sideways (PERPENDICULAR to the slide path) towards stable, elevated ground. NEVER run downhill in the path of the flow! If escape is completely impossible, curl into a tight ball and protect your head with your arms and cushions. Inform neighbors and dial 112 / 1077.",
+        "ml": "ഉടൻ ഒഴിഞ്ഞുപോവുക! മണ്ണിടിച്ചിലിന്റെ ദിശയ്ക്ക് ലംബമായി (ചെരിവിനൊപ്പം താഴേക്കല്ല, ഇരുവശങ്ങളിലേക്കും) ഓടി മാറുക! ഒരിക്കലും താഴേക്ക് ഓടരുത്. പുറത്തേക്ക് ഓടാൻ സാധ്യമല്ലെങ്കിൽ പതുങ്ങിയിരുന്ന് തല കൈകൾ കൊണ്ടും തലയിണ കൊണ്ടും പൂർണ്ണമായി സംരക്ഷിക്കുക. 112 അല്ലെങ്കിൽ 1077-ൽ വിളിക്കുക.",
+        "hi": "तुरंत खाली करें! बहाव के रास्ते के लंबवत (sideways/perpendicular) स्थिर ऊँचे स्थान की ओर भागें। कभी भी नीचे की ओर न भागें! यदि निकलना असंभव हो, तो सिकुड़कर सिर को दोनों हाथों से सुरक्षित रखें। 112 / 1077 पर कॉल करें।"
+      },
+      "next_node": "ls_q_emergency_status"
+    },
+
+    "ls_q3_rainfall": {
+      "id": "ls_q3_rainfall",
+      "type": "question",
+      "severity": "warning",
+      "source_id": "imd_weather",
+      "tags": ["rainfall_check"],
+      "text": {
+        "en": "Has heavy rain persisted continuously for 24 hours or more (or Red / Orange alert issued)?",
+        "ml": "24 മണിക്കൂറിലേറെയായി തുടർച്ചയായി കനത്ത മഴ പെയ്യുന്നുണ്ടോ (റെഡ് / ഓറഞ്ച് അലർട്ട് പ്രഖ്യാപിച്ചിട്ടുണ്ടോ)?",
+        "hi": "क्या लगातार 24 घंटे या उससे अधिक समय से भारी बारिश हो रही है (या रेड / ऑरेंज अलर्ट जारी है)?"
+      },
+      "options": [
+        {
+          "id": "opt_rain_prolonged",
+          "text": {"en": "Yes, continuous heavy rain", "ml": "അതെ, ശക്തമായ തുടർച്ചയായ മഴ", "hi": "हाँ, लगातार भारी बारिश"},
+          "next_node": "ls_adv_rain_prolonged"
+        },
+        {
+          "id": "opt_rain_intermittent",
+          "text": {"en": "No, intermittent / light rain", "ml": "ഇല്ല, ഇടവിട്ടുള്ള നേരിയ മഴ", "hi": "नहीं, रुक-रुक कर या हल्की बारिश"},
+          "next_node": "ls_adv_rain_light"
+        }
+      ]
+    },
+
+    "ls_adv_rain_prolonged": {
+      "id": "ls_adv_rain_prolonged",
+      "type": "advice",
+      "severity": "warning",
+      "source_id": "ksdma_landslide",
+      "tags": ["soil_saturation", "preemptive_camp"],
+      "text": {
+        "en": "Prolonged rainfall causes deep soil pore-water saturation, drastically increasing landslide probability in Western Ghats zones (Wayanad, Idukki, Pathanamthitta). Pre-emptively relocate to designated government relief camps before nightfall.",
+        "ml": "തുടർച്ചയായ കനത്ത മഴ മണ്ണിൽ വെള്ളം നിറഞ്ഞ് മലയിടിച്ചിലിനുള്ള സാധ്യത ഇരട്ടിയാക്കുന്നു (വയനാട്, ഇടുക്കി മേഖലകൾ). രാത്രിയാകുന്നതിന് മുൻപ് തന്നെ ദുരന്തനിവാരണ അതോറിറ്റിയുടെ ദുരിതാശ്വാസ ക്യാമ്പിലേക്ക് മാറുക.",
+        "hi": "लगातार बारिश से मिट्टी में पानी की मात्रा बढ़ जाती है, जिससे भूस्खलन का खतरा अत्यधिक हो जाता है। रात होने से पहले ही निकटतम सरकारी राहत शिविर में चले जाएँ।"
+      },
+      "next_node": "ls_q_emergency_status"
+    },
+
+    "ls_adv_rain_light": {
+      "id": "ls_adv_rain_light",
+      "type": "advice",
+      "severity": "info",
+      "source_id": "ndma_landslide",
+      "tags": ["drainage_clearance", "monitoring"],
+      "text": {
+        "en": "Inspect and clear outdoor stormwater channels around your house so water drains away from slope cuts. Keep battery torches, essential medicines, and documents packed in a grab-bag.",
+        "ml": "വീടിന് ചുറ്റുമുള്ള ഡ്രെയിനേജ് ചാലുകളിലെ തടസ്സങ്ങൾ മാറ്റി വെള്ളം സുഗമമായി ഒഴുകിപ്പോകുന്നുവെന്ന് ഉറപ്പാക്കുക. എമർജൻസി കിറ്റും രേഖകളും തയ്യാറാക്കി വെയ്ക്കുക.",
+        "hi": "घर के चारों ओर पानी की निकासी वाली नालियों को साफ रखें ताकि ढलान पर पानी जमा न हो। जरूरी दवाइयां और दस्तावेज तैयार रखें।"
+      },
+      "next_node": "ls_q_emergency_status"
+    },
+
+    "ls_q_emergency_status": {
+      "id": "ls_q_emergency_status",
+      "type": "emergency_check",
+      "severity": "critical",
+      "source_id": "mha_erss_112",
+      "tags": ["emergency_triage_check"],
+      "text": {
+        "en": "Are you injured or trapped by fallen earth / debris?",
+        "ml": "നിങ്ങൾക്ക് പരിക്കേറ്റിട്ടുണ്ടോ അല്ലെങ്കിൽ മണ്ണോ അവശിഷ്ടങ്ങളോ വീണ് കുടുങ്ങിക്കിടക്കുകയാണോ?",
+        "hi": "क्या आप घायल हैं या गिरे हुए मलबे/मिट्टी के नीचे फंसे हुए हैं?"
+      },
+      "options": [
+        {
+          "id": "opt_ls_trapped_yes",
+          "text": {"en": "Yes", "ml": "അതെ", "hi": "हाँ"},
+          "next_node": "ls_adv_trapped_yes"
+        },
+        {
+          "id": "opt_ls_trapped_no",
+          "text": {"en": "No", "ml": "അല്ല", "hi": "नहीं"},
+          "next_node": "ls_adv_trapped_no"
+        }
+      ]
+    },
+
+    "ls_adv_trapped_yes": {
+      "id": "ls_adv_trapped_yes",
+      "type": "advice",
+      "severity": "critical",
+      "source_id": "mha_erss_112",
+      "tags": ["call_emergency_112", "debris_escape"],
+      "text": {
+        "en": "CALL 112 IMMEDIATELY! Keep airway clear of mud. If trapped in mud, try to create an air pocket around your face. Signal rescue teams with loud whistles or metallic tapping. Avoid unnecessary movement that may cause loose debris to settle further.",
+        "ml": "ഉടൻ 112-ൽ വിളിക്കുക! മൂക്കിലും വായിലും ചെളി കയറാതെ തുണികൊണ്ട് സംരക്ഷിക്കുക. വിസിലോ ശബ്ദമോ ഉണ്ടാക്കി രക്ഷാപ്രവർത്തകർക്ക് സൂചന നൽകുക. മണ്ണ് കൂടുതൽ ഇടിഞ്ഞുതാഴാതിരിക്കാൻ അനാവശ്യമായി ശരീരം ഇളക്കരുത്.",
+        "hi": "तुरंत 112 पर कॉल करें! मुंह और नाक को कपड़े से बचाएं। सीटी बजाकर या किसी ठोस वस्तु पर मारकर संकेत दें। ज्यादा हिलने-डुलने से बचें ताकि मलबा और अधिक न धंसे।"
+      },
+      "next_node": "ls_summary_end"
+    },
+
+    "ls_adv_trapped_no": {
+      "id": "ls_adv_trapped_no",
+      "type": "advice",
+      "severity": "info",
+      "source_id": "ndma_landslide",
+      "tags": ["post_slide_hazard", "secondary_slide_prevention"],
+      "text": {
+        "en": "Stay far away from the slide area. Secondary mudslides and dammed flash floods frequently occur without warning. Check for injured or trapped neighbors and direct official NDRF/Fire personnel instead of entering the slide zone yourself.",
+        "ml": "ദുരന്ത മേഖലയിലേക്ക് തിരികെ പോകരുത്. തുടർ മണ്ണിടിച്ചിലുകൾ ഉണ്ടാവാൻ സാധ്യതയുണ്ട്. ആരെങ്കിലും കുടുങ്ങിക്കിടക്കുന്നുണ്ടെങ്കിൽ സ്വയം രക്ഷിക്കാൻ ഇറങ്ങാതെ ഉടൻ രക്ഷാപ്രവർത്തകരെ അറിയിക്കുക.",
+        "hi": "भूस्खलन क्षेत्र से पूरी तरह दूर रहें। पुनः मलबा गिरने का खतरा रहता है। यदि कोई फंसा हो तो स्वयं जाने के बजाय तुरंत एनडीआरएफ/अग्निशमन कर्मियों को बताएं।"
+      },
+      "next_node": "ls_summary_end"
+    },
+
+    "ls_summary_end": {
+      "id": "ls_summary_end",
+      "type": "summary",
+      "severity": "info",
+      "source_id": "ndma_landslide",
+      "tags": ["summary_generation"],
+      "text": {
+        "en": "Landslide safety assessment completed. Review your personalized emergency action checklist and verified contacts below.",
+        "ml": "ഉരുൾപൊട്ടൽ സുരക്ഷാ വിലയിരുത്തൽ പൂർത്തിയായി. നിങ്ങളുടെ വ്യക്തിഗത കർമ്മ പദ്ധതിയും ഹെൽപ്പ്‌ലൈൻ നമ്പറുകളും താഴെ പരിശോധിക്കുക.",
+        "hi": "भूस्खलन सुरक्षा मूल्यांकन पूरा हुआ। अपनी व्यक्तिगत आपातकालीन कार्ययोजना और सत्यापित संपर्कों की समीक्षा नीचे करें।"
+      },
+      "next_node": null
+    }
+  }
+}
