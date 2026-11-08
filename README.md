@@ -16,7 +16,6 @@ The content follows guidance from the National Disaster Management Authority (ND
 - **Decision Tree Visualization:** Flowcharts generated from the same JSON files the chatbot uses.
 - **Emergency Kit Checklist:** Checkable list of essential supplies.
 - **Safety Quiz:** Preparedness questions with explanations.
-- **Rainfall Estimate:** Current rainfall for the user's location from Open-Meteo (an estimate, not an official warning).
 - **Emergency Helplines:** Quick access to emergency numbers on every page.
 - **Accessibility:** Adjustable font size, high-contrast mode and light/dark theme.
 - **Installable Web App (PWA):** Offline caching for the chatbot and static assets.
@@ -132,7 +131,6 @@ Run `python tools/generate_flowchart.py` to regenerate the flowcharts from the J
 
 - Malayalam and Hindi are available in the chatbot (questions, advice and summary). Other pages are English only. Translations are machine-generated and should be reviewed by a native speaker before real-world use.
 - Offline caching covers the chatbot and static assets. The flowchart page may need internet if Mermaid loads from a CDN.
-- The rainfall card shows an estimate from Open-Meteo, not an official warning. Check IMD and KSDMA for official alerts.
 - The project is rule-based, so it can only respond to situations covered by its decision trees.
 - Emergency numbers should be verified on official sources before real-world use.
 
