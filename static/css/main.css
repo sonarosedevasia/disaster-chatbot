@@ -2858,3 +2858,266 @@ body {
   }
 }
 
+
+/* =========================================================
+   MOBILE RESPONSIVE FIXES - DisasterSafe
+   ========================================================= */
+
+@media (max-width: 768px) {
+
+  /* Prevent horizontal page overflow */
+  html,
+  body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  .container {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+
+  /* Emergency ribbon */
+  .emergency-ribbon {
+    position: relative;
+    padding: 10px 0;
+  }
+
+  .ribbon-inner {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+
+  .ribbon-alert-badge {
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .ribbon-text {
+    font-size: 0.82rem;
+    line-height: 1.5;
+  }
+
+  .ribbon-actions {
+    justify-content: center;
+    width: 100%;
+  }
+
+  .btn-sos-quick,
+  .call-btn-ribbon {
+    flex: 1;
+    justify-content: center;
+    text-align: center;
+    padding: 8px;
+  }
+
+  /* Navbar */
+  .navbar-inner {
+    gap: 10px;
+  }
+
+  .brand-title {
+    font-size: 1.15rem;
+  }
+
+  .brand-tagline {
+    font-size: 0.65rem;
+  }
+
+  .navbar-tools {
+    margin-left: auto;
+  }
+
+  /* Home hero */
+  .hero-section {
+    padding-top: 32px;
+  }
+
+  .hero-heading {
+    font-size: clamp(1.65rem, 6vw, 2rem);
+    line-height: 1.25;
+  }
+
+  .hero-subheading {
+    font-size: 0.95rem;
+    line-height: 1.55;
+    padding: 0 4px;
+  }
+
+  .hero-hazard-cards-wrapper,
+  .hero-hazard-buttons-group {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .hero-hazard-card,
+  .hero-hazard-btn {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .hero-cta-group {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+
+  .btn-primary-cta,
+  .btn-secondary-cta {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* Flowchart page */
+  .flowchart-page-container {
+    padding: 22px 10px 50px;
+    min-width: 0;
+  }
+
+  .flowchart-page-title {
+    font-size: 1.5rem;
+    line-height: 1.3;
+  }
+
+  .flowchart-page-sub {
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+
+  .flowchart-hazard-tabs {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    width: 100%;
+    gap: 4px;
+  }
+
+  .fc-tab {
+    min-width: 0;
+    padding: 9px 4px;
+    font-size: 0.72rem;
+    line-height: 1.3;
+    overflow-wrap: anywhere;
+  }
+
+  .flowchart-toolbar {
+    padding: 12px;
+    gap: 12px;
+    align-items: stretch;
+  }
+
+  .fc-legend {
+    gap: 10px;
+    font-size: 0.75rem;
+  }
+
+  .fc-controls-group {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    gap: 7px;
+  }
+
+  .btn-fc-tool {
+    flex: 1 1 auto;
+    justify-content: center;
+    min-width: 0;
+    padding: 9px 8px;
+    font-size: 0.75rem;
+  }
+
+  .mermaid-viewport {
+    padding: 12px;
+    min-height: 400px;
+    max-width: 100%;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .mermaid {
+    min-width: max-content;
+  }
+
+  /* Emergency helpline bottom panel */
+  .floating-emergency-panel {
+    right: 0;
+    left: 0;
+    width: 100%;
+    max-width: 100%;
+    border-radius: 16px 16px 0 0;
+  }
+
+  .panel-handle {
+    padding: 12px;
+  }
+
+  .handle-title {
+    font-size: 0.8rem;
+    gap: 7px;
+    min-width: 0;
+  }
+
+  .panel-content-body {
+    max-height: 55vh;
+    overflow-y: auto;
+  }
+
+  /* General cards and sections */
+  .hazards-selection-section,
+  .how-it-works-section {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+
+  .hazard-card,
+  .step-card,
+  .weather-card {
+    padding: 18px;
+  }
+
+  /* Chat page */
+  .chat-page-layout {
+    padding: 16px 10px 30px;
+  }
+
+  .chat-workspace-card {
+    height: 70vh;
+    min-height: 480px;
+  }
+
+  .chat-thread-container {
+    padding: 14px;
+  }
+
+  .msg-row {
+    max-width: 95%;
+  }
+
+  .input-composer-bar {
+    padding: 10px;
+  }
+}
+
+@media (max-width: 400px) {
+
+  .hero-heading {
+    font-size: 1.55rem;
+  }
+
+  .ribbon-text {
+    font-size: 0.76rem;
+  }
+
+  .fc-tab {
+    font-size: 0.67rem;
+  }
+
+  .btn-fc-tool {
+    font-size: 0.7rem;
+  }
+
+  .brand-title {
+    font-size: 1rem;
+  }
+}
