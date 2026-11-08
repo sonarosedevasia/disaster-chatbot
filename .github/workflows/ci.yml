@@ -31,7 +31,7 @@ jobs:
 
       - name: Run Schema & Tree Consistency Check
         run: |
-          python -c "from engine.validator import validate_all_trees; validate_all_trees()"
+          python -m engine.validator
 
       - name: Run Pytest Suite
         run: |
