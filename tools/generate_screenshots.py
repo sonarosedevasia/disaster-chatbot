@@ -38,7 +38,7 @@ def generate_desktop_chat(out_path: str):
     draw.text((30, 52), "SafeKerala / DisasterSafe", fill="#38bdf8", font=font_logo)
     
     font_nav = get_font(14, bold=False)
-    nav_items = ["Emergency Chat", "Interactive Tree", "Disaster Kit", "Family Plan", "Quiz", "Official Sources"]
+    nav_items = ["Emergency Chat", "Interactive Tree", "Disaster Kit", "Quiz", "Official Sources"]
     nx = 380
     for i, item in enumerate(nav_items):
         active = (i == 0)
@@ -168,7 +168,7 @@ def generate_mobile_chat(out_path: str):
     draw.text((30, 795), "Chat", fill="#38bdf8", font=get_font(11, bold=True))
     draw.text((120, 795), "Flowchart", fill="#94a3b8", font=get_font(11))
     draw.text((215, 795), "Kit 72h", fill="#94a3b8", font=get_font(11))
-    draw.text((310, 795), "Plan", fill="#94a3b8", font=get_font(11))
+    draw.text((310, 795), "Quiz", fill="#94a3b8", font=get_font(11))
 
     os.makedirs(os.path.dirname(out_path), exist_ok=True)
     img.save(out_path)

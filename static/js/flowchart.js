@@ -28,14 +28,14 @@ document.addEventListener('DOMContentLoaded', () => {
       theme: 'default',
       securityLevel: 'loose',
       fontFamily: 'Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif',
-      fontSize: 13,
+      fontSize: 12,
       flowchart: {
         curve: 'basis',
         useMaxWidth: false,
         htmlLabels: true,
-        padding: 24,
-        nodeSpacing: 50,
-        rankSpacing: 55
+        padding: 20,
+        nodeSpacing: 75,
+        rankSpacing: 85
       }
     });
   }

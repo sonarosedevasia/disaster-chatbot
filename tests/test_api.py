@@ -147,7 +147,14 @@ def test_security_headers(client):
 
 
 def test_html_views(client):
-    views = ["/", "/chat?hazard=flood", "/flowchart?hazard=flood", "/kit", "/plan", "/quiz", "/insights", "/about"]
+    views = ["/", "/chat?hazard=flood", "/flowchart?hazard=flood", "/kit", "/quiz", "/about"]
     for v in views:
         res = client.get(v)
         assert res.status_code == 200, f"View {v} returned {res.status_code}"
+
+
+def test_removed_views_return_404(client):
+    """Confirm /plan and /insights return 404 Not Found rather than crashing."""
+    for removed in ["/plan", "/insights"]:
+        res = client.get(removed)
+        assert res.status_code == 404, f"Removed route {removed} did not return 404"

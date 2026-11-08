@@ -20,10 +20,14 @@ document.addEventListener('DOMContentLoaded', () => {
   const progressText = document.getElementById('progressText');
 
   // Application State
+  const urlLang = new URLSearchParams(window.location.search).get('lang');
+  if (urlLang) {
+    localStorage.setItem('ds_lang', urlLang);
+  }
   const state = {
     session_id: null,
     hazard_id: chatHazardSelect ? chatHazardSelect.value : 'flood',
-    lang: localStorage.getItem('ds_lang') || 'en',
+    lang: urlLang || localStorage.getItem('ds_lang') || 'en',
     current_step_num: 1,
     is_complete: false,
     active_options: []
@@ -273,10 +277,13 @@ document.addEventListener('DOMContentLoaded', () => {
     metaRow.className = 'msg-meta-row';
     metaRow.innerHTML = `<span class="msg-time">${getFormattedTime()}</span>`;
 
-    if ('speechSynthesis' in window && data.text) {
+    // Only render Listen (TTS) when language is English where native speech synthesis works reliably
+    const isEnglish = (state.lang === 'en' || !state.lang);
+    if (isEnglish && data.text && 'speechSynthesis' in window) {
       const ttsBtn = document.createElement('button');
       ttsBtn.type = 'button';
       ttsBtn.className = 'btn-tts-listen';
+      ttsBtn.setAttribute('aria-label', 'Listen to guidance aloud');
       ttsBtn.innerHTML = `
         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
         <span>Listen</span>
@@ -406,24 +413,81 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // =========================================================================
-  // VOICE FEATURES (SPEECH SYNTHESIS & RECOGNITION)
+  // VOICE FEATURES (SPEECH SYNTHESIS FOR ENGLISH & SPEECH RECOGNITION)
   // =========================================================================
+  function stopAllSpeech() {
+    if ('speechSynthesis' in window) {
+      window.speechSynthesis.cancel();
+    }
+    document.querySelectorAll('.btn-tts-listen.speaking').forEach(b => {
+      b.classList.remove('speaking');
+      const label = b.querySelector('span');
+      if (label) label.textContent = 'Listen';
+    });
+  }
+
+  function cleanTextForSpeech(raw) {
+    if (!raw) return '';
+    return raw
+      .replace(/<[^>]*>/g, ' ')
+      .replace(/&nbsp;/g, ' ')
+      .replace(/&amp;/g, '&')
+      .replace(/&lt;/g, '<')
+      .replace(/&gt;/g, '>')
+      .replace(/[\r\n]+/g, ' ')
+      .replace(/\s+/g, ' ')
+      .trim();
+  }
+
   function speakAloud(text, btn) {
     if (!('speechSynthesis' in window)) return;
-    if (window.speechSynthesis.speaking) {
-      window.speechSynthesis.cancel();
-      if (btn) btn.classList.remove('speaking');
+
+    // Toggle off if currently playing
+    if (btn && btn.classList.contains('speaking')) {
+      stopAllSpeech();
       return;
     }
 
-    const utterance = new SpeechSynthesisUtterance(text.replace(/<[^>]*>/g, ''));
+    stopAllSpeech();
+
+    const clean = cleanTextForSpeech(text);
+    if (!clean) return;
+
+    const utterance = new SpeechSynthesisUtterance(clean);
+    utterance.lang = 'en-US';
     utterance.rate = 0.95;
+
+    // Pick an English voice if available
+    const voices = window.speechSynthesis.getVoices() || [];
+    const enVoice = voices.find(v => (v.lang || '').toLowerCase().startsWith('en'));
+    if (enVoice) {
+      utterance.voice = enVoice;
+    }
+
     if (btn) {
       btn.classList.add('speaking');
-      utterance.onend = () => btn.classList.remove('speaking');
-      utterance.onerror = () => btn.classList.remove('speaking');
+      const label = btn.querySelector('span');
+      if (label) label.textContent = 'Playing...';
+
+      utterance.onend = () => {
+        btn.classList.remove('speaking');
+        if (label) label.textContent = 'Listen';
+      };
+      utterance.onerror = () => {
+        btn.classList.remove('speaking');
+        if (label) label.textContent = 'Listen';
+      };
     }
-    window.speechSynthesis.speak(utterance);
+
+    try {
+      window.speechSynthesis.speak(utterance);
+    } catch (e) {
+      if (btn) {
+        btn.classList.remove('speaking');
+        const label = btn.querySelector('span');
+        if (label) label.textContent = 'Listen';
+      }
+    }
   }
 
   function initSpeechRecognition() {

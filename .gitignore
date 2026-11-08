@@ -1,3 +1,4 @@
+
 # Python & Virtual Environments
 __pycache__/
 *.py[cod]
@@ -25,20 +26,25 @@ wheels/
 
 # Testing & Coverage
 .pytest_cache/
-.coverage
-htmlcov/
+.mypy_cache/
+.ruff_cache/
+.hypothesis/
 .tox/
 .nox/
-.hypothesis/
+.coverage
+.coverage.*
+coverage.xml
+htmlcov/
 
 # Flask & Sessions
 instance/
 .webassets-cache
 data/feedback.json
 
-# Environment variables
+# Environment Variables
 .env
-.env.local
+.env.*
+!.env.example
 
 # IDEs & Editors
 .vscode/
@@ -49,6 +55,14 @@ data/feedback.json
 .DS_Store
 Thumbs.db
 
-# Logs
+# Logs & Temporary Files
 *.log
+*.tmp
+*.bak
+*.pid
 
+# Cache
+.cache/
+# Personal documents
+ASSIGNMENT_SUBMISSION.md
+RESUME_BULLETS.md

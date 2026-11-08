@@ -2,7 +2,7 @@
 DISASTERSAFE / SAFEKERALA - OFFICIAL CONVERSATION TRANSCRIPT
 HAZARD    : LANDSLIDE
 SCENARIO  : Landslide Path 1: Hill Slope Residence -> Ground Cracks Observed -> Trapped Debris
-GENERATED : 2026-11-06 13:47:10 (Automated Engine Run)
+GENERATED : 2026-11-07 20:11:59 (Automated Engine Run)
 AUTHORITY : National Disaster Management Authority (NDMA) & KSDMA Protocols
 ================================================================================
 

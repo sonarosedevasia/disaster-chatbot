@@ -16,8 +16,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
 
-  <!-- Local Stylesheet -->
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}" />
+  <!-- Local Stylesheet with Cache Busting -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}?v=3.5" />
   
   {% block extra_head %}{% endblock %}
 </head>
@@ -48,10 +48,21 @@
       <a href="{{ url_for('index_view') }}" class="brand-link" aria-label="DisasterSafe Home">
         <div class="brand-logo-shield" aria-hidden="true">
           <svg viewBox="0 0 48 48" fill="none" class="brand-svg">
-            <rect width="48" height="48" rx="12" fill="#0284C7"/>
-            <path d="M24 7L37 12.5V23C37 31.5 24 40 24 40C24 40 11 31.5 11 23V12.5L24 7Z" stroke="white" stroke-width="2.5" stroke-linejoin="round"/>
-            <path d="M16 26C18 24.5 20 24.5 22 26C24 27.5 26 27.5 28 26C30 24.5 32 24.5 34 26" stroke="white" stroke-width="2.2" stroke-linecap="round"/>
-            <path d="M16 30C18 28.5 20 28.5 22 30C24 31.5 26 31.5 28 30C30 28.5 32 28.5 34 30" stroke="#FDE047" stroke-width="2" stroke-linecap="round"/>
+            <defs>
+              <linearGradient id="brandLogoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#0284C7"/>
+                <stop offset="100%" stop-color="#0F172A"/>
+              </linearGradient>
+              <linearGradient id="beaconGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#FDE047"/>
+                <stop offset="100%" stop-color="#F59E0B"/>
+              </linearGradient>
+            </defs>
+            <rect width="48" height="48" rx="12" fill="url(#brandLogoGrad)" stroke="rgba(56, 189, 248, 0.4)" stroke-width="1.5"/>
+            <path d="M24 8L36 13V22.5C36 30.5 24 38.5 24 38.5C24 38.5 12 30.5 12 22.5V13L24 8Z" stroke="#FFFFFF" stroke-width="2.2" stroke-linejoin="round" fill="rgba(255, 255, 255, 0.08)"/>
+            <circle cx="24" cy="18" r="3.2" fill="url(#beaconGrad)"/>
+            <path d="M17 26.5C19.3 25 21.7 25 24 26.5C26.3 28 28.7 28 31 26.5" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"/>
+            <path d="M18 30.5C20 29.2 22 29.2 24 30.5C26 31.8 28 31.8 30 30.5" stroke="#38BDF8" stroke-width="1.8" stroke-linecap="round"/>
           </svg>
         </div>
         <div class="brand-meta">
@@ -69,15 +80,14 @@
         <a href="{{ url_for('chat_view', hazard='flood') }}" class="nav-item {% if request.path == '/chat' %}active{% endif %}">Chatbot</a>
         <a href="{{ url_for('flowchart_view', hazard='flood') }}" class="nav-item {% if request.path == '/flowchart' %}active{% endif %}">Decision Trees</a>
         <a href="{{ url_for('kit_view') }}" class="nav-item {% if request.path == '/kit' %}active{% endif %}">Emergency Kit</a>
-        <a href="{{ url_for('plan_view') }}" class="nav-item {% if request.path == '/plan' %}active{% endif %}">Family Plan</a>
         <a href="{{ url_for('quiz_view') }}" class="nav-item {% if request.path == '/quiz' %}active{% endif %}">Safety Quiz</a>
-        <a href="{{ url_for('insights_view') }}" class="nav-item {% if request.path == '/insights' %}active{% endif %}">Live Insights</a>
         <a href="{{ url_for('about_view') }}" class="nav-item {% if request.path == '/about' %}active{% endif %}">Sources & Protocols</a>
       </nav>
 
       <!-- Accessibility & Language Tools Bar -->
       <div class="navbar-tools">
-        <!-- Language Switcher -->
+        <!-- Language Switcher (Shown only on Chatbot page; Home page has it in hazard selector) -->
+        {% if request.path == '/chat' %}
         <div class="lang-selector-wrapper">
           <label for="langSelector" class="sr-only">Choose Language</label>
           <select id="langSelector" class="lang-select" aria-label="Select Language">
@@ -86,6 +96,7 @@
             <option value="hi">हिन्दी (HI)</option>
           </select>
         </div>
+        {% endif %}
 
         <!-- Font Resizer -->
         <div class="font-resizer-group" title="Adjust Font Size">
@@ -119,7 +130,13 @@
   <!-- Main Content Container -->
   <main class="page-main-container" id="mainContent">
     {% block content %}
-    <!-- Page Content Injected Here -->
+    {% if error_title %}
+    <div class="container" style="padding: 60px 20px; text-align: center;">
+      <h1 style="font-size: 2rem; font-weight: 800; margin-bottom: 12px; color: var(--text-primary);">{{ error_title }}</h1>
+      <p style="font-size: 1.05rem; color: var(--text-secondary); margin-bottom: 24px;">{{ error_message }}</p>
+      <a href="{{ url_for('index_view') }}" class="btn-primary-cta" style="display: inline-flex;">Return to DisasterSafe Home</a>
+    </div>
+    {% endif %}
     {% endblock %}
   </main>
 
@@ -175,14 +192,13 @@
       <div class="footer-links">
         <a href="{{ url_for('about_view') }}">Sources &amp; Protocols</a> &bull;
         <a href="{{ url_for('flowchart_view', hazard='flood') }}">Mermaid Flowcharts</a> &bull;
-        <a href="{{ url_for('insights_view') }}">Live Analytics</a> &bull;
         <a href="tel:112">Emergency: Dial 112</a>
       </div>
     </div>
   </footer>
 
   <!-- Core JavaScript -->
-  <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/app.js') }}?v=3.3"></script>
   {% block extra_scripts %}{% endblock %}
 </body>
 </html>

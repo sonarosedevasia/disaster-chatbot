@@ -4,7 +4,7 @@
  * and falls back gracefully when offline.
  */
 
-const CACHE_NAME = 'disastersafe-cache-v1';
+const CACHE_NAME = 'disastersafe-cache-v5';
 const ASSETS_TO_CACHE = [
   '/',
   '/chat?hazard=flood',
@@ -12,16 +12,13 @@ const ASSETS_TO_CACHE = [
   '/chat?hazard=landslide',
   '/flowchart?hazard=flood',
   '/kit',
-  '/plan',
   '/quiz',
-  '/insights',
   '/about',
   '/static/css/main.css',
   '/static/js/app.js',
   '/static/js/chat.js',
   '/static/js/flowchart.js',
   '/static/js/kit.js',
-  '/static/js/plan.js',
   '/static/img/icon-192.png',
   '/static/img/icon-512.png',
   '/static/manifest.json',

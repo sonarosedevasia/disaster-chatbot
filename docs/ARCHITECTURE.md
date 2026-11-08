@@ -45,7 +45,7 @@ flowchart TD
         FlowchartGen["Mermaid Flowchart Generator\n(tools/generate_flowchart.py)"]
         TranscriptGen["Scripted Transcript Generator\n(tools/generate_transcript.py)"]
         ScreenGen["Screenshot Generator\n(tools/generate_screenshots.py)"]
-        PytestSuite["Automated Pytest Suite\n(tests/ - 32 Tests)"]
+        PytestSuite["Automated Pytest Suite\n(tests/ - 33 Tests)"]
     end
 
     TreeFlood --> Validator
@@ -187,8 +187,8 @@ Adding a new disaster hazard (e.g., **Cyclone** or **Chemical Spill**) requires 
 
 ## 6. Offline Capabilities (PWA)
 
-SafeKerala implements a robust Progressive Web App architecture:
-- **Service Worker (`static/sw.js`)**: Implements Cache-First caching for static assets (CSS, JS, fonts, icons) and Network-First with offline fallback for emergency data.
-- **Local Fallback Storage**: The client-side application bundles fallback decision tree definitions in JavaScript so that if network connectivity drops midway through an active cyclone or flood, guidance continues without interruption.
+SafeKerala implements a Progressive Web App architecture:
+- **Service Worker (`static/sw.js`)**: Pre-caches static assets (CSS, JS, fonts, icons) and JSON data. Offline caching specifically applies to the chatbot and core static assets. The flowchart visualization page may require internet connectivity if Mermaid.js is loaded from an external CDN.
+- **Local Fallback Storage**: The client-side application bundles fallback decision tree definitions in JavaScript so that if network connectivity drops midway through an active crisis or flood, chatbot guidance continues without interruption.
 - **Web App Manifest (`static/manifest.json`)**: Configured for standalone full-screen display, home screen installation, and mobile orientation lock.
 

@@ -2,6 +2,171 @@
 
 {% block title %}DisasterSafe – Intelligent Multi-Hazard Safety Guidance{% endblock %}
 
+{% block extra_head %}
+<style>
+  /* Critical scoped styles for hero hazard cards & disasters section */
+  .hero-hazard-cards-wrapper {
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+    gap: 16px;
+    max-width: 820px;
+    margin: 0 auto 32px auto;
+    width: 100%;
+  }
+
+  .hero-hazard-card {
+    flex: 1 1 0;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 14px 18px;
+    border-radius: 14px;
+    text-decoration: none;
+    color: #FFFFFF !important;
+    background: rgba(15, 23, 42, 0.72);
+    border: 1.5px solid rgba(255, 255, 255, 0.16);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-hazard-card:focus-visible {
+    outline: 3px solid #FDE047;
+    outline-offset: 3px;
+  }
+
+  .hero-card-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: transform 0.25s ease;
+  }
+
+  .flood-icon-bg {
+    background: rgba(14, 165, 233, 0.22);
+    color: #38BDF8;
+    border: 1px solid rgba(56, 189, 248, 0.4);
+  }
+
+  .quake-icon-bg {
+    background: rgba(245, 158, 11, 0.22);
+    color: #FBBF24;
+    border: 1px solid rgba(251, 191, 36, 0.4);
+  }
+
+  .slide-icon-bg {
+    background: rgba(16, 185, 129, 0.22);
+    color: #34D399;
+    border: 1px solid rgba(52, 211, 153, 0.4);
+  }
+
+  .hero-card-text {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    text-align: left;
+  }
+
+  .hero-hazard-name {
+    font-size: 1.05rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    line-height: 1.25;
+    color: #FFFFFF;
+  }
+
+  .hero-hazard-sub {
+    font-size: 0.72rem;
+    color: rgba(255, 255, 255, 0.72);
+    margin-top: 2px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .hero-card-arrow {
+    color: rgba(255, 255, 255, 0.45);
+    font-size: 1.1rem;
+    font-weight: 600;
+    transition: transform 0.25s ease, color 0.25s ease;
+  }
+
+  .hero-hazard-card.card-flood:hover {
+    border-color: #38BDF8;
+    background: rgba(14, 165, 233, 0.18);
+    box-shadow: 0 10px 24px -4px rgba(14, 165, 233, 0.45);
+    transform: translateY(-3px);
+  }
+
+  .hero-hazard-card.card-quake:hover {
+    border-color: #FBBF24;
+    background: rgba(245, 158, 11, 0.18);
+    box-shadow: 0 10px 24px -4px rgba(245, 158, 11, 0.45);
+    transform: translateY(-3px);
+  }
+
+  .hero-hazard-card.card-slide:hover {
+    border-color: #34D399;
+    background: rgba(16, 185, 129, 0.18);
+    box-shadow: 0 10px 24px -4px rgba(16, 185, 129, 0.45);
+    transform: translateY(-3px);
+  }
+
+  .hero-hazard-card:hover .hero-card-icon {
+    transform: scale(1.08);
+  }
+
+  .hero-hazard-card:hover .hero-card-arrow {
+    transform: translateX(3px);
+    color: #FFFFFF;
+  }
+
+  @media (max-width: 680px) {
+    .hero-hazard-cards-wrapper {
+      flex-direction: column;
+      gap: 12px;
+      max-width: 100%;
+    }
+    .hero-hazard-card {
+      width: 100%;
+    }
+  }
+
+  /* Enhanced Disaster Cards in #hazards section */
+  .hazard-card {
+    border-top: 4px solid transparent !important;
+  }
+  .hazard-card.flood-card {
+    border-top-color: #0284C7 !important;
+  }
+  .hazard-card.quake-card {
+    border-top-color: #D97706 !important;
+  }
+  .hazard-card.slide-card {
+    border-top-color: #059669 !important;
+  }
+  .hazard-card.flood-card:hover {
+    box-shadow: 0 12px 28px -6px rgba(2, 132, 199, 0.25) !important;
+  }
+  .hazard-card.quake-card:hover {
+    box-shadow: 0 12px 28px -6px rgba(217, 119, 6, 0.25) !important;
+  }
+  .hazard-card.slide-card:hover {
+    box-shadow: 0 12px 28px -6px rgba(5, 150, 105, 0.25) !important;
+  }
+</style>
+{% endblock %}
+
 {% block content %}
 <!-- Hero Section with CSS Animated Wave -->
 <section class="hero-section">
@@ -15,13 +180,67 @@
         Take Immediate, Life-Saving Safety Actions During Disasters.
       </h1>
       <p class="hero-subheading">
-        An intelligent, deterministic rule-based guidance assistant. Evaluates your real-time surroundings during <strong>Floods</strong>, <strong>Earthquakes</strong>, and <strong>Landslides</strong> to deliver instant, personalized survival protocols.
+        An intelligent, deterministic rule-based emergency guidance assistant. Evaluates your real-time surroundings during floods, earthquakes, and landslides to deliver instant, protocol-verified safety guidance.
       </p>
 
+      <!-- Three equal-sized hazard cards directly under the hero text -->
+      <div class="hero-hazard-cards-wrapper hero-hazard-buttons-group" role="group" aria-label="Direct Hazard Guidance Assistant">
+        <a href="{{ url_for('chat_view', hazard='flood') }}" class="hero-hazard-card hero-hazard-btn card-flood btn-flood-hero" role="button" tabindex="0">
+          <div class="hero-card-icon flood-icon-bg">
+            <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2.5C12 2.5 5 9.5 5 14a7 7 0 0 0 14 0c0-4.5-7-11.5-7-11.5z"/>
+              <path d="M3 18.5c2-1 4-1 6 0s4 1 6 0 4-1 6 0"/>
+              <path d="M3 21.5c2-1 4-1 6 0s4 1 6 0 4-1 6 0"/>
+            </svg>
+          </div>
+          <div class="hero-card-text">
+            <span class="hero-hazard-name">Flood</span>
+            <span class="hero-hazard-sub">വെള്ളപ്പൊക്കം &bull; बाढ़</span>
+          </div>
+          <span class="hero-card-arrow" aria-hidden="true">&rarr;</span>
+        </a>
+
+        <a href="{{ url_for('chat_view', hazard='earthquake') }}" class="hero-hazard-card hero-hazard-btn card-quake btn-quake-hero" role="button" tabindex="0">
+          <div class="hero-card-icon quake-icon-bg">
+            <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M2 12h4l2.5-6 3.5 13 3-9 2 4h5"/>
+              <path d="M4 19h16"/>
+              <path d="M12 3v2"/>
+              <path d="M7 5l1.5 1.5"/>
+              <path d="M17 5l-1.5 1.5"/>
+            </svg>
+          </div>
+          <div class="hero-card-text">
+            <span class="hero-hazard-name">Earthquake</span>
+            <span class="hero-hazard-sub">ഭൂകമ്പം &bull; भूकंप</span>
+          </div>
+          <span class="hero-card-arrow" aria-hidden="true">&rarr;</span>
+        </a>
+
+        <a href="{{ url_for('chat_view', hazard='landslide') }}" class="hero-hazard-card hero-hazard-btn card-slide btn-slide-hero" role="button" tabindex="0">
+          <div class="hero-card-icon slide-icon-bg">
+            <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M2 20h20"/>
+              <path d="M3 18L11 4l4 7"/>
+              <path d="M13 14l2-3 6 9"/>
+              <path d="M11 12l-2 3"/>
+              <circle cx="17.5" cy="13.5" r="1.5" fill="currentColor"/>
+              <circle cx="19.5" cy="16.5" r="1" fill="currentColor"/>
+              <circle cx="15" cy="17.5" r="1.2" fill="currentColor"/>
+            </svg>
+          </div>
+          <div class="hero-card-text">
+            <span class="hero-hazard-name">Landslide</span>
+            <span class="hero-hazard-sub">ഉരുൾപൊട്ടൽ &bull; भूस्खलन</span>
+          </div>
+          <span class="hero-card-arrow" aria-hidden="true">&rarr;</span>
+        </a>
+      </div>
+
       <div class="hero-cta-group">
-        <a href="{{ url_for('chat_view', hazard='flood') }}" class="btn-primary-cta">
+        <a href="#hazards" class="btn-primary-cta" id="btnStartSafety">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-          Start Flood Safety Guidance
+          Start Safety Guidance
         </a>
         <button type="button" class="btn-secondary-cta" id="btnOpenTriage">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
@@ -40,20 +259,37 @@
 </section>
 
 <!-- Hazard Selector Cards Grid -->
-<section class="hazards-selection-section container">
+<section class="hazards-selection-section container" id="hazards">
   <div class="section-header-centered">
     <span class="section-eyebrow">Choose Emergency Scenario</span>
     <h2 class="section-title">Select Hazard for Context-Specific Guidance</h2>
     <p class="section-desc">Each safety assistant executes a deterministic decision tree validated against official disaster management protocols.</p>
+
+    <!-- Language Selector for Home Page Hazard Selector -->
+    <div class="hazard-lang-picker">
+      <label for="hazardLangSelector" class="hazard-lang-label">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        Select Guidance Language:
+      </label>
+      <select id="hazardLangSelector" class="lang-select" aria-label="Select Guidance Language">
+        <option value="en">English (EN)</option>
+        <option value="ml">മലയാളം (ML)</option>
+        <option value="hi">हिन्दी (HI)</option>
+      </select>
+    </div>
   </div>
 
   <div class="hazard-cards-grid">
-    <!-- Hazard 1: Flood (Primary) -->
+    <!-- Hazard 1: Flood -->
     <div class="hazard-card flood-card">
-      <div class="card-badge primary-badge">Primary Focus</div>
+      <div class="card-badge">Active Hazard</div>
       <div class="card-icon-header">
         <div class="hazard-icon-bubble flood-blue">
-          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>
+          <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2.5C12 2.5 5 9.5 5 14a7 7 0 0 0 14 0c0-4.5-7-11.5-7-11.5z"/>
+            <path d="M3 18.5c2-1 4-1 6 0s4 1 6 0 4-1 6 0"/>
+            <path d="M3 21.5c2-1 4-1 6 0s4 1 6 0 4-1 6 0"/>
+          </svg>
         </div>
         <div class="hazard-meta-titles">
           <h3 class="hazard-card-title">Flood Emergency</h3>
@@ -80,7 +316,13 @@
       <div class="card-badge">Active Hazard</div>
       <div class="card-icon-header">
         <div class="hazard-icon-bubble quake-amber">
-          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M2 12h4l2.5-6 3.5 13 3-9 2 4h5"/>
+            <path d="M4 19h16"/>
+            <path d="M12 3v2"/>
+            <path d="M7 5l1.5 1.5"/>
+            <path d="M17 5l-1.5 1.5"/>
+          </svg>
         </div>
         <div class="hazard-meta-titles">
           <h3 class="hazard-card-title">Earthquake Safety</h3>
@@ -107,7 +349,15 @@
       <div class="card-badge">Western Ghats</div>
       <div class="card-icon-header">
         <div class="hazard-icon-bubble slide-green">
-          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="21"/><line x1="8" y1="13" x2="16" y2="21"/></svg>
+          <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M2 20h20"/>
+            <path d="M3 18L11 4l4 7"/>
+            <path d="M13 14l2-3 6 9"/>
+            <path d="M11 12l-2 3"/>
+            <circle cx="17.5" cy="13.5" r="1.5" fill="currentColor"/>
+            <circle cx="19.5" cy="16.5" r="1" fill="currentColor"/>
+            <circle cx="15" cy="17.5" r="1.2" fill="currentColor"/>
+          </svg>
         </div>
         <div class="hazard-meta-titles">
           <h3 class="hazard-card-title">Landslide Hazard</h3>
@@ -191,35 +441,55 @@
     </div>
   </div>
 </section>
-
-<!-- Weather & Early Warning Live Widget (Open-Meteo with Offline Graceful Fallback) -->
-<section class="weather-alert-section container">
-  <div class="weather-card">
-    <div class="weather-header">
-      <div class="weather-meta">
-        <span class="live-pulse"></span>
-        <h3 class="weather-title">Real-Time Rainfall &amp; Meteorological Radar</h3>
-        <span class="weather-sub">IMD &bull; CWC &bull; Open-Meteo API (Free, zero-key public telemetry)</span>
-      </div>
-      <button type="button" class="btn-refresh-weather" id="btnRefreshWeather">Check My Area</button>
-    </div>
-    <div class="weather-body" id="weatherContent">
-      <div class="weather-fallback-info">
-        <p><strong>Official Disaster Weather Portals (India &amp; Kerala):</strong></p>
-        <div class="portal-link-pills">
-          <a href="https://mausam.imd.gov.in" target="_blank" rel="noopener noreferrer">IMD National Warnings &rarr;</a>
-          <a href="https://sdma.kerala.gov.in" target="_blank" rel="noopener noreferrer">KSDMA Daily Alerts &rarr;</a>
-          <a href="http://cwc.gov.in" target="_blank" rel="noopener noreferrer">CWC River Basin Gauge &rarr;</a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
 {% endblock %}
 
 {% block extra_scripts %}
 <script>
 document.addEventListener('DOMContentLoaded', () => {
+  // Start Safety Guidance smooth scroll
+  const btnStartSafety = document.getElementById('btnStartSafety');
+  if (btnStartSafety) {
+    btnStartSafety.addEventListener('click', (e) => {
+      e.preventDefault();
+      const target = document.getElementById('hazards');
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+  }
+
+  // Hazard Language Selector (Home Page)
+  const hazardLangSelector = document.getElementById('hazardLangSelector');
+  function applyLangToHazardLinks(lang) {
+    document.querySelectorAll('.hero-hazard-btn, .btn-hazard-start').forEach(btn => {
+      const url = new URL(btn.href, window.location.origin);
+      url.searchParams.set('lang', lang);
+      btn.href = url.pathname + url.search;
+    });
+  }
+
+  if (hazardLangSelector) {
+    const initialLang = localStorage.getItem('ds_lang') || 'en';
+    hazardLangSelector.value = initialLang;
+    applyLangToHazardLinks(initialLang);
+
+    hazardLangSelector.addEventListener('change', () => {
+      const selected = hazardLangSelector.value;
+      localStorage.setItem('ds_lang', selected);
+      applyLangToHazardLinks(selected);
+    });
+  }
+
+  // Keyboard accessibility for Hero Hazard Buttons (Enter / Space)
+  document.querySelectorAll('.hero-hazard-btn').forEach(btn => {
+    btn.addEventListener('keydown', (e) => {
+      if (e.key === ' ' || e.key === 'Spacebar') {
+        e.preventDefault();
+        btn.click();
+      }
+    });
+  });
+
   // Triage Modal Logic
   const btnOpenTriage = document.getElementById('btnOpenTriage');
   const btnCloseTriage = document.getElementById('btnCloseTriage');
@@ -264,6 +534,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     btnSubmitTriage.addEventListener('click', async () => {
+      const activeLang = localStorage.getItem('ds_lang') || 'en';
       try {
         const res = await fetch('/api/triage', {
           method: 'POST',
@@ -271,71 +542,11 @@ document.addEventListener('DOMContentLoaded', () => {
           body: JSON.stringify({phenomenon: selectedPhenom, terrain: selectedTerrain})
         });
         const data = await res.json();
-        window.location.href = `/chat?hazard=${data.hazard || 'flood'}`;
+        window.location.href = `/chat?hazard=${data.hazard || 'flood'}&lang=${activeLang}`;
       } catch (e) {
-        window.location.href = `/chat?hazard=flood`;
+        window.location.href = `/chat?hazard=flood&lang=${activeLang}`;
       }
     });
-  }
-
-  // Weather telemetry fetcher (Open-Meteo)
-  const weatherContent = document.getElementById('weatherContent');
-  const btnRefreshWeather = document.getElementById('btnRefreshWeather');
-
-  async function fetchLocalWeather() {
-    if (!navigator.geolocation) return;
-    if (weatherContent) weatherContent.innerHTML = '<p class="loading-text">Fetching localized rainfall radar data...</p>';
-
-    navigator.geolocation.getCurrentPosition(async (pos) => {
-      const lat = pos.coords.latitude;
-      const lon = pos.coords.longitude;
-      try {
-        const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=precipitation,rain,wind_speed_10m&hourly=precipitation_probability`;
-        const resp = await fetch(url);
-        const data = await resp.json();
-        const curr = data.current || {};
-        const rainMm = curr.rain || 0;
-        const wind = curr.wind_speed_10m || 0;
-
-        let riskBadge = 'Normal Rainfall';
-        let badgeClass = 'safe';
-        if (rainMm > 15) { riskBadge = 'Extremely Heavy Rain (Red Alert Risk)'; badgeClass = 'danger'; }
-        else if (rainMm > 5) { riskBadge = 'Moderate-Heavy Rain (Orange Alert Risk)'; badgeClass = 'warning'; }
-
-        weatherContent.innerHTML = `
-          <div class="weather-report-grid">
-            <div class="weather-stat">
-              <span class="stat-label">Current Precipitation</span>
-              <span class="stat-value">${rainMm} mm/hr</span>
-            </div>
-            <div class="weather-stat">
-              <span class="stat-label">Wind Speed</span>
-              <span class="stat-value">${wind} km/h</span>
-            </div>
-            <div class="weather-stat">
-              <span class="stat-label">Hazard Alert Classification</span>
-              <span class="risk-pill ${badgeClass}">${riskBadge}</span>
-            </div>
-          </div>
-        `;
-      } catch (err) {
-        // Graceful offline fallback
-        weatherContent.innerHTML = `
-          <p class="offline-weather-note">
-            Telemetry server unavailable or device offline. Refer directly to official IMD Doppler bulletins and KSDMA daily weather updates.
-          </p>
-        `;
-      }
-    }, () => {
-      // Permission denied or unavailable
-      weatherContent.innerHTML = `
-        <p class="offline-weather-note">Location access required for local weather telemetry. Access official IMD updates via links above.</p>
-      `;
-    });
-  }
-
-  if (btnRefreshWeather) {
-    btnRefreshWeather.addEventListener('click', fetchLocalWeather);
   }
 });
 </script>

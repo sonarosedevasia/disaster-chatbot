@@ -72,6 +72,9 @@ document.addEventListener('DOMContentLoaded', () => {
   // Language Selector Sync
   if (langSelector) {
     const activeUrlLang = new URLSearchParams(window.location.search).get('lang');
+    if (activeUrlLang) {
+      localStorage.setItem('ds_lang', activeUrlLang);
+    }
     const storedLang = activeUrlLang || localStorage.getItem('ds_lang') || 'en';
     langSelector.value = storedLang;
 

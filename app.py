@@ -25,7 +25,7 @@ def create_app(test_config: Dict[str, Any] = None) -> Flask:
 
     app.config.from_mapping(
         SECRET_KEY=os.environ.get("SECRET_KEY", "disastersafe-kerala-2026-prod-secret"),
-        SEND_FILE_MAX_AGE_DEFAULT=31536000
+        SEND_FILE_MAX_AGE_DEFAULT=0
     )
 
     if test_config:
@@ -87,11 +87,6 @@ def create_app(test_config: Dict[str, Any] = None) -> Flask:
                 kits_data = json.load(f)
         return render_template("kit.html", kits=kits_data)
 
-    @app.route("/plan")
-    def plan_view():
-        """Family Emergency Plan Builder."""
-        return render_template("plan.html")
-
     @app.route("/quiz")
     def quiz_view():
         """Preparedness Quiz Mode."""
@@ -101,12 +96,6 @@ def create_app(test_config: Dict[str, Any] = None) -> Flask:
             with open(quiz_path, "r", encoding="utf-8") as f:
                 quiz_data = json.load(f)
         return render_template("quiz.html", quizzes=quiz_data.get("quizzes", {}))
-
-    @app.route("/insights")
-    def insights_view():
-        """Privacy-friendly Anonymous Analytics Dashboard."""
-        analytics = session_manager.get_analytics()
-        return render_template("insights.html", analytics=analytics)
 
     @app.route("/about")
     def about_view():

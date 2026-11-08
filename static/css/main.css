@@ -435,7 +435,160 @@ body {
   font-size: 1.1rem;
   color: #CBD5E1;
   line-height: 1.6;
-  margin-bottom: 32px;
+  margin-bottom: 24px;
+}
+
+.hero-hazard-cards-wrapper,
+.hero-hazard-buttons-group {
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  gap: 16px;
+  max-width: 820px;
+  margin: 0 auto 32px auto;
+  width: 100%;
+}
+
+.hero-hazard-card,
+.hero-hazard-btn {
+  flex: 1 1 0;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 18px;
+  border-radius: 14px;
+  text-decoration: none;
+  color: #FFFFFF !important;
+  background: rgba(15, 23, 42, 0.72);
+  border: 1.5px solid rgba(255, 255, 255, 0.16);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-hazard-card:focus-visible,
+.hero-hazard-btn:focus-visible {
+  outline: 3px solid #FDE047;
+  outline-offset: 3px;
+}
+
+.hero-card-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: transform 0.25s ease;
+}
+
+.flood-icon-bg {
+  background: rgba(14, 165, 233, 0.22);
+  color: #38BDF8;
+  border: 1px solid rgba(56, 189, 248, 0.4);
+}
+
+.quake-icon-bg {
+  background: rgba(245, 158, 11, 0.22);
+  color: #FBBF24;
+  border: 1px solid rgba(251, 191, 36, 0.4);
+}
+
+.slide-icon-bg {
+  background: rgba(16, 185, 129, 0.22);
+  color: #34D399;
+  border: 1px solid rgba(52, 211, 153, 0.4);
+}
+
+.hero-card-text {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  text-align: left;
+}
+
+.hero-hazard-name {
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  line-height: 1.25;
+  color: #FFFFFF;
+}
+
+.hero-hazard-sub {
+  font-size: 0.72rem;
+  color: rgba(255, 255, 255, 0.72);
+  margin-top: 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.hero-card-arrow {
+  color: rgba(255, 255, 255, 0.45);
+  font-size: 1.1rem;
+  font-weight: 600;
+  transition: transform 0.25s ease, color 0.25s ease;
+}
+
+.hero-hazard-card.card-flood:hover,
+.btn-flood-hero:hover {
+  border-color: #38BDF8;
+  background: rgba(14, 165, 233, 0.18);
+  box-shadow: 0 10px 24px -4px rgba(14, 165, 233, 0.45);
+  transform: translateY(-3px);
+}
+
+.hero-hazard-card.card-quake:hover,
+.btn-quake-hero:hover {
+  border-color: #FBBF24;
+  background: rgba(245, 158, 11, 0.18);
+  box-shadow: 0 10px 24px -4px rgba(245, 158, 11, 0.45);
+  transform: translateY(-3px);
+}
+
+.hero-hazard-card.card-slide:hover,
+.btn-slide-hero:hover {
+  border-color: #34D399;
+  background: rgba(16, 185, 129, 0.18);
+  box-shadow: 0 10px 24px -4px rgba(16, 185, 129, 0.45);
+  transform: translateY(-3px);
+}
+
+.hero-hazard-card:hover .hero-card-icon {
+  transform: scale(1.08);
+}
+
+.hero-hazard-card:hover .hero-card-arrow {
+  transform: translateX(3px);
+  color: #FFFFFF;
+}
+
+.hazard-lang-picker {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 14px;
+  padding: 6px 14px;
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-medium);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+}
+
+.hazard-lang-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.84rem;
+  font-weight: 600;
+  color: var(--text-secondary);
 }
 
 .hero-cta-group {
@@ -941,6 +1094,21 @@ body {
   color: var(--text-primary);
 }
 
+.weather-disclaimer-note {
+  margin-top: 14px;
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  padding-top: 10px;
+  border-top: 1px dashed var(--border-light);
+}
+
+.weather-disclaimer-note a {
+  color: var(--color-blue);
+  text-decoration: underline;
+  font-weight: 600;
+}
+
 /* ==========================================================================
    Chat Interface (chat.html)
    ========================================================================== */
@@ -1179,25 +1347,29 @@ body {
 }
 
 .btn-tts-listen {
-  background: none;
-  border: none;
+  background: rgba(2, 132, 199, 0.08);
+  border: 1px solid rgba(2, 132, 199, 0.2);
   color: var(--color-blue);
   cursor: pointer;
-  font-size: 0.7rem;
+  font-size: 0.72rem;
   font-weight: 700;
   display: inline-flex;
   align-items: center;
-  gap: 4px;
-  padding: 2px 4px;
-  border-radius: 4px;
+  gap: 5px;
+  padding: 3px 8px;
+  border-radius: 6px;
+  transition: all 0.2s ease;
 }
 
 .btn-tts-listen:hover {
   background-color: var(--color-blue-subtle);
+  border-color: var(--color-blue);
 }
 
 .btn-tts-listen.speaking {
-  color: var(--color-critical);
+  color: #DC2626;
+  background-color: rgba(220, 38, 38, 0.1);
+  border-color: rgba(220, 38, 38, 0.35);
   animation: beacon-pulse 1.4s infinite;
 }
 
@@ -1680,40 +1852,37 @@ body {
   padding: 30px;
   overflow: auto;
   min-height: 580px;
-  display: flex;
-  justify-content: center;
+  display: block;
+  text-align: center;
 }
 
 .mermaid {
-  width: 100%;
+  display: inline-block;
+  min-width: 100%;
+  margin: 0 auto;
   transition: transform 0.2s ease;
-  display: flex;
-  justify-content: center;
 }
 
 .mermaid svg {
-  max-width: 100%;
+  max-width: none !important;
+  width: auto !important;
   height: auto;
-  overflow: visible !important;
+  display: block;
+  margin: 0 auto;
 }
 
-/* Fix vertical text clipping inside Mermaid SVG foreignObject across browsers */
 .mermaid foreignObject {
-  overflow: visible !important;
+  overflow: visible;
 }
 
 .mermaid foreignObject > div {
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  text-align: center !important;
-  line-height: 1.35 !important;
-  height: 100% !important;
-  padding: 4px 8px !important;
-  box-sizing: border-box !important;
+  text-align: center;
+  padding: 8px 12px;
+  box-sizing: border-box;
+  line-height: 1.4;
 }
 
-/* Force high-contrast, fully visible typography on all Mermaid nodes */
+/* Force high-contrast typography on Mermaid nodes without breaking layout sizing */
 .mermaid .node text,
 .mermaid .node tspan,
 .mermaid .node .nodeLabel,
@@ -1721,13 +1890,9 @@ body {
 .mermaid .node span,
 .mermaid .node p,
 .mermaid .node div {
-  font-family: var(--font-sans) !important;
-  font-size: 13px !important;
-  line-height: 1.35 !important;
-  color: #0F172A !important;
-  fill: #0F172A !important;
-  visibility: visible !important;
-  opacity: 1 !important;
+  font-family: var(--font-sans);
+  color: #0F172A;
+  fill: #0F172A;
 }
 
 /* Explicit class-based color coding for high legibility */
@@ -2017,189 +2182,6 @@ body {
 }
 
 /* ==========================================================================
-   Family Plan Page (plan.html)
-   ========================================================================== */
-.plan-page-container {
-  padding: 30px 20px 60px 20px;
-}
-
-.plan-header {
-  margin-bottom: 24px;
-}
-
-.plan-title {
-  font-size: 1.65rem;
-  font-weight: 800;
-}
-
-.plan-sub {
-  font-size: 0.9rem;
-  color: var(--text-secondary);
-}
-
-.plan-builder-grid {
-  display: grid;
-  grid-template-columns: 1.2fr 1fr;
-  gap: 24px;
-}
-
-.plan-form-card, .plan-preview-card {
-  background-color: var(--bg-card);
-  border: 1px solid var(--border-light);
-  border-radius: var(--radius-lg);
-  padding: 24px;
-  box-shadow: var(--shadow-sm);
-}
-
-.form-section {
-  margin-bottom: 20px;
-  border-bottom: 1px solid var(--border-light);
-  padding-bottom: 16px;
-}
-
-.form-section-title {
-  font-size: 0.95rem;
-  font-weight: 700;
-  margin-bottom: 12px;
-}
-
-.form-row {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 14px;
-}
-
-.form-group {
-  margin-bottom: 12px;
-}
-
-.form-group label {
-  display: block;
-  font-size: 0.78rem;
-  font-weight: 600;
-  margin-bottom: 4px;
-  color: var(--text-secondary);
-}
-
-.plan-input, .plan-textarea {
-  width: 100%;
-  background-color: var(--bg-subtle);
-  border: 1px solid var(--border-medium);
-  border-radius: var(--radius-sm);
-  padding: 8px 12px;
-  font-family: var(--font-sans);
-  font-size: 0.86rem;
-  color: var(--text-primary);
-  outline: none;
-}
-
-.plan-input:focus, .plan-textarea:focus {
-  border-color: var(--color-blue);
-  background-color: var(--bg-card);
-}
-
-.form-hint {
-  font-size: 0.74rem;
-  color: var(--text-muted);
-  margin-bottom: 8px;
-}
-
-.form-actions-row {
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-}
-
-.btn-save-plan {
-  background-color: var(--color-blue);
-  color: #FFFFFF;
-  border: none;
-  font-family: var(--font-sans);
-  font-size: 0.86rem;
-  font-weight: 700;
-  padding: 9px 18px;
-  border-radius: var(--radius-sm);
-  cursor: pointer;
-}
-
-.btn-print-plan {
-  background-color: var(--bg-subtle);
-  border: 1px solid var(--border-medium);
-  color: var(--text-primary);
-  font-family: var(--font-sans);
-  font-size: 0.86rem;
-  font-weight: 600;
-  padding: 9px 18px;
-  border-radius: var(--radius-sm);
-  cursor: pointer;
-}
-
-.btn-clear-plan {
-  background: none;
-  border: none;
-  color: var(--text-muted);
-  font-size: 0.84rem;
-  cursor: pointer;
-  margin-left: auto;
-}
-
-/* Plan Preview Card */
-.preview-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 16px;
-  border-bottom: 2px solid var(--color-blue);
-  padding-bottom: 8px;
-}
-
-.preview-title {
-  font-size: 1.15rem;
-  font-weight: 800;
-}
-
-.preview-badge {
-  font-size: 0.68rem;
-  font-weight: 700;
-  background-color: var(--color-safe-bg);
-  color: var(--color-safe);
-  border: 1px solid var(--color-safe-border);
-  padding: 2px 8px;
-  border-radius: 9999px;
-  text-transform: uppercase;
-}
-
-.preview-field {
-  margin-bottom: 14px;
-}
-
-.preview-label {
-  font-size: 0.74rem;
-  font-weight: 700;
-  color: var(--text-muted);
-  text-transform: uppercase;
-  display: block;
-}
-
-.preview-val {
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: var(--text-primary);
-  line-height: 1.4;
-}
-
-.preview-emergency-strip {
-  margin-top: 24px;
-  background-color: var(--color-critical-bg);
-  border: 1px solid var(--color-critical-border);
-  border-radius: var(--radius-sm);
-  padding: 10px;
-  font-size: 0.75rem;
-  color: var(--color-critical-text);
-  text-align: center;
-}
-
-/* ==========================================================================
    Quiz Page (quiz.html)
    ========================================================================== */
 .quiz-page-container {
@@ -2396,179 +2378,6 @@ body {
   padding: 10px 22px;
   border-radius: var(--radius-sm);
   cursor: pointer;
-}
-
-/* ==========================================================================
-   Insights Page (insights.html)
-   ========================================================================== */
-.insights-container {
-  padding: 30px 20px 60px 20px;
-}
-
-.insights-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 16px;
-  margin-bottom: 24px;
-}
-
-.insights-title {
-  font-size: 1.65rem;
-  font-weight: 800;
-}
-
-.insights-sub {
-  font-size: 0.9rem;
-  color: var(--text-secondary);
-}
-
-.privacy-guarantee-badge {
-  background-color: var(--color-safe-bg);
-  border: 1px solid var(--color-safe-border);
-  color: var(--color-safe-text);
-  font-size: 0.78rem;
-  font-weight: 700;
-  padding: 6px 14px;
-  border-radius: 9999px;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-}
-
-.metrics-card-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 18px;
-  margin-bottom: 24px;
-}
-
-.metric-card {
-  background-color: var(--bg-card);
-  border: 1px solid var(--border-light);
-  border-radius: var(--radius-lg);
-  padding: 20px;
-  box-shadow: var(--shadow-sm);
-  display: flex;
-  flex-direction: column;
-}
-
-.metric-num {
-  font-size: 2rem;
-  font-weight: 800;
-  color: var(--color-blue);
-  line-height: 1.1;
-  margin-bottom: 4px;
-}
-
-.metric-label {
-  font-size: 0.82rem;
-  font-weight: 600;
-  color: var(--text-secondary);
-}
-
-.metric-trend {
-  font-size: 0.7rem;
-  color: var(--text-muted);
-  margin-top: 8px;
-}
-
-.telemetry-split-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 22px;
-  margin-bottom: 24px;
-}
-
-.telemetry-card {
-  background-color: var(--bg-card);
-  border: 1px solid var(--border-light);
-  border-radius: var(--radius-lg);
-  padding: 22px;
-  box-shadow: var(--shadow-sm);
-}
-
-.telemetry-card.full-width {
-  grid-column: 1 / -1;
-}
-
-.telemetry-card-title {
-  font-size: 1.05rem;
-  font-weight: 700;
-  margin-bottom: 16px;
-  border-bottom: 1px solid var(--border-light);
-  padding-bottom: 8px;
-}
-
-.bar-chart-list {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-}
-
-.bar-labels {
-  display: flex;
-  justify-content: space-between;
-  font-size: 0.8rem;
-  font-weight: 600;
-  margin-bottom: 4px;
-}
-
-.chart-track {
-  height: 9px;
-  background-color: var(--border-light);
-  border-radius: 9999px;
-  overflow: hidden;
-}
-
-.chart-fill {
-  height: 100%;
-  border-radius: 9999px;
-  transition: width 0.3s ease;
-}
-
-.flood-fill { background-color: var(--color-blue); }
-.quake-fill { background-color: var(--color-warning); }
-.slide-fill { background-color: var(--color-safe); }
-.lang-en { background-color: var(--color-blue); }
-.lang-ml { background-color: #8B5CF6; }
-.lang-hi { background-color: #EC4899; }
-
-.paths-table-wrap {
-  overflow-x: auto;
-}
-
-.paths-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 0.82rem;
-}
-
-.paths-table th, .paths-table td {
-  padding: 10px 14px;
-  text-align: left;
-  border-bottom: 1px solid var(--border-light);
-}
-
-.paths-table th {
-  background-color: var(--bg-subtle);
-  font-weight: 700;
-  color: var(--text-secondary);
-}
-
-.path-code {
-  font-family: var(--font-mono);
-  font-size: 0.76rem;
-  color: var(--color-blue);
-}
-
-.count-pill {
-  background-color: var(--bg-subtle);
-  border: 1px solid var(--border-medium);
-  font-weight: 700;
-  padding: 2px 8px;
-  border-radius: 9999px;
 }
 
 /* ==========================================================================
@@ -2974,7 +2783,7 @@ body {
     color: #000000 !important;
   }
 
-  .chat-workspace-card, .plan-preview-card, .kit-category-card {
+  .chat-workspace-card, .kit-category-card {
     border: 1px solid #000 !important;
     box-shadow: none !important;
     height: auto !important;
@@ -2996,12 +2805,6 @@ body {
     grid-template-columns: 1fr;
   }
 
-  .metrics-card-grid {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .plan-builder-grid,
-  .telemetry-split-grid,
   .kit-categories-grid {
     grid-template-columns: 1fr;
   }
@@ -3038,6 +2841,20 @@ body {
 
   .form-row {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .hero-hazard-cards-wrapper,
+  .hero-hazard-buttons-group {
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+  }
+
+  .hero-hazard-card,
+  .hero-hazard-btn {
+    width: 100%;
   }
 }
 
